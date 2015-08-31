@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AC737BDA-C4BC-464D-930D-C45F755445DF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JadAI</RootNamespace>
+    <AssemblyName>JadAI</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\Public\Documents\Unity Projects\irobotq_test1\Build\server_clientTest_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Collections\Deque.cs" />
+    <Compile Include="Collections\IndexedPriorityQueue.cs" />
+    <Compile Include="Collections\IPriorityQueue.cs" />
+    <Compile Include="Collections\JList.cs" />
+    <Compile Include="Collections\PriorityQueue.cs" />
+    <Compile Include="Collections\UniquePriorityQueue.cs" />
+    <Compile Include="Core\BaseEntity.cs" />
+    <Compile Include="Core\EntityManager.cs" />
+    <Compile Include="Core\JState.cs" />
+    <Compile Include="Core\JStateMachine.cs" />
+    <Compile Include="Core\JValidationException.cs" />
+    <Compile Include="Goals\Goal.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Goals\GoalComposite.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Goals\GoalProcessingState.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Graphs\AnnotatedEdge.cs" />
+    <Compile Include="Graphs\Edge.cs" />
+    <Compile Include="Graphs\EdgeInformation.cs" />
+    <Compile Include="Graphs\Graph.cs" />
+    <Compile Include="Graphs\GraphBuilder.cs" />
+    <Compile Include="Graphs\HeuristicMethod.cs" />
+    <Compile Include="Graphs\Heuristics.cs" />
+    <Compile Include="Graphs\NavigationNode.cs" />
+    <Compile Include="Graphs\Node.cs" />
+    <Compile Include="Graphs\SpacePartitionNode.cs" />
+    <Compile Include="Graphs\WeightedEdge.cs" />
+    <Compile Include="Messaging\IMessageable.cs" />
+    <Compile Include="Messaging\IMessageManager.cs" />
+    <Compile Include="Messaging\Message.cs" />
+    <Compile Include="Messaging\MessageComparer.cs" />
+    <Compile Include="Messaging\MessageHandlerDelegate.cs" />
+    <Compile Include="Messaging\MessageManagerHandler.cs" />
+    <Compile Include="Messaging\MessageManagerRouter.cs" />
+    <Compile Include="Messaging\MessageType.cs" />
+    <Compile Include="Navigation\MovingEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Navigation\NavigationEdge.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Pathfinding\AStarSearch.cs" />
+    <Compile Include="Pathfinding\DepthFirstSearch.cs" />
+    <Compile Include="Pathfinding\DijkstraSearch.cs" />
+    <Compile Include="Pathfinding\GraphSearchAlgorithm.cs" />
+    <Compile Include="Pathfinding\IGraphSearchAlgorithm.cs" />
+    <Compile Include="Pathfinding\PathManager.cs" />
+    <Compile Include="Pathfinding\PathPlanner.cs" />
+    <Compile Include="Pathfinding\PathSmoothAlgorithms.cs" />
+    <Compile Include="Pathfinding\PathSmoother.cs" />
+    <Compile Include="Pathfinding\SearchState.cs" />
+    <Compile Include="Pathfinding\Visibility.cs" />
+    <Compile Include="Pathfinding\WidthFirstSearch.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StateMachines\DefaultIdleState.cs" />
+    <Compile Include="StateMachines\FiniteStateMachine.cs" />
+    <Compile Include="StateMachines\IFiniteStateMachine.cs" />
+    <Compile Include="StateMachines\IFSMCapable.cs" />
+    <Compile Include="StateMachines\IState.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
