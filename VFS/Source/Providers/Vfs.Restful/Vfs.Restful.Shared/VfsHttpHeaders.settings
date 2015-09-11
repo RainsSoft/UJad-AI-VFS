@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Vfs.Restful" GeneratedClassName="VfsHttpHeaders">
+  <Profiles />
+  <Settings>
+    <Setting Name="BlockLength" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">vfs-block-length</Value>
+    </Setting>
+    <Setting Name="BlockNumber" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">vfs-block-number</Value>
+    </Setting>
+    <Setting Name="IsLastBlock" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">vfs-block-islast</Value>
+    </Setting>
+    <Setting Name="BlockOffset" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">vfs-block-offset</Value>
+    </Setting>
+    <Setting Name="TransferId" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">vfs-transfer-id</Value>
+    </Setting>
+    <Setting Name="OverwriteExistingResource" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">vfs-overwrite</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

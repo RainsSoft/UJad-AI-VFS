@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{093270B4-11CA-4196-8FCA-35AAFBEE238A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vfs.Test</RootNamespace>
+    <AssemblyName>Vfs.Test</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Hardcodet.Commons, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\Hardcodet.Commons.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq, Version=3.1.416.3, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.5.2.9222, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="SLF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libs\SLF.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Auditing\Given_AuditHelper_When_Submitting_Exceptions.cs" />
+    <Compile Include="Auditing\Given_Resources_When_Filtering_By_Search_Pattern.cs" />
+    <Compile Include="Given_VirtualFolder_When_Modifying_Files_And_Folders.cs" />
+    <Compile Include="Given_Resources_When_Filtering_By_Search_Pattern.cs" />
+    <Compile Include="Given_VirtualFolder_When_Browsing_FileSystems.cs" />
+    <Compile Include="Locking\LockTracker Tests\Given_Tracker_When_Releasing_Locks.cs" />
+    <Compile Include="Locking\LockTracker Tests\Given_Tracker_When_Requesting_Write_Lock.cs" />
+    <Compile Include="Locking\LockTracker Tests\Given_Tracker_When_Locks_Have_Expired.cs" />
+    <Compile Include="Locking\LockTracker Tests\Given_Tracker_When_Requesting_Read_Lock.cs" />
+    <Compile Include="Locking\ResourceLockGuard Tests\Given_Guard_When_Maintaining_Secondary_Lock.cs" />
+    <Compile Include="Locking\ResourceLockGuard Tests\Given_Guard_When_Maintaining_Denied_Lock.cs" />
+    <Compile Include="Locking\ResourceLockGuard Tests\Given_Guard_When_Maintaining_Write_Lock.cs" />
+    <Compile Include="Locking\ResourceLockGuard Tests\Given_Guard_When_Maintaining_Read_Lock.cs" />
+    <Compile Include="Locking\ResourceLockRepository Tests\Given_LockRepository_When_Requesting_Write_Lock.cs" />
+    <Compile Include="Locking\ResourceLockRepository Tests\Given_LockRepository_When_Requesting_Read_Lock.cs" />
+    <Compile Include="Locking\ResourceLockRepository Tests\RepositoryTestBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SlfGuard.cs" />
+    <Compile Include="TestContext.cs" />
+    <Compile Include="TestTransferStore.cs" />
+    <Compile Include="TestUtil.cs" />
+    <Compile Include="Transfers\Reading From BlockInputStream\Given_BufferedBlockInputStream_When_Reading_Data.cs" />
+    <Compile Include="Transfers\TransferStore\Given_Volatile_Store_When_Adding_Or_Removing_Transfers.cs" />
+    <Compile Include="Transfers\Writing To BlockOutputStream\Given_BlockOutputStream_When_Resuming_Transfer.cs" />
+    <Compile Include="Transfers\Writing To BlockOutputStream\Given_BlockOutputStream_When_Writing_Data.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Providers\Vfs.LocalFileSystem\Vfs.LocalFileSystem\Vfs.LocalFileSystem.csproj">
+      <Project>{1340E263-4471-491A-80C4-4F7C84FD8802}</Project>
+      <Name>Vfs.LocalFileSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vfs.Core\VFS.csproj">
+      <Project>{D4EE71C9-7B09-4653-AA5C-0F56CC029480}</Project>
+      <Name>VFS</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Util\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

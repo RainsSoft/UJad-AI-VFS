@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Vfs.Transfer.BlockOutputStream" Collapsed="true">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAQACwGAAAEUBgAABAAAAAAAAAAgEJACA=</HashCode>
+      <FileName>BlockOutputStream.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Transfer.StreamedDataBlockContract" Collapsed="true">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAIAABBAAAAAAACAAgAA=</HashCode>
+      <FileName>DataBlock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Transfer.DataBlock" Collapsed="true">
+    <Position X="2.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataBlock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Transfer.DataBlockInfo" Collapsed="true">
+    <Position X="1.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAEAAAAAIAABAAAAAAAACAAgAA=</HashCode>
+      <FileName>DataBlock.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Vfs.Transfer.DownloadManager" Collapsed="true">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAgAAAAAAAEAAQAAAAAAAAgAAAAAABAAA=</HashCode>
+      <FileName>DownloadManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Transfer.DownloadTransfer" Collapsed="true">
+    <Position X="15.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAABAAEAAAAAAMAAAAAAAAAAABAAA=</HashCode>
+      <FileName>DownloadTransfer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Transfer.DataBlockException" Collapsed="true">
+    <Position X="5.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\DataBlockException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Transfer.InvalidDataBlockException" Collapsed="true">
+    <Position X="7.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\InvalidDataBlockException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Transfer.InvalidTransferStatusException" Collapsed="true">
+    <Position X="9.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\InvalidTransferStatusException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Transfer.TransferException" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\TransferException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Transfer.TransferStatusException" Collapsed="true">
+    <Position X="0.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\TransferStatusException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Transfer.UnknownTransferException" Collapsed="true">
+    <Position X="3" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\UnknownTransferException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Transfer.FileDownloadService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAACCACBAACAAQIAAAgAAAAEAAAEAAAwAIA=</HashCode>
+      <FileName>FileDownloadService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Vfs.Transfer.FragmentStream" Collapsed="true">
+    <Position X="14" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAQAAgGAAAAABgAAAABAAAAAAAACEIACA=</HashCode>
+      <FileName>FragmentStream.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Transfer.OutboundTransferManager" Collapsed="true">
+    <Position X="15.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>InboundTransferManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Transfer.InboundTransferManager" Collapsed="true">
+    <Position X="5.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAACAAAAAAAAAAAAAAIgAAFBBAAA=</HashCode>
+      <FileName>InboundTransferManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Transfer.StreamingTransferManager" Collapsed="true">
+    <Position X="5.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAEAAAAAAAAAAgAAAAAAAAAgAAEAAAAA=</HashCode>
+      <FileName>InboundTransferManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Transfer.UploadManager" Collapsed="true">
+    <Position X="15.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>InboundTransferManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Transfer.ResourceLock">
+    <Position X="9" Y="6.25" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAIEEAAAAAAgAAAACAAAAAAACAAAABAAAAAACAAAAE=</HashCode>
+      <FileName>ResourceLock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Transfer.ResourceLockGuard">
+    <Position X="11.75" Y="8" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ResourceLock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Transfer.TransferToken" Collapsed="true">
+    <Position X="1.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAsAAACEAAAAAAAAABIAgAAAAABAQAAAAAACgAABAAA=</HashCode>
+      <FileName>TransferToken.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Transfer.DownloadToken" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAEAAAQAQAAAAA=</HashCode>
+      <FileName>TransferToken.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Transfer.UploadToken" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAEAgAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TransferToken.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Vfs.Transfer.IDataBlockInfo" Collapsed="true">
+    <Position X="12.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAIAABAAAAAAAACAAgAA=</HashCode>
+      <FileName>DataBlock.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Vfs.Transfer.ITransferService" Collapsed="true">
+    <Position X="6.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAIAAAgAAAAAAAAAAAAwAAA=</HashCode>
+      <FileName>ITransferService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Vfs.Transfer.IDownloadTransferService" Collapsed="true">
+    <Position X="5.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAACAACAAAAAAAAAAAAAAAAAAAAEAAAAAIA=</HashCode>
+      <FileName>ITransferService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Vfs.Transfer.IUploadTransferService" Collapsed="true">
+    <Position X="7.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQIAAAAABAgAA=</HashCode>
+      <FileName>ITransferService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Vfs.Transfer.AbortReason" Collapsed="true">
+    <Position X="12.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAgAAACA=</HashCode>
+      <FileName>AbortReason.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Vfs.Transfer.ResourceLockState">
+    <Position X="11.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAABAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>ResourceLock.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Vfs.Transfer.TransferFinalization" Collapsed="true">
+    <Position X="15.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>TransferFinalization.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Vfs.Transfer.TransferStatus" Collapsed="true">
+    <Position X="12.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAEAAAAAIAAAAAQAAAAAAAAAAIAAAAAAAAAiA=</HashCode>
+      <FileName>TransferStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Vfs.Transfer.TransmissionCapabilities" Collapsed="true">
+    <Position X="14" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAABAAAAAAAAQAAAAA=</HashCode>
+      <FileName>TransmissionCapabilities.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

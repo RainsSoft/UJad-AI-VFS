@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetZip.SL", "DotNetZip.SL\DotNetZip.SL.csproj", "{D4DE19D1-0C06-4C30-91F7-F35F3157F77D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetZip.ZLib", "DotNetZip.ZLib\DotNetZip.ZLib.csproj", "{65EF716F-7107-41FA-9AF8-4D5FA701E70D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverlightApplication1", "SilverlightApplication1\SilverlightApplication1.csproj", "{5A457C04-A763-4927-B04A-8A0CE8A91669}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverlightApplication1.Web", "SilverlightApplication1.Web\SilverlightApplication1.Web.csproj", "{E5615B52-C91C-4323-979F-E826BD69E118}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{0ADB0F37-FF3D-4311-AAC3-B1E2E7BF838C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLEncodingGenerator", "..\..\..\..\..\evolve.net\Silverlight\Encoding Generator\SLEncodingGenerator\SLEncodingGenerator.csproj", "{34C831CE-4D5C-4DE7-B510-7706ABCE4430}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D4DE19D1-0C06-4C30-91F7-F35F3157F77D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4DE19D1-0C06-4C30-91F7-F35F3157F77D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4DE19D1-0C06-4C30-91F7-F35F3157F77D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4DE19D1-0C06-4C30-91F7-F35F3157F77D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65EF716F-7107-41FA-9AF8-4D5FA701E70D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65EF716F-7107-41FA-9AF8-4D5FA701E70D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65EF716F-7107-41FA-9AF8-4D5FA701E70D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65EF716F-7107-41FA-9AF8-4D5FA701E70D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A457C04-A763-4927-B04A-8A0CE8A91669}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A457C04-A763-4927-B04A-8A0CE8A91669}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A457C04-A763-4927-B04A-8A0CE8A91669}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A457C04-A763-4927-B04A-8A0CE8A91669}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5615B52-C91C-4323-979F-E826BD69E118}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5615B52-C91C-4323-979F-E826BD69E118}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5615B52-C91C-4323-979F-E826BD69E118}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5615B52-C91C-4323-979F-E826BD69E118}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0ADB0F37-FF3D-4311-AAC3-B1E2E7BF838C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ADB0F37-FF3D-4311-AAC3-B1E2E7BF838C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ADB0F37-FF3D-4311-AAC3-B1E2E7BF838C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ADB0F37-FF3D-4311-AAC3-B1E2E7BF838C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34C831CE-4D5C-4DE7-B510-7706ABCE4430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34C831CE-4D5C-4DE7-B510-7706ABCE4430}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34C831CE-4D5C-4DE7-B510-7706ABCE4430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34C831CE-4D5C-4DE7-B510-7706ABCE4430}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

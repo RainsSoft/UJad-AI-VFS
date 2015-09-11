@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Silverlight.REST</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Http.RequestHelper">
+            <summary>
+            Some helper
+            </summary>
+        </member>
+        <member name="M:Microsoft.Http.RequestHelper.GetResponse(System.Net.HttpWebRequest,System.Nullable{System.Int32})">
+            <summary>
+            A blocking operation that does not continue until a response has been
+            received for a given <see cref="T:System.Net.HttpWebRequest"/>, or the request
+            timed out.
+            </summary>
+            <param name="request">The request to be sent.</param>
+            <param name="timeout">An optional timeout.</param>
+            <returns>The response that was received for the request.</returns>
+            <exception cref="T:System.TimeoutException">If the <paramref name="timeout"/>
+            parameter was set, and no response was received within the specified
+            time.</exception>
+            <remarks>You must not invoke this method on the UI thread, or the call will
+            time out. This is because the <see cref="M:System.Net.HttpWebRequest.EndGetResponse(System.IAsyncResult)"/>
+            method accesses the UI thread as well, which will starve the worker thread.</remarks>
+        </member>
+        <member name="M:Microsoft.Http.RequestHelper.GetRequestStream(System.Net.HttpWebRequest,System.Nullable{System.Int32})">
+            <summary>
+            Synchronously gets a request stream for a given request.
+            </summary>
+            <param name="request">The request to be sent.</param>
+            <param name="timeout">An optional timeout.</param>
+            <returns>The stream that was received for the request.</returns>
+            <exception cref="T:System.TimeoutException">If the <paramref name="timeout"/>
+            parameter was set, and no stream was received within the specified
+            time.</exception>
+        </member>
+    </members>
+</doc>

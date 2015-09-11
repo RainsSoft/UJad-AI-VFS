@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://vfs.hardcodet.net/ws/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://vfs.hardcodet.net/ws/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://vfs.hardcodet.net/ws/Imports">
+      <xsd:import schemaLocation="http://localhost:6744/FileSystem.svc?xsd=xsd0" namespace="http://vfs.hardcodet.net/ws/" />
+      <xsd:import schemaLocation="http://localhost:6744/FileSystem.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" />
+      <xsd:import schemaLocation="http://localhost:6744/FileSystem.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:6744/FileSystem.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Vfs" />
+      <xsd:import schemaLocation="http://localhost:6744/FileSystem.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xsd:import schemaLocation="http://localhost:6744/FileSystem.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Vfs.Auditing" />
+      <xsd:import schemaLocation="http://localhost:6744/FileSystem.svc?xsd=xsd6" namespace="http://schemas.microsoft.com/Message" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IFSOperationService_MoveFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:MoveFile" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_MoveFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MoveFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_MoveFile_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q1:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_MoveFileItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:MoveFileItem" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_MoveFileItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MoveFileItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_MoveFileItem_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q2:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CopyFolder_InputMessage">
+    <wsdl:part name="parameters" element="tns:CopyFolder" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CopyFolder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CopyFolderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CopyFolder_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q3:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CopyFolderItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:CopyFolderItem" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CopyFolderItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CopyFolderItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CopyFolderItem_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q4:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CopyFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:CopyFile" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CopyFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CopyFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CopyFile_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q5:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CopyFileItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:CopyFileItem" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CopyFileItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CopyFileItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CopyFileItem_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q6:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CreateFilePath_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateFilePath" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CreateFilePath_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateFilePathResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CreateFilePath_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q7:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CreateFolderPath_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateFolderPath" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CreateFolderPath_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateFolderPathResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CreateFolderPath_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q8:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFileSystemRoot_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileSystemRoot" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFileSystemRoot_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileSystemRootResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFileSystemRoot_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q9:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFileInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileInfo" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFileInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFileInfo_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q10:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFolderInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFolderInfo" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFolderInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFolderInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFolderInfo_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q11:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFileParent_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileParent" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFileParent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileParentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFileParent_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q12:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFileParentByItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileParentByItem" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFileParentByItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileParentByItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFileParentByItem_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q13:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFolderParent_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFolderParent" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFolderParent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFolderParentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFolderParent_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q14:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFolderParentByItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFolderParentByItem" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFolderParentByItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFolderParentByItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFolderParentByItem_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q15="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q15:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetChildFolders_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetChildFolders" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetChildFolders_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetChildFoldersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetChildFolders_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q16:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetChildFoldersByItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetChildFoldersByItem" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetChildFoldersByItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetChildFoldersByItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetChildFoldersByItem_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q17="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q17:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFilteredChildFolders_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilteredChildFolders" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFilteredChildFolders_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilteredChildFoldersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFilteredChildFolders_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q18="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q18:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFilteredChildFoldersByItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilteredChildFoldersByItem" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFilteredChildFoldersByItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilteredChildFoldersByItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFilteredChildFoldersByItem_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q19="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q19:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetChildFiles_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetChildFiles" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetChildFiles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetChildFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetChildFiles_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q20="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q20:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetChildFilesByItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetChildFilesByItem" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetChildFilesByItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetChildFilesByItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetChildFilesByItem_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q21="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q21:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFilteredChildFiles_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilteredChildFiles" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFilteredChildFiles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilteredChildFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFilteredChildFiles_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q22="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q22:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFilteredChildFilesByItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilteredChildFilesByItem" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFilteredChildFilesByItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilteredChildFilesByItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFilteredChildFilesByItem_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q23="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q23:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFolderContents_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFolderContents" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFolderContents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFolderContentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFolderContents_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q24="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q24:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFolderContentsByItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFolderContentsByItem" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFolderContentsByItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFolderContentsByItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFolderContentsByItem_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q25="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q25:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFilteredFolderContents_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilteredFolderContents" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFilteredFolderContents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilteredFolderContentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFilteredFolderContents_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q26="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q26:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFilteredFolderContentsByItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilteredFolderContentsByItem" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFilteredFolderContentsByItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFilteredFolderContentsByItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_GetFilteredFolderContentsByItem_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q27="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q27:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_IsFileAvailable_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsFileAvailable" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_IsFileAvailable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsFileAvailableResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_IsFileAvailable_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q28="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q28:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_IsFolderAvailable_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsFolderAvailable" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_IsFolderAvailable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsFolderAvailableResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_IsFolderAvailable_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q29="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q29:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CreateFolderUnderParent_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateFolderUnderParent" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CreateFolderUnderParent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateFolderUnderParentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CreateFolderUnderParent_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q30="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q30:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CreateFolder_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateFolder" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CreateFolder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateFolderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CreateFolder_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q31="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q31:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CreateFolderUnderParentItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateFolderUnderParentItem" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CreateFolderUnderParentItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateFolderUnderParentItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_CreateFolderUnderParentItem_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q32="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q32:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_DeleteFolder_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFolder" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_DeleteFolder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFolderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_DeleteFolder_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q33="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q33:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_DeleteFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFile" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_DeleteFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_DeleteFile_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q34="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q34:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_MoveFolder_InputMessage">
+    <wsdl:part name="parameters" element="tns:MoveFolder" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_MoveFolder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MoveFolderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_MoveFolder_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q35="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q35:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_MoveFolderItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:MoveFolderItem" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_MoveFolderItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MoveFolderItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSOperationService_MoveFolderItem_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q36="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q36:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="WriteFileDataContract">
+    <wsdl:part name="parameters" element="tns:WriteFileDataContract" />
+  </wsdl:message>
+  <wsdl:message name="WriteFileDataContract_Headers">
+    <wsdl:part name="FilePath" element="tns:FilePath" />
+    <wsdl:part name="Overwrite" element="tns:Overwrite" />
+  </wsdl:message>
+  <wsdl:message name="FileInfoDataContract">
+    <wsdl:part name="parameters" element="tns:FileInfoDataContract" />
+  </wsdl:message>
+  <wsdl:message name="FileInfoDataContract_Headers">
+    <wsdl:part name="FileInfo" element="tns:FileInfo" />
+  </wsdl:message>
+  <wsdl:message name="IFSWriterService_WriteFile_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q37="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q37:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSReaderService_ReadFileContents_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadFileContents" />
+  </wsdl:message>
+  <wsdl:message name="IFSReaderService_ReadFileContents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadFileContentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFSReaderService_ReadFileContents_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q38="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q38:ResourceFault" />
+  </wsdl:message>
+  <wsdl:message name="IFSReaderService_ReadFileContents2_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadFileContents2" />
+  </wsdl:message>
+  <wsdl:message name="IFSReaderService_ReadFileContents2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadFileContents2Response" />
+  </wsdl:message>
+  <wsdl:message name="IFSReaderService_ReadFileContents2_ResourceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q39="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" name="detail" element="q39:ResourceFault" />
+  </wsdl:message>
+  <wsdl:portType name="IFSOperationService">
+    <wsdl:operation name="MoveFile">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/MoveFile" message="tns:IFSOperationService_MoveFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/MoveFileResponse" message="tns:IFSOperationService_MoveFile_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/MoveFileResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_MoveFile_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveFileItem">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/MoveFileItem" message="tns:IFSOperationService_MoveFileItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/MoveFileItemResponse" message="tns:IFSOperationService_MoveFileItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/MoveFileItemResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_MoveFileItem_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CopyFolder">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CopyFolder" message="tns:IFSOperationService_CopyFolder_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CopyFolderResponse" message="tns:IFSOperationService_CopyFolder_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CopyFolderResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_CopyFolder_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CopyFolderItem">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CopyFolderItem" message="tns:IFSOperationService_CopyFolderItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CopyFolderItemResponse" message="tns:IFSOperationService_CopyFolderItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CopyFolderItemResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_CopyFolderItem_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CopyFile">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CopyFile" message="tns:IFSOperationService_CopyFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CopyFileResponse" message="tns:IFSOperationService_CopyFile_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CopyFileResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_CopyFile_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CopyFileItem">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CopyFileItem" message="tns:IFSOperationService_CopyFileItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CopyFileItemResponse" message="tns:IFSOperationService_CopyFileItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CopyFileItemResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_CopyFileItem_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateFilePath">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CreateFilePath" message="tns:IFSOperationService_CreateFilePath_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CreateFilePathResponse" message="tns:IFSOperationService_CreateFilePath_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CreateFilePathResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_CreateFilePath_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateFolderPath">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CreateFolderPath" message="tns:IFSOperationService_CreateFolderPath_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CreateFolderPathResponse" message="tns:IFSOperationService_CreateFolderPath_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CreateFolderPathResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_CreateFolderPath_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileSystemRoot">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFileSystemRoot" message="tns:IFSOperationService_GetFileSystemRoot_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFileSystemRootResponse" message="tns:IFSOperationService_GetFileSystemRoot_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFileSystemRootResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_GetFileSystemRoot_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfo">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFileInfo" message="tns:IFSOperationService_GetFileInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFileInfoResponse" message="tns:IFSOperationService_GetFileInfo_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFileInfoResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_GetFileInfo_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFolderInfo">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFolderInfo" message="tns:IFSOperationService_GetFolderInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFolderInfoResponse" message="tns:IFSOperationService_GetFolderInfo_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFolderInfoResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_GetFolderInfo_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileParent">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFileParent" message="tns:IFSOperationService_GetFileParent_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFileParentResponse" message="tns:IFSOperationService_GetFileParent_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFileParentResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_GetFileParent_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileParentByItem">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFileParentByItem" message="tns:IFSOperationService_GetFileParentByItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFileParentByItemResponse" message="tns:IFSOperationService_GetFileParentByItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFileParentByItemResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_GetFileParentByItem_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFolderParent">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFolderParent" message="tns:IFSOperationService_GetFolderParent_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFolderParentResponse" message="tns:IFSOperationService_GetFolderParent_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFolderParentResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_GetFolderParent_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFolderParentByItem">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFolderParentByItem" message="tns:IFSOperationService_GetFolderParentByItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFolderParentByItemResponse" message="tns:IFSOperationService_GetFolderParentByItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFolderParentByItemResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_GetFolderParentByItem_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChildFolders">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetChildFolders" message="tns:IFSOperationService_GetChildFolders_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetChildFoldersResponse" message="tns:IFSOperationService_GetChildFolders_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetChildFoldersResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_GetChildFolders_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChildFoldersByItem">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetChildFoldersByItem" message="tns:IFSOperationService_GetChildFoldersByItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetChildFoldersByItemResponse" message="tns:IFSOperationService_GetChildFoldersByItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetChildFoldersByItemResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_GetChildFoldersByItem_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFilteredChildFolders">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFilteredChildFolders" message="tns:IFSOperationService_GetFilteredChildFolders_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFilteredChildFoldersResponse" message="tns:IFSOperationService_GetFilteredChildFolders_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFilteredChildFoldersResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_GetFilteredChildFolders_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFilteredChildFoldersByItem">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFilteredChildFoldersByItem" message="tns:IFSOperationService_GetFilteredChildFoldersByItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFilteredChildFoldersByItemResponse" message="tns:IFSOperationService_GetFilteredChildFoldersByItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFilteredChildFoldersByItemResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_GetFilteredChildFoldersByItem_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChildFiles">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetChildFiles" message="tns:IFSOperationService_GetChildFiles_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetChildFilesResponse" message="tns:IFSOperationService_GetChildFiles_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetChildFilesResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_GetChildFiles_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChildFilesByItem">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetChildFilesByItem" message="tns:IFSOperationService_GetChildFilesByItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetChildFilesByItemResponse" message="tns:IFSOperationService_GetChildFilesByItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetChildFilesByItemResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_GetChildFilesByItem_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFilteredChildFiles">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFilteredChildFiles" message="tns:IFSOperationService_GetFilteredChildFiles_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFilteredChildFilesResponse" message="tns:IFSOperationService_GetFilteredChildFiles_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFilteredChildFilesResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_GetFilteredChildFiles_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFilteredChildFilesByItem">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFilteredChildFilesByItem" message="tns:IFSOperationService_GetFilteredChildFilesByItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFilteredChildFilesByItemResponse" message="tns:IFSOperationService_GetFilteredChildFilesByItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFilteredChildFilesByItemResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_GetFilteredChildFilesByItem_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFolderContents">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFolderContents" message="tns:IFSOperationService_GetFolderContents_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFolderContentsResponse" message="tns:IFSOperationService_GetFolderContents_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFolderContentsResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_GetFolderContents_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFolderContentsByItem">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFolderContentsByItem" message="tns:IFSOperationService_GetFolderContentsByItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFolderContentsByItemResponse" message="tns:IFSOperationService_GetFolderContentsByItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFolderContentsByItemResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_GetFolderContentsByItem_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFilteredFolderContents">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFilteredFolderContents" message="tns:IFSOperationService_GetFilteredFolderContents_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFilteredFolderContentsResponse" message="tns:IFSOperationService_GetFilteredFolderContents_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFilteredFolderContentsResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_GetFilteredFolderContents_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFilteredFolderContentsByItem">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFilteredFolderContentsByItem" message="tns:IFSOperationService_GetFilteredFolderContentsByItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFilteredFolderContentsByItemResponse" message="tns:IFSOperationService_GetFilteredFolderContentsByItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/GetFilteredFolderContentsByItemResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_GetFilteredFolderContentsByItem_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsFileAvailable">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/IsFileAvailable" message="tns:IFSOperationService_IsFileAvailable_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/IsFileAvailableResponse" message="tns:IFSOperationService_IsFileAvailable_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/IsFileAvailableResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_IsFileAvailable_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsFolderAvailable">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/IsFolderAvailable" message="tns:IFSOperationService_IsFolderAvailable_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/IsFolderAvailableResponse" message="tns:IFSOperationService_IsFolderAvailable_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/IsFolderAvailableResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_IsFolderAvailable_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateFolderUnderParent">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CreateFolderUnderParent" message="tns:IFSOperationService_CreateFolderUnderParent_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CreateFolderUnderParentResponse" message="tns:IFSOperationService_CreateFolderUnderParent_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CreateFolderUnderParentResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_CreateFolderUnderParent_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateFolder">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CreateFolder" message="tns:IFSOperationService_CreateFolder_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CreateFolderResponse" message="tns:IFSOperationService_CreateFolder_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CreateFolderResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_CreateFolder_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateFolderUnderParentItem">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CreateFolderUnderParentItem" message="tns:IFSOperationService_CreateFolderUnderParentItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CreateFolderUnderParentItemResponse" message="tns:IFSOperationService_CreateFolderUnderParentItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/CreateFolderUnderParentItemResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_CreateFolderUnderParentItem_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFolder">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/DeleteFolder" message="tns:IFSOperationService_DeleteFolder_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/DeleteFolderResponse" message="tns:IFSOperationService_DeleteFolder_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/DeleteFolderResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_DeleteFolder_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFile">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/DeleteFile" message="tns:IFSOperationService_DeleteFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/DeleteFileResponse" message="tns:IFSOperationService_DeleteFile_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/DeleteFileResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_DeleteFile_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveFolder">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/MoveFolder" message="tns:IFSOperationService_MoveFolder_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/MoveFolderResponse" message="tns:IFSOperationService_MoveFolder_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/MoveFolderResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_MoveFolder_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveFolderItem">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/MoveFolderItem" message="tns:IFSOperationService_MoveFolderItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/MoveFolderItemResponse" message="tns:IFSOperationService_MoveFolderItem_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSOperationService/MoveFolderItemResourceFaultFault" name="ResourceFaultFault" message="tns:IFSOperationService_MoveFolderItem_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IFSWriterService">
+    <wsdl:operation name="WriteFile">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSWriterService/WriteFile" name="WriteFileDataContract" message="tns:WriteFileDataContract" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSWriterService/WriteFileResponse" name="FileInfoDataContract" message="tns:FileInfoDataContract" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSWriterService/WriteFileResourceFaultFault" name="ResourceFaultFault" message="tns:IFSWriterService_WriteFile_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IFSReaderService">
+    <wsdl:operation name="ReadFileContents">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSReaderService/ReadFileContents" message="tns:IFSReaderService_ReadFileContents_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSReaderService/ReadFileContentsResponse" message="tns:IFSReaderService_ReadFileContents_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSReaderService/ReadFileContentsResourceFaultFault" name="ResourceFaultFault" message="tns:IFSReaderService_ReadFileContents_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadFileContents2">
+      <wsdl:input wsaw:Action="http://vfs.hardcodet.net/ws/IFSReaderService/ReadFileContents2" message="tns:IFSReaderService_ReadFileContents2_InputMessage" />
+      <wsdl:output wsaw:Action="http://vfs.hardcodet.net/ws/IFSReaderService/ReadFileContents2Response" message="tns:IFSReaderService_ReadFileContents2_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://vfs.hardcodet.net/ws/IFSReaderService/ReadFileContents2ResourceFaultFault" name="ResourceFaultFault" message="tns:IFSReaderService_ReadFileContents2_ResourceFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

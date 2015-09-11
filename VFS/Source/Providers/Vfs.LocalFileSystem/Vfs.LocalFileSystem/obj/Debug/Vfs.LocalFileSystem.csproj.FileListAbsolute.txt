@@ -1,0 +1,7 @@
+E:\GitHub\VFS\Source\Providers\Vfs.LocalFileSystem\Vfs.LocalFileSystem\bin\Debug\Vfs.LocalFileSystem.dll
+E:\GitHub\VFS\Source\Providers\Vfs.LocalFileSystem\Vfs.LocalFileSystem\bin\Debug\Vfs.LocalFileSystem.pdb
+E:\GitHub\VFS\Source\Providers\Vfs.LocalFileSystem\Vfs.LocalFileSystem\bin\Debug\Vfs.dll
+E:\GitHub\VFS\Source\Providers\Vfs.LocalFileSystem\Vfs.LocalFileSystem\bin\Debug\Vfs.pdb
+E:\GitHub\VFS\Source\Providers\Vfs.LocalFileSystem\Vfs.LocalFileSystem\obj\Debug\Vfs.LocalFileSystem.csprojResolveAssemblyReference.cache
+E:\GitHub\VFS\Source\Providers\Vfs.LocalFileSystem\Vfs.LocalFileSystem\obj\Debug\Vfs.LocalFileSystem.dll
+E:\GitHub\VFS\Source\Providers\Vfs.LocalFileSystem\Vfs.LocalFileSystem\obj\Debug\Vfs.LocalFileSystem.pdb

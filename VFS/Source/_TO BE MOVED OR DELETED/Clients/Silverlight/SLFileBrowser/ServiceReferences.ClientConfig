@@ -1,0 +1,43 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="BasicHttpBinding_IFSOperationService" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+                <binding name="BasicHttpBinding_IFSWriterService" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+                <binding name="BasicHttpBinding_IFSReaderService" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+            </basicHttpBinding>
+        </bindings>
+        <client>
+          <endpoint address="http://localhost:8088/filesystemproxy/fsactions"
+    binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IFSOperationService"
+    contract="Vfs.FileSystemService.IFSOperationService" name="BasicHttpBinding_IFSOperationService" />
+          <endpoint address="http://localhost:8088/filesystemproxy/fsreader"
+              binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IFSReaderService"
+              contract="Vfs.FileSystemService.IFSReaderService" name="BasicHttpBinding_IFSReaderService" />
+          <endpoint address="http://localhost:8088/filesystemproxy/fswriter"
+              binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IFSWriterService"
+              contract="Vfs.FileSystemService.IFSWriterService" name="BasicHttpBinding_IFSWriterService" />
+          
+          
+          
+            <endpoint address="http://localhost:6744/FileSystem.svc" binding="basicHttpBinding"
+                bindingConfiguration="BasicHttpBinding_IFSOperationService"
+                contract="FileSystemService.IFSOperationService" name="BasicHttpBinding_IFSOperationService" />
+            <endpoint address="http://localhost:6744/FileSystem.svc" binding="basicHttpBinding"
+                bindingConfiguration="BasicHttpBinding_IFSWriterService" contract="FileSystemService.IFSWriterService"
+                name="BasicHttpBinding_IFSWriterService" />
+            <endpoint address="http://localhost:6744/FileSystem.svc" binding="basicHttpBinding"
+                bindingConfiguration="BasicHttpBinding_IFSReaderService" contract="FileSystemService.IFSReaderService"
+                name="BasicHttpBinding_IFSReaderService" />
+        </client>
+    </system.serviceModel>
+</configuration>

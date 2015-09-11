@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="VFS">
+</Property><Property Name="Solution File" Value="D:\Repositories\Open Source\VFS\Source\VFS.sln">
+</Property><Property Name="Date" Value="Dienstag, 13. April 2010">
+</Property><Property Name="Time" Value="11:54">
+</Property></Properties><Event ErrorLevel="0" Project="LocalClient" Source="Samples\LocalClient\LocalClient.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="LocalClient" Source="Samples\LocalClient\LocalClient.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Vfs.LocalFileSystem" Source="Providers\Vfs.LocalFileSystem\Vfs.LocalFileSystem\Vfs.LocalFileSystem.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Vfs.LocalFileSystem" Source="Providers\Vfs.LocalFileSystem\Vfs.LocalFileSystem\Vfs.LocalFileSystem.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Vfs.LocalFileSystem.Test" Source="Providers\Vfs.LocalFileSystem\Vfs.LocalFileSystem.Test\Vfs.LocalFileSystem.Test.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Vfs.LocalFileSystem.Test" Source="Providers\Vfs.LocalFileSystem\Vfs.LocalFileSystem.Test\Vfs.LocalFileSystem.Test.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Vfs.Restful.Shared" Source="Providers\Vfs.Restful\Vfs.Restful.Shared\Vfs.Restful.Shared.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Vfs.Restful.Shared" Source="Providers\Vfs.Restful\Vfs.Restful.Shared\Vfs.Restful.Shared.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Vfs.Restful.Server" Source="Providers\Vfs.Restful\Vfs.Restful.Server\Vfs.Restful.Server.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Vfs.Restful.Server" Source="Providers\Vfs.Restful\Vfs.Restful.Server\Vfs.Restful.Server.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Vfs.Restful.Client" Source="Providers\Vfs.Restful\Vfs.Restful.Client\Vfs.Restful.Client.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Vfs.Restful.Client" Source="Providers\Vfs.Restful\Vfs.Restful.Client\Vfs.Restful.Client.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Vfs.Restful.Test" Source="Providers\Vfs.Restful\Vfs.Restful.Test\Vfs.Restful.Test.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Vfs.Restful.Test" Source="Providers\Vfs.Restful\Vfs.Restful.Test\Vfs.Restful.Test.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Vfs.Restful.TestHost" Source="Providers\Vfs.Restful\Vfs.Restful.TestHost\Vfs.Restful.TestHost.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Vfs.Restful.TestHost" Source="Providers\Vfs.Restful\Vfs.Restful.TestHost\Vfs.Restful.TestHost.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="VFS" Source="Vfs.Core\VFS.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="VFS" Source="Vfs.Core\VFS.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="VFS Tests" Source="Vfs.Core.Test\VFS Tests.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="VFS Tests" Source="Vfs.Core.Test\VFS Tests.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Vfs.Providers.TestSuite" Source="Providers\Vfs.Providers.TestSuite\Vfs.Providers.TestSuite.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Vfs.Providers.TestSuite" Source="Providers\Vfs.Providers.TestSuite\Vfs.Providers.TestSuite.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="REST Console" Source="_TO BE MOVED OR DELETED\REST Console\REST Console.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="REST Console" Source="_TO BE MOVED OR DELETED\REST Console\REST Console.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Vfs.Zip" Source="Providers\Vfs.Zip\Vfs.Zip\Vfs.Zip.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Vfs.Zip" Source="Providers\Vfs.Zip\Vfs.Zip\Vfs.Zip.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Vfs.Zip.Test" Source="Providers\Vfs.Zip\Vfs.Zip.Test\Vfs.Zip.Test.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Vfs.Zip.Test" Source="Providers\Vfs.Zip\Vfs.Zip.Test\Vfs.Zip.Test.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="VFS.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="VFS.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Vfs.Zip" Source="Providers\Vfs.Zip\Vfs.Zip\Vfs.Zip.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Vfs.Zip.Test" Source="Providers\Vfs.Zip\Vfs.Zip.Test\Vfs.Zip.Test.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Vfs.LocalFileSystem" Source="Providers\Vfs.LocalFileSystem\Vfs.LocalFileSystem\Vfs.LocalFileSystem.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Vfs.LocalFileSystem.Test" Source="Providers\Vfs.LocalFileSystem\Vfs.LocalFileSystem.Test\Vfs.LocalFileSystem.Test.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Vfs.Restful.Shared" Source="Providers\Vfs.Restful\Vfs.Restful.Shared\Vfs.Restful.Shared.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Vfs.Restful.Server" Source="Providers\Vfs.Restful\Vfs.Restful.Server\Vfs.Restful.Server.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Vfs.Restful.Client" Source="Providers\Vfs.Restful\Vfs.Restful.Client\Vfs.Restful.Client.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Vfs.Restful.Test" Source="Providers\Vfs.Restful\Vfs.Restful.Test\Vfs.Restful.Test.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Vfs.Restful.TestHost" Source="Providers\Vfs.Restful\Vfs.Restful.TestHost\Vfs.Restful.TestHost.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="REST Console" Source="_TO BE MOVED OR DELETED\REST Console\REST Console.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="LocalClient" Source="Samples\LocalClient\LocalClient.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="VFS" Source="Vfs.Core\VFS.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="VFS Tests" Source="Vfs.Core.Test\VFS Tests.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Vfs.Providers.TestSuite" Source="Providers\Vfs.Providers.TestSuite\Vfs.Providers.TestSuite.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

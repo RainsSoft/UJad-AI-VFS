@@ -1,0 +1,17 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="REST FS.Service" Factory="REST FS.AppServiceHostFactory"%>
+
+using System;
+using System.ServiceModel;
+using System.ServiceModel.Activation;
+using Microsoft.ServiceModel.Web.SpecializedServices;
+
+namespace REST FS 
+{
+  class AppServiceHostFactory : ServiceHostFactory
+  {
+    protected override ServiceHost CreateServiceHost(Type serviceType, Uri[] baseAddresses)
+    {
+        return new SingletonServiceHost(serviceType, baseAddresses);
+    }
+  }
+}

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Vfs.Transfer.DownloadServiceBase&lt;TFile, TTransfer&gt;">
+    <Position X="0.75" Y="0.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AABIAABAAAACCACAADCAEAYgAggAAAAEAAAWAAAwAJA=</HashCode>
+      <FileName>Transfer\DownloadServiceBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Vfs.Transfer.DownloadTransferManager&lt;TTransfer, TFile&gt;">
+    <Position X="6.5" Y="0.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>BgCAAQIEAAAAAAAAAEAAIAIAAACAAQAAAAgAAAAAAAE=</HashCode>
+      <FileName>Transfer\TransferStore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

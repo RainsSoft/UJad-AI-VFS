@@ -1,0 +1,27 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	x:Class="SLEncodingBuilder.EncodingInfo"
+	x:Name="UserControl"
+	d:DesignWidth="427" d:DesignHeight="140.5" d:DesignDataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml}">
+
+	<Border CornerRadius="6">
+		<Border.Background>
+			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+				<GradientStop Color="#FFE7E7E7" Offset="0"/>
+				<GradientStop Color="#FFCAC9C9" Offset="1"/>
+			</LinearGradientBrush>
+		</Border.Background>
+
+		<Grid x:Name="LayoutRoot" d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml}">
+			<TextBlock TextWrapping="Wrap" Text="{Binding EncodingName, Mode=OneWay}" VerticalAlignment="Top" Margin="8,8,8,0" FontWeight="Bold" FontSize="13.333" Foreground="#FF373737"/>
+			<TextBlock Text="{Binding CodePage, Mode=OneWay}" Margin="137,37.96,8,0"  VerticalAlignment="Top"/>
+			<TextBlock Text="{Binding WindowsCodePage, Mode=OneWay}" Margin="137,57.92,8,0"  VerticalAlignment="Top"/>
+			<TextBlock Margin="8,37.96,0,0"  VerticalAlignment="Top" HorizontalAlignment="Left"><Run Language="de-ch" Text="Code Page"/></TextBlock>
+			<TextBlock Margin="8,57.92,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"><Run Language="de-ch" Text="Windows Code Page"/></TextBlock>
+		</Grid>
+	</Border>
+</UserControl>

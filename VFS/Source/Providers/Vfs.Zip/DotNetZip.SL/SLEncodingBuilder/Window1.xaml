@@ -1,0 +1,157 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:SLEncodingBuilder.ViewModel"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local1="clr-namespace:SLEncodingBuilder"
+    xmlns:conv="clr-namespace:SLEncodingBuilder.Converters"
+    mc:Ignorable="d"
+    x:Class="SLEncodingBuilder.Window1"
+    Title="SL Encoding Class Generator"
+    Height="624"
+    Width="836"
+    DataContext="{x:Static local:MainViewModel.Get}"
+    d:DataContext="{d:DesignData /SampleData/MainViewModelSampleData.xaml}">
+    <Window.Resources>
+    	<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <conv:EmptyStringToNullConverter
+            x:Key="StringToNullConverter" />
+    </Window.Resources>
+    <Grid
+        Hyperlink.RequestNavigate="On_Link_Click">
+        <TextBlock
+            HorizontalAlignment="Left"
+            Margin="17,98,0,0"
+            TextWrapping="Wrap"
+            VerticalAlignment="Top"><Run
+                Language="de-ch"
+                Text="Encoding name or numeric code page" /></TextBlock>
+        <TextBlock
+            HorizontalAlignment="Left"
+            Margin="17,149.92,0,0"
+            TextWrapping="Wrap"
+            VerticalAlignment="Top"
+            d:LayoutOverrides="VerticalAlignment"><Run
+                Language="de-ch"
+                Text="Generated class name" /></TextBlock>
+        <TextBox
+            Margin="281,146.92,0,0"
+            TextWrapping="Wrap"
+            Text="{Binding GeneratedClassName}"
+            VerticalAlignment="Top"
+            d:LayoutOverrides="VerticalAlignment"
+            HorizontalAlignment="Left"
+            Width="167" />
+        <TextBox
+            Margin="281,95,0,0"
+            TextWrapping="Wrap"
+            Text="{Binding SourceEncodingName}"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Width="167" />
+        <Border
+			Visibility="{Binding HasEncoding, Converter={StaticResource BooleanToVisibilityConverter}}"
+        	HorizontalAlignment="Right"
+        	Height="96.84"
+        	Margin="0,95,8,0"
+        	VerticalAlignment="Top"
+        	Width="242"
+            >
+
+        	<local1:EncodingInfo
+        		DataContext="{Binding SourceEncoding}"
+            />
+        </Border>
+        <TextBox
+            Margin="281,120.96,0,0"
+            TextWrapping="Wrap"
+            Text="{Binding ByteRange}"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Width="66" />
+        <TextBlock
+            HorizontalAlignment="Left"
+            Margin="17,123.96,0,0"
+            TextWrapping="Wrap"
+            VerticalAlignment="Top"><Run
+                Language="de-ch"
+                Text="Number of Supported Characters (max 256)" /></TextBlock>
+        <TextBox
+            Margin="17,237,8,34"
+            TextWrapping="Wrap"
+            Text="{Binding Output}"
+            FontFamily="Consolas"
+            FontSize="14.667"
+            Foreground="#FFDE5200"
+            VerticalScrollBarVisibility="Auto"
+            Background="#FFF5F4F4"
+            d:LayoutOverrides="VerticalAlignment" />
+        <TextBlock
+            Height="22"
+            Margin="0,0,8,5"
+            TextWrapping="Wrap"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Right"><Hyperlink
+                NavigateUri="http://www.hardcodet.net"><Run
+                    Text="http://www.hardcodet.net" /></Hyperlink></TextBlock>
+        <TextBlock
+            Height="22"
+            Margin="17,8,287,0"
+            TextWrapping="Wrap"
+            VerticalAlignment="Top"
+            FontWeight="Bold"
+            FontSize="16"
+            Foreground="#FF0B63A9"><Run
+                Language="de-ch"
+                Text="Silverlight Text Encoding Class Generator" /></TextBlock>
+        <TextBlock
+            Margin="17,34,8,0"
+            TextWrapping="Wrap"
+            VerticalAlignment="Top"
+            Foreground="#FF0B63A9"><Run Language="de-ch" Text="In order to generate an Encoding class, just enter the numeric code page (e.g. "/><Run FontStyle="Italic" Language="de-ch" Text="1250"/><Run Language="de-ch" Text=") or encoding name (e.g. "/><Run FontStyle="Italic" Language="de-ch" Text="iso-8859-1"/><Run Language="de-ch" Text=" or "/><Run FontStyle="Italic" Language="de-ch" Text="latin1"/><Run Language="de-ch" Text=") into the text box below. Note that the generator is restricted to encodings that use only a single byte per character, and that the number of characters that are supported by the encoding needs to be specified (e.g. 128 for ASCII, or 256 for iso-8859-1)."/></TextBlock>
+        <TextBlock
+            HorizontalAlignment="Left"
+            Margin="17.566,201.84,0,0"
+            TextWrapping="Wrap"
+            VerticalAlignment="Top"
+            d:LayoutOverrides="VerticalAlignment"><Run
+                Language="de-ch"
+                Text="Fallback character for unknown values (optional)" /></TextBlock>
+        <TextBox
+            Margin="281,198.84,0,0"
+            TextWrapping="Wrap"
+            Text="{Binding FallbackCharacter, Converter={StaticResource StringToNullConverter}, Mode=TwoWay}"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Width="66"
+            d:LayoutOverrides="HorizontalAlignment, VerticalAlignment" />
+        <TextBlock
+            HorizontalAlignment="Left"
+            Margin="17,175.88,0,0"
+            TextWrapping="Wrap"
+            VerticalAlignment="Top"
+            d:LayoutOverrides="VerticalAlignment"><Run
+                Language="de-ch"
+                Text="Generated namespace" /></TextBlock>
+        <TextBox
+            Margin="281,172.88,0,0"
+            TextWrapping="Wrap"
+            Text="{Binding GeneratedNamespace}"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Width="167"
+            d:LayoutOverrides="VerticalAlignment" />
+        <Image HorizontalAlignment="Right" Margin="0,0,26.268,48.498" Source="Logo.png" Stretch="Fill" Width="104.56" RenderTransformOrigin="0.5,0.5" Height="104.56" VerticalAlignment="Bottom" Opacity="0.195" IsHitTestVisible="False">
+        	<Image.RenderTransform>
+        		<TransformGroup>
+        			<ScaleTransform/>
+        			<SkewTransform/>
+        			<RotateTransform Angle="15.286"/>
+        			<TranslateTransform/>
+        		</TransformGroup>
+        	</Image.RenderTransform>
+        </Image>
+
+    </Grid>
+</Window>

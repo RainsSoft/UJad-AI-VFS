@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Vfs.FileSystemService.Faults" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:6744/FileSystem.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Vfs.Auditing" />
+  <xs:complexType name="ResourceFault">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Vfs.Auditing" minOccurs="0" name="Context" type="q1:FileSystemTask" />
+      <xs:element minOccurs="0" name="EventId" type="xs:int" />
+      <xs:element minOccurs="0" name="FaultType" type="tns:ResourceFaultType" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResourceFault" nillable="true" type="tns:ResourceFault" />
+  <xs:simpleType name="ResourceFaultType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Undefined" />
+      <xs:enumeration value="ResourceAccess" />
+      <xs:enumeration value="ResourceNotFound" />
+      <xs:enumeration value="ResourceOverwrite" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ResourceFaultType" nillable="true" type="tns:ResourceFaultType" />
+</xs:schema>

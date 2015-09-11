@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{40CD558A-196E-4DF7-8403-4EB56301DF0F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vfs.LocalFileSystem.Test</RootNamespace>
+    <AssemblyName>Vfs.LocalFileSystem.Test</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Hardcodet.Commons, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Libs\Hardcodet.Commons.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.5.2.9222, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Libs\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DirectoryTestBase.cs" />
+    <Compile Include="InternalTestUtil.cs" />
+    <Compile Include="LocalFileSystemTestSuiteContext.cs" />
+    <Compile Include="Path Creation\Given_FS_When_Creating_File_Paths.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource Creation\Given_FileSystem_When_Adding_Folder.cs" />
+    <Compile Include="Resource Creation\Given_File_When_Writing_To_File_System.cs" />
+    <Compile Include="Resource Deletion\Given_File_System_When_Removing_Resources.cs" />
+    <Compile Include="Resource Moving\Given_FolderWrapper_When_Moving_Or_Copying.cs" />
+    <Compile Include="Resource Moving\Given_FileWrapper_When_Moving_Or_Copying.cs" />
+    <Compile Include="Resource Moving\Given_File_When_Copying_On_File_System.cs" />
+    <Compile Include="Resource Moving\Given_File_When_Moving_On_File_System.cs" />
+    <Compile Include="Resource Moving\Given_Folder_When_Copying_On_File_System.cs" />
+    <Compile Include="Resource Moving\Given_Folder_When_Moving_On_File_System.cs" />
+    <Compile Include="Resource Reading\Given_File_System_When_Retrieving_Resources.cs" />
+    <Compile Include="Resource Reading\Given_Folder_When_Filtering_Results.cs" />
+    <Compile Include="Resource Reading\Given_Folder_When_Reading_All_Contents.cs" />
+    <Compile Include="Resource Reading\Given_Local_File_When_Accessing_File_Contents.cs" />
+    <Compile Include="Resource Reading\Given_Local_Resource_When_Mapping_To_VFS_Item.cs" />
+    <Compile Include="Resource Reading\Given_Provider_When_Submitting_Illegal_Uris.cs" />
+    <Compile Include="Resource Reading\Given_Resource_Requests_When_Working_With_Relative_Paths.cs" />
+    <Compile Include="Resource Reading\Given_Resource_When_Checking_Availability_on_File_System.cs" />
+    <Compile Include="Resource Reading\Given_Resource_When_Validating_A_Resource_Is_Descendant_Of_Root_Directory.cs" />
+    <Compile Include="Resource Reading\Given_Root_Folder_When_Root_Is_Custom_Directory.cs" />
+    <Compile Include="Resource Reading\Given_Root_Folder_When_Scope_Is_Full_System.cs" />
+    <Compile Include="Transfers\Downloading\DownloadServiceTestBase.cs" />
+    <Compile Include="Transfers\Downloading\DownloadTestBase.cs" />
+    <Compile Include="Transfers\Downloading\Given_DownloadService_When_Requesting_Blocks_Of_Specified_Size.cs" />
+    <Compile Include="Transfers\Downloading\Given_DownloadService_When_Token_Expires.cs" />
+    <Compile Include="Transfers\Downloading\Given_DownloadService_When_Closing_Transfer.cs" />
+    <Compile Include="Transfers\Downloading\Given_DownloadService_When_Getting_Download_Token.cs" />
+    <Compile Include="Transfers\Downloading\Given_DownloadService_When_Pausing_Transfer.cs" />
+    <Compile Include="Transfers\Downloading\Given_DownloadService_When_Reading_Blocks.cs" />
+    <Compile Include="Transfers\Downloading\Given_DownloadService_When_Reading_Same_Blocks_Multiple_Times.cs" />
+    <Compile Include="Transfers\Downloading\Given_DownloadService_When_Requesting_Download_Token.cs" />
+    <Compile Include="Transfers\Downloading\Given_DownloadService_When_Streaming_Whole_File.cs" />
+    <Compile Include="Transfers\Downloading\Given_Download_Service_When_Downloaded_File_Is_Modified_Or_Deleted.cs" />
+    <Compile Include="Transfers\Downloading\Given_Streamed_Download_When_Token_Expired.cs" />
+    <Compile Include="Transfers\Uploading\Given_UploadService_When_Creating_Transfer.cs" />
+    <Compile Include="Transfers\Uploading\Given_UploadService_When_File_Name_Matches_Name_Of_Existing_Folder.cs" />
+    <Compile Include="Transfers\Uploading\Given_UploadService_When_Pausing_Transfer.cs" />
+    <Compile Include="Transfers\Uploading\Given_UploadService_When_Token_Expires.cs" />
+    <Compile Include="Transfers\Uploading\Given_UploadService_When_Upload_Overwrites_Existing_File.cs" />
+    <Compile Include="Transfers\Uploading\Given_UploadService_When_Retransmitting_Blocks.cs" />
+    <Compile Include="Transfers\Uploading\Given_UploadService_When_Submitting_Invalid_Blocks.cs" />
+    <Compile Include="Transfers\Uploading\Given_UploadService_When_Transferring_File.cs" />
+    <Compile Include="Transfers\Uploading\Given_UploadService_When_Writing_Blocks.cs" />
+    <Compile Include="Transfers\Uploading\UploadServiceTestBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Vfs.Core.Test\VFS Tests.csproj">
+      <Project>{093270B4-11CA-4196-8FCA-35AAFBEE238A}</Project>
+      <Name>VFS Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Vfs.Core\VFS.csproj">
+      <Project>{D4EE71C9-7B09-4653-AA5C-0F56CC029480}</Project>
+      <Name>VFS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vfs.LocalFileSystem\Vfs.LocalFileSystem.csproj">
+      <Project>{1340E263-4471-491A-80C4-4F7C84FD8802}</Project>
+      <Name>Vfs.LocalFileSystem</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

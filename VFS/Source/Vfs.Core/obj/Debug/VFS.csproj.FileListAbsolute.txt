@@ -1,0 +1,5 @@
+E:\GitHub\VFS\Source\Vfs.Core\bin\Debug\Vfs.dll
+E:\GitHub\VFS\Source\Vfs.Core\bin\Debug\Vfs.pdb
+E:\GitHub\VFS\Source\Vfs.Core\obj\Debug\VFS.csprojResolveAssemblyReference.cache
+E:\GitHub\VFS\Source\Vfs.Core\obj\Debug\Vfs.dll
+E:\GitHub\VFS\Source\Vfs.Core\obj\Debug\Vfs.pdb

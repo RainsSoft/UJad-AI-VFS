@@ -1,0 +1,8 @@
+----------------------------------------------------------------------------------------------------------------
+D:\Repositories\Open Source\VFS\Source\Providers\Vfs.Zip\DotNetZip.SL\SLEncodingBuilder\SLEncodingBuilder.csproj
+----------------------------------------------------------------------------------------------------------------
+Setting <ExpressionBlendVersion> value to '4.0.20310.0'
+Updating ToolsVersion from '3.5' to '4.0'
+Saving file
+
+

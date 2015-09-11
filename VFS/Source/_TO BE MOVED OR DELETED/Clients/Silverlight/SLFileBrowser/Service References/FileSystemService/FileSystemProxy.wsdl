@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://vfs.hardcodet.net/ws/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="FileSystemProxy" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://vfs.hardcodet.net/ws/" location="http://localhost:6744/FileSystem.svc?wsdl=wsdl0" />
+  <wsdl:types />
+  <wsdl:binding name="BasicHttpBinding_IFSOperationService" type="i0:IFSOperationService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="MoveFile">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/MoveFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="MoveFileItem">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/MoveFileItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CopyFolder">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/CopyFolder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CopyFolderItem">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/CopyFolderItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CopyFile">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/CopyFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CopyFileItem">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/CopyFileItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateFilePath">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/CreateFilePath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateFolderPath">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/CreateFolderPath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileSystemRoot">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/GetFileSystemRoot" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileInfo">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/GetFileInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFolderInfo">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/GetFolderInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileParent">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/GetFileParent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileParentByItem">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/GetFileParentByItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFolderParent">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/GetFolderParent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFolderParentByItem">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/GetFolderParentByItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetChildFolders">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/GetChildFolders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetChildFoldersByItem">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/GetChildFoldersByItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFilteredChildFolders">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/GetFilteredChildFolders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFilteredChildFoldersByItem">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/GetFilteredChildFoldersByItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetChildFiles">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/GetChildFiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetChildFilesByItem">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/GetChildFilesByItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFilteredChildFiles">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/GetFilteredChildFiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFilteredChildFilesByItem">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/GetFilteredChildFilesByItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFolderContents">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/GetFolderContents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFolderContentsByItem">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/GetFolderContentsByItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFilteredFolderContents">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/GetFilteredFolderContents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFilteredFolderContentsByItem">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/GetFilteredFolderContentsByItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="IsFileAvailable">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/IsFileAvailable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="IsFolderAvailable">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/IsFolderAvailable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateFolderUnderParent">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/CreateFolderUnderParent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateFolder">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/CreateFolder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateFolderUnderParentItem">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/CreateFolderUnderParentItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFolder">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/DeleteFolder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFile">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/DeleteFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="MoveFolder">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/MoveFolder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="MoveFolderItem">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSOperationService/MoveFolderItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IFSWriterService" type="i0:IFSWriterService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="WriteFile">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSWriterService/WriteFile" style="document" />
+      <wsdl:input name="WriteFileDataContract">
+        <soap:header message="i0:WriteFileDataContract_Headers" part="FilePath" use="literal" />
+        <soap:header message="i0:WriteFileDataContract_Headers" part="Overwrite" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="FileInfoDataContract">
+        <soap:header message="i0:FileInfoDataContract_Headers" part="FileInfo" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IFSReaderService" type="i0:IFSReaderService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReadFileContents">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSReaderService/ReadFileContents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReadFileContents2">
+      <soap:operation soapAction="http://vfs.hardcodet.net/ws/IFSReaderService/ReadFileContents2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ResourceFaultFault">
+        <soap:fault use="literal" name="ResourceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FileSystemProxy">
+    <wsdl:port name="BasicHttpBinding_IFSOperationService" binding="tns:BasicHttpBinding_IFSOperationService">
+      <soap:address location="http://localhost:6744/FileSystem.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IFSWriterService" binding="tns:BasicHttpBinding_IFSWriterService">
+      <soap:address location="http://localhost:6744/FileSystem.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IFSReaderService" binding="tns:BasicHttpBinding_IFSReaderService">
+      <soap:address location="http://localhost:6744/FileSystem.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

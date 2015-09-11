@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://vfs.hardcodet.net/ws/" elementFormDefault="qualified" targetNamespace="http://vfs.hardcodet.net/ws/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:6744/FileSystem.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Vfs" />
+  <xs:import schemaLocation="http://localhost:6744/FileSystem.svc?xsd=xsd6" namespace="http://schemas.microsoft.com/Message" />
+  <xs:element name="MoveFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="virtualFilePath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="destinationPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MoveFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="MoveFileResult" nillable="true" type="q1:VirtualFileInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MoveFileItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="file" nillable="true" type="q2:VirtualFileInfo" />
+        <xs:element minOccurs="0" name="destinationPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MoveFileItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="MoveFileItemResult" nillable="true" type="q3:VirtualFileInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CopyFolder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="virtualFolderPath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="destinationPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CopyFolderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="CopyFolderResult" nillable="true" type="q4:VirtualFolderInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CopyFolderItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="folder" nillable="true" type="q5:VirtualFolderInfo" />
+        <xs:element minOccurs="0" name="destinationPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CopyFolderItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="CopyFolderItemResult" nillable="true" type="q6:VirtualFolderInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CopyFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="virtualFilePath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="destinationPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CopyFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="CopyFileResult" nillable="true" type="q7:VirtualFileInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CopyFileItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="file" nillable="true" type="q8:VirtualFileInfo" />
+        <xs:element minOccurs="0" name="destinationPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CopyFileItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="CopyFileItemResult" nillable="true" type="q9:VirtualFileInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateFilePath">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="parentFolder" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fileName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateFilePathResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateFilePathResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateFolderPath">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="parentFolder" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="folderName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateFolderPathResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateFolderPathResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFileSystemRoot">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFileSystemRootResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="GetFileSystemRootResult" nillable="true" type="q10:VirtualFolderInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFileInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="virtualFilePath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFileInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="GetFileInfoResult" nillable="true" type="q11:VirtualFileInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFolderInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="virtualFolderPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFolderInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="GetFolderInfoResult" nillable="true" type="q12:VirtualFolderInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFileParent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="childFilePath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFileParentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="GetFileParentResult" nillable="true" type="q13:VirtualFolderInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFileParentByItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="child" nillable="true" type="q14:VirtualFileInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFileParentByItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="GetFileParentByItemResult" nillable="true" type="q15:VirtualFolderInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFolderParent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="childFolderPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFolderParentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="GetFolderParentResult" nillable="true" type="q16:VirtualFolderInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFolderParentByItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="child" nillable="true" type="q17:VirtualFolderInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFolderParentByItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="GetFolderParentByItemResult" nillable="true" type="q18:VirtualFolderInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetChildFolders">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="parentFolderPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetChildFoldersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="GetChildFoldersResult" nillable="true" type="q19:ArrayOfVirtualFolderInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetChildFoldersByItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="parent" nillable="true" type="q20:VirtualFolderInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetChildFoldersByItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="GetChildFoldersByItemResult" nillable="true" type="q21:ArrayOfVirtualFolderInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFilteredChildFolders">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="parentFolderPath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="searchPattern" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFilteredChildFoldersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="GetFilteredChildFoldersResult" nillable="true" type="q22:ArrayOfVirtualFolderInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFilteredChildFoldersByItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="parent" nillable="true" type="q23:VirtualFolderInfo" />
+        <xs:element minOccurs="0" name="searchPattern" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFilteredChildFoldersByItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="GetFilteredChildFoldersByItemResult" nillable="true" type="q24:ArrayOfVirtualFolderInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetChildFiles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="parentFolderPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetChildFilesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="GetChildFilesResult" nillable="true" type="q25:ArrayOfVirtualFileInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetChildFilesByItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="parent" nillable="true" type="q26:VirtualFolderInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetChildFilesByItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="GetChildFilesByItemResult" nillable="true" type="q27:ArrayOfVirtualFileInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFilteredChildFiles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="parentFolderPath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="searchPattern" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFilteredChildFilesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="GetFilteredChildFilesResult" nillable="true" type="q28:ArrayOfVirtualFileInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFilteredChildFilesByItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="parent" nillable="true" type="q29:VirtualFolderInfo" />
+        <xs:element minOccurs="0" name="searchPattern" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFilteredChildFilesByItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="GetFilteredChildFilesByItemResult" nillable="true" type="q30:ArrayOfVirtualFileInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFolderContents">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="parentFolderPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFolderContentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="GetFolderContentsResult" nillable="true" type="q31:FolderContentsInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFolderContentsByItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="parent" nillable="true" type="q32:VirtualFolderInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFolderContentsByItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="GetFolderContentsByItemResult" nillable="true" type="q33:FolderContentsInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFilteredFolderContents">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="parentFolderPath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="searchPattern" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFilteredFolderContentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="GetFilteredFolderContentsResult" nillable="true" type="q34:FolderContentsInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFilteredFolderContentsByItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="parent" nillable="true" type="q35:VirtualFolderInfo" />
+        <xs:element minOccurs="0" name="searchPattern" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFilteredFolderContentsByItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="GetFilteredFolderContentsByItemResult" nillable="true" type="q36:FolderContentsInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsFileAvailable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="virtualFilePath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsFileAvailableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsFileAvailableResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsFolderAvailable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="virtualFolderPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsFolderAvailableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsFolderAvailableResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateFolderUnderParent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="parentFolderPath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="folderName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateFolderUnderParentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="CreateFolderUnderParentResult" nillable="true" type="q37:VirtualFolderInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateFolder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="virtualFolderPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateFolderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="CreateFolderResult" nillable="true" type="q38:VirtualFolderInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateFolderUnderParentItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="parent" nillable="true" type="q39:VirtualFolderInfo" />
+        <xs:element minOccurs="0" name="folderName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateFolderUnderParentItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="CreateFolderUnderParentItemResult" nillable="true" type="q40:VirtualFolderInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteFolder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="virtualFolderPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteFolderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteFolderResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="virtualFilePath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteFileResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MoveFolder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="virtualFolderPath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="destinationPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MoveFolderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="MoveFolderResult" nillable="true" type="q41:VirtualFolderInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MoveFolderItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="folder" nillable="true" type="q42:VirtualFolderInfo" />
+        <xs:element minOccurs="0" name="destinationPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MoveFolderItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="MoveFolderItemResult" nillable="true" type="q43:VirtualFolderInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WriteFileDataContract">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.microsoft.com/Message" name="Data" type="q44:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FilePath" nillable="true" type="xs:string" />
+  <xs:element name="Overwrite" type="xs:boolean" />
+  <xs:element name="FileInfoDataContract">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/Vfs" name="FileInfo" nillable="true" type="q45:VirtualFileInfo" />
+  <xs:element name="ReadFileContents">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="virtualFilePath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReadFileContentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://schemas.microsoft.com/Message" name="ReadFileContentsResult" type="q46:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReadFileContents2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/Vfs" minOccurs="0" name="fileInfo" nillable="true" type="q47:VirtualFileInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReadFileContents2Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.microsoft.com/Message" name="ReadFileContents2Result" type="q48:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

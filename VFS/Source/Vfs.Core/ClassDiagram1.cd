@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Vfs.Auditing.AuditHelper" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BBAAAAkAgBACCQQAoAJAAQAAAIBAAgAAAAAAGEACAAo=</HashCode>
+      <FileName>Auditing\AuditHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Auditing.AuditItem" Collapsed="true">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAgAAAAAAAAACAQAAAAAAAAABAAAAIAAAAAA=</HashCode>
+      <FileName>Auditing\AuditItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Auditing.CachingAuditor" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAMAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Auditing\CachingAuditor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Vfs.Auditing.ConsoleAuditor" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Auditing\ConsoleAuditor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Vfs.Auditing.NullAuditor" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Auditing\NullAuditor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Vfs.Ensure" Collapsed="true">
+    <Position X="10.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAABAAA=</HashCode>
+      <FileName>Util\Ensure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.InvalidResourcePathException" Collapsed="true">
+    <Position X="3" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\InvalidResourcePathException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.ResourceAccessException" Collapsed="true">
+    <Position X="5.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\ResourceAccessException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.ResourceOverwriteException" Collapsed="true">
+    <Position X="7.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\ResourceOverwriteException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.VfsException" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAgAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\VfsException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.VirtualResourceNotFoundException" Collapsed="true">
+    <Position X="0.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\VirtualResourceNotFoundException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Extensions" Collapsed="true">
+    <Position X="13.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAIAAAgAAAAAAAAAAAAiBBAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Util\Extensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.FileOperationResult" Collapsed="true">
+    <Position X="15.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAAAAAAAA=</HashCode>
+      <FileName>FileOperationResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.FileSystemDecorator" Collapsed="true">
+    <Position X="17.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>FileSystemDecorator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.FileSystemProviderBase" Collapsed="true">
+    <Position X="5.5" Y="6.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAgkGQQAAAAACoCIAqBAAAEiBABIAAAAAAEECABoJAA=</HashCode>
+      <FileName>FileSystemProviderBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Vfs.FileSystemProviderBase2&lt;TFile, TFolder&gt;" Collapsed="true">
+    <Position X="5.5" Y="7.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>JAAEHYRAggAAGhCMNJBAAAECBABgIIAiQAEQCIB4gBA=</HashCode>
+      <FileName>FileSystemProviderBase2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.FolderContents" Collapsed="true">
+    <Position X="10.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>FolderContents.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.FolderContentsInfo" Collapsed="true">
+    <Position X="12" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>FolderContentsInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.VirtualFile" Collapsed="true">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAIAAAAAAAACAAAAAQgEAAEAAAAAAAABAAAg=</HashCode>
+      <FileName>VirtualFile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.VirtualFileInfo" Collapsed="true">
+    <Position X="5.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>VirtualFileInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.VirtualFolder" Collapsed="true">
+    <Position X="2.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACQAAIAAAAIAAACAAAAAAgEAAEAIAAAAAAhAACA=</HashCode>
+      <FileName>VirtualFolder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.VirtualFolderInfo" Collapsed="true">
+    <Position X="7.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VirtualFolderInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.VirtualResource&lt;T&gt;" Collapsed="true">
+    <Position X="1.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAACAAAAAAAAAAEAAAAAAAABAAAA=</HashCode>
+      <FileName>VirtualResource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.VirtualResourceInfo" Collapsed="true">
+    <Position X="6.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAIAAgAIIQAAAAAAQAAAAAAAAAAAAAgAAAEAA=</HashCode>
+      <FileName>VirtualResourceInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.VirtualFileItem" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAACEAAAA=</HashCode>
+      <FileName>VirtualFileItem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Vfs.VirtualFolderItem" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAACEAAAA=</HashCode>
+      <FileName>VirtualFolderItem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Vfs.Exceptions.ExceptionBuilder" Collapsed="true">
+    <Position X="12" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\ExceptionBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Security.FileClaims" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAQAAAAAAAAgAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Security\FileClaims.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Security.FolderClaims" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAQAAAAAAAAAAAAAAAAAoAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Security\FolderClaims.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Security.NullSecurity" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Security\NullSecurity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Vfs.Security.ResourceClaimProperty" Collapsed="true">
+    <Position X="17.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Security\ResourceClaimProperty.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Security.ResourceClaims" Collapsed="true">
+    <Position X="1.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAACAQAAAAAAA=</HashCode>
+      <FileName>Security\ResourceClaims.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Security.WindowsIdentityClaimsProvider" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAgAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Security\WindowsIdentityClaimsProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Vfs.Util.ContentUtil" Collapsed="true">
+    <Position X="17.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAggACAAAAQAAAEAAABAAAAAAAAACgBAIACAAAAAA=</HashCode>
+      <FileName>Util\ContentUtil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Validation.ValidationResult" Collapsed="true">
+    <Position X="10.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Validation\ValidationResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vfs.Transfer.StreamedDataBlock">
+    <Position X="20" Y="1.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAIAABBAAAAAAACAAgAA=</HashCode>
+      <FileName>Transfer\StreamedDataBlock.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Vfs.Auditing.IAuditor" Collapsed="true">
+    <Position X="10.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Auditing\IAuditor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Vfs.IFileSystemProvider">
+    <Position X="17.75" Y="4.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAgEGQQAAAAACgCIAKBAAAECBABIAAAAAAEECABoIAA=</HashCode>
+      <FileName>IFileSystemProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Vfs.IVirtualResourceItem&lt;T&gt;" Collapsed="true">
+    <Position X="15.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAACEAAAA=</HashCode>
+      <FileName>IVirtualResourceItem.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Vfs.Security.IFileSystemSecurity" Collapsed="true">
+    <Position X="13.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Security\IFileSystemSecurity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Vfs.Auditing.AuditEvent" Collapsed="true">
+    <Position X="10.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kgAEJSQIJJAAWAgAkDAgAAQBAsQCggAhOgAihBRAAXE=</HashCode>
+      <FileName>Auditing\AuditEvent.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Vfs.Auditing.AuditLevel" Collapsed="true">
+    <Position X="12" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Auditing\AuditLevel.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Vfs.Auditing.FileSystemTask" Collapsed="true">
+    <Position X="13.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KAQ0YYQAAwBYEABUAAQAoAGCcAAiEgAAEYAAAQAEEDQ=</HashCode>
+      <FileName>Auditing\FileSystemTask.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

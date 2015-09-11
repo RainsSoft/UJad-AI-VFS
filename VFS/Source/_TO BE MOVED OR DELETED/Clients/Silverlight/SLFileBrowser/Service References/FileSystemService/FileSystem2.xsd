@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Vfs" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Vfs" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:6744/FileSystem.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:complexType name="VirtualFileInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VirtualResourceInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ContentType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Length" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VirtualFileInfo" nillable="true" type="tns:VirtualFileInfo" />
+  <xs:complexType name="VirtualResourceInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="CreationTime" nillable="true" type="q1:DateTimeOffset" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="LastWriteTime" nillable="true" type="q2:DateTimeOffset" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="LastAccessTime" nillable="true" type="q3:DateTimeOffset" />
+      <xs:element minOccurs="0" name="IsReadOnly" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsHidden" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ParentFolderPath" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VirtualResourceInfo" nillable="true" type="tns:VirtualResourceInfo" />
+  <xs:complexType name="VirtualFolderInfo">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:VirtualResourceInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IsEmpty" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsRootFolder" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VirtualFolderInfo" nillable="true" type="tns:VirtualFolderInfo" />
+  <xs:complexType name="ArrayOfVirtualFolderInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VirtualFolderInfo" nillable="true" type="tns:VirtualFolderInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVirtualFolderInfo" nillable="true" type="tns:ArrayOfVirtualFolderInfo" />
+  <xs:complexType name="ArrayOfVirtualFileInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VirtualFileInfo" nillable="true" type="tns:VirtualFileInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVirtualFileInfo" nillable="true" type="tns:ArrayOfVirtualFileInfo" />
+  <xs:complexType name="FolderContentsInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Files" nillable="true" type="tns:ArrayOfVirtualFileInfo" />
+      <xs:element minOccurs="0" name="Folders" nillable="true" type="tns:ArrayOfVirtualFolderInfo" />
+      <xs:element minOccurs="0" name="ParentFolderPath" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FolderContentsInfo" nillable="true" type="tns:FolderContentsInfo" />
+</xs:schema>

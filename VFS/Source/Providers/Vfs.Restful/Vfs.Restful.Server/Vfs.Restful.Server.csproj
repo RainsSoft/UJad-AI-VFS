@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C378F952-7D47-4E37-8FED-9A37EE743C9F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vfs.Restful.Server</RootNamespace>
+    <AssemblyName>Vfs.Restful.Server</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="OpenRasta, Version=2.0.3.0, Culture=neutral, PublicKeyToken=e04bf464d7caae73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Libs\OpenRasta.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\..\AssemblyInfo.Shared.cs">
+      <Link>Properties\AssemblyInfo.Shared.cs</Link>
+    </Compile>
+    <Compile Include="Codecs\DataBlockCodec.cs" />
+    <Compile Include="Codecs\VfsFaultCodec.cs" />
+    <Compile Include="ConfigurationHelper.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Handlers\Browse\BrowsingHandler.cs" />
+    <Compile Include="Handlers\Browse\FileAvailabilityCheckHandler.cs" />
+    <Compile Include="Handlers\Browse\FolderAvailabilityCheckHandler.cs" />
+    <Compile Include="Handlers\Browse\GetChildFilesHandler.cs" />
+    <Compile Include="Handlers\Browse\GetChildFoldersHandler.cs" />
+    <Compile Include="Handlers\Browse\GetOrDeleteFileHandler.cs" />
+    <Compile Include="Handlers\Browse\GetFileParentHandler.cs" />
+    <Compile Include="Handlers\Browse\GetFolderContentsHandler.cs" />
+    <Compile Include="Handlers\Browse\GetCreateOrDeleteFolderHandler.cs" />
+    <Compile Include="Handlers\Browse\GetFolderParentHandler.cs" />
+    <Compile Include="Handlers\Browse\GetRootFolderHandler.cs" />
+    <Compile Include="Handlers\Download\CancelDownloadTransferHandler.cs" />
+    <Compile Include="Handlers\Download\CompleteDownloadTransferHandler.cs" />
+    <Compile Include="Handlers\Download\GetMaxDownloadBlockSizeHandler.cs" />
+    <Compile Include="Handlers\Download\GetDownloadCapabilitiesHandler.cs" />
+    <Compile Include="Handlers\Download\GetDownloadTokenHandler.cs" />
+    <Compile Include="Handlers\Download\GetDownloadTransferStatusHandler.cs" />
+    <Compile Include="Handlers\MaxBlockSizeHandler.cs" />
+    <Compile Include="Handlers\Download\PauseDownloadTransferHandler.cs" />
+    <Compile Include="Handlers\Download\ReadDataBlockHandler.cs" />
+    <Compile Include="Handlers\Download\ReadFileByPathHandler.cs" />
+    <Compile Include="Handlers\Download\ReadFileByTokenHandler.cs" />
+    <Compile Include="Handlers\Download\ReadFileHandlerBase.cs" />
+    <Compile Include="Handlers\Download\ReloadDownloadTokenHandler.cs" />
+    <Compile Include="Handlers\OperationResult.cs" />
+    <Compile Include="Handlers\Operations\CopyFileHandler.cs" />
+    <Compile Include="Handlers\Operations\CopyFolderHandler.cs" />
+    <Compile Include="Handlers\Operations\CreateFolderHandler.cs" />
+    <Compile Include="Handlers\Operations\DeleteFileHandler.cs" />
+    <Compile Include="Handlers\Operations\DeleteFolderHandler.cs" />
+    <Compile Include="Handlers\Operations\FilePathCreationHandler.cs" />
+    <Compile Include="Handlers\Operations\FolderPathCreationHandler.cs" />
+    <Compile Include="Handlers\Download\DownloadHandler.cs" />
+    <Compile Include="Handlers\Operations\MoveFileHandler.cs" />
+    <Compile Include="Handlers\Operations\MoveFolderHandler.cs" />
+    <Compile Include="Handlers\Upload\UploadHandler.cs" />
+    <Compile Include="Handlers\Upload\CancelUploadTransferHandler.cs" />
+    <Compile Include="Handlers\Upload\CompleteUploadTransferHandler.cs" />
+    <Compile Include="Handlers\Upload\GetMaxFileUploadSizeHandler.cs" />
+    <Compile Include="Handlers\Upload\GetMaxUploadBlockSizeHandler.cs" />
+    <Compile Include="Handlers\Upload\GetUploadCapabilitiesHandler.cs" />
+    <Compile Include="Handlers\Upload\GetUploadTokenHandler.cs" />
+    <Compile Include="Handlers\Upload\GetUploadTransferStatusHandler.cs" />
+    <Compile Include="Handlers\Upload\PauseUploadTransferHandler.cs" />
+    <Compile Include="Handlers\Upload\ReloadUploadTokenHandler.cs" />
+    <Compile Include="Handlers\Upload\WriteDataBlockHandler.cs" />
+    <Compile Include="Handlers\Upload\WriteFileHandler.cs" />
+    <Compile Include="Handlers\VfsHandlerBase.cs" />
+    <Compile Include="Handlers\VfsExceptionInterceptor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\FileDataResource.cs" />
+    <Compile Include="Util\NonSeekableStream.cs" />
+    <Compile Include="VfsServiceSettings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Vfs.Core\VFS.csproj">
+      <Project>{D4EE71C9-7B09-4653-AA5C-0F56CC029480}</Project>
+      <Name>VFS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vfs.Restful.Shared\Vfs.Restful.Shared.csproj">
+      <Project>{7C1C7770-D82D-4636-86E8-9762A71FE094}</Project>
+      <Name>Vfs.Restful.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Handlers\ClassDiagram1.cd" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,871 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Hardcodet.Commons</name>
+    </assembly>
+    <members>
+        <member name="T:Hardcodet.Commons.IO.Crc32">
+            <summary>
+            Provides CRC32 hasing capabilities.
+            </summary>
+        </member>
+        <member name="M:Hardcodet.Commons.IO.Crc32.ComputeFileHash(System.String)">
+            <summary>
+            Computes the has of a given file.
+            </summary>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Hardcodet.Commons.Globalization.DateTimeUtil">
+            <summary>
+            Provides helper methods to deal with
+            date / time values.
+            </summary>
+        </member>
+        <member name="F:Hardcodet.Commons.Globalization.DateTimeUtil.MaxResolutionTimePattern">
+            <summary>
+            Standard time pattern to be used throughout the application
+            for displaying time strings that display full resolution
+            timestamps (down to single ticks). 
+            </summary>
+        </member>
+        <member name="F:Hardcodet.Commons.Globalization.DateTimeUtil.HighResolutionTimePattern">
+            <summary>
+            Standard time pattern to be used throughout the application
+            for displaying time strings that go down to hundreds of
+            microseconds (0.1 ms).
+            </summary>
+        </member>
+        <member name="F:Hardcodet.Commons.Globalization.DateTimeUtil.DetailedTimePattern">
+            <summary>
+            Standard time pattern to be used throughout the application
+            for displaying time strings that include milliseconds.
+            </summary>
+        </member>
+        <member name="F:Hardcodet.Commons.Globalization.DateTimeUtil.ShortTimePattern">
+            <summary>
+            Standardized, locale-independent time pattern that can be 
+            used throughout an application for displaying short time strings.
+            </summary>
+        </member>
+        <member name="F:Hardcodet.Commons.Globalization.DateTimeUtil.DateTimePattern">
+            <summary>
+            Gets a locale-specific date pattern which displays
+            both date and time.
+            </summary>
+        </member>
+        <member name="M:Hardcodet.Commons.Globalization.DateTimeUtil.SerializeDateTime(System.DateTime)">
+            <summary>
+            Creates a human-readable string that represents a given
+            timestamp in a format that can be converted back to the
+            correct value across time zones.<br/>
+            The serialized timestamp can be converted back into a
+            <see cref="T:System.DateTime"/> instance through the
+            <see cref="M:Hardcodet.Commons.Globalization.DateTimeUtil.ReadDateTime(System.String)"/> method.
+            </summary>
+            <param name="value">Timestamp to be serialized.</param>
+            <returns>String representation of the timestamp.</returns>
+        </member>
+        <member name="M:Hardcodet.Commons.Globalization.DateTimeUtil.ReadDateTime(System.String)">
+            <summary>
+            Parses a serialized timestamp that was created through the <see cref="M:Hardcodet.Commons.Globalization.DateTimeUtil.SerializeDateTime(System.DateTime)"/>
+            method.
+            </summary>
+            <param name="value">A string that represents a given time.</param>
+            <returns>A corresponding timestamp.</returns>
+            <remarks>This method works with local, UTC and unspecified timestamps.</remarks>
+        </member>
+        <member name="M:Hardcodet.Commons.Globalization.DateTimeUtil.FormatDateString(System.DateTime,Hardcodet.Commons.Globalization.TargetLocale)">
+            <summary>
+            Convenience method which formats a given date with
+            the <see cref="P:System.Globalization.DateTimeFormatInfo.ShortDatePattern"/> constant using a
+            <c>DateTimeFormatInfo</c> that matches the requested
+            locale.
+            </summary>
+            <param name="dt">The date/time value to be formatted.</param>
+            <param name="locale">The targeted locale.</param>
+            <returns>A formatted date string (short format).</returns>
+        </member>
+        <member name="M:Hardcodet.Commons.Globalization.DateTimeUtil.ParseFormattedDateString(System.String,Hardcodet.Commons.Globalization.TargetLocale)">
+            <summary>
+            Reads a date / time string which was created through the
+            <see cref="M:Hardcodet.Commons.Globalization.DateTimeUtil.FormatDateString(System.DateTime,Hardcodet.Commons.Globalization.TargetLocale)"/> method (relies on
+            <see cref="P:System.Globalization.DateTimeFormatInfo.ShortDatePattern"/>).
+            </summary>
+            <param name="value">A string that represents a given time.</param>
+            <param name="locale">The targeted locale.</param>
+            <returns>A DateTime object that represents the serialized time.</returns>
+            <remarks>In order to ensure exact parsing, it is recommended to use the 
+            <see cref="M:Hardcodet.Commons.Globalization.DateTimeUtil.SerializeDateTime(System.DateTime)"/> and <see cref="M:Hardcodet.Commons.Globalization.DateTimeUtil.ReadDateTime(System.String)"/> methods.
+            Use this method if a user friendly presentation is more important.
+            </remarks>
+        </member>
+        <member name="M:Hardcodet.Commons.Globalization.DateTimeUtil.FormatDateTimeString(System.DateTime,Hardcodet.Commons.Globalization.TargetLocale)">
+            <summary>
+            Convenience method which formats a given date / time with
+            the <see cref="F:Hardcodet.Commons.Globalization.DateTimeUtil.DateTimePattern"/> constant using a
+            <c>DateTimeFormatInfo</c> that matches the requested
+            locale.
+            </summary>
+            <param name="dt">The date/time value to be formatted.</param>
+            <param name="locale">The targeted locale.</param>
+            <returns>A formatted date string (short format).</returns>
+        </member>
+        <member name="M:Hardcodet.Commons.Globalization.DateTimeUtil.ParseFormattedDateTimeString(System.String,Hardcodet.Commons.Globalization.TargetLocale)">
+            <summary>
+            Reads a date / time string which was created through the
+            <see cref="M:Hardcodet.Commons.Globalization.DateTimeUtil.FormatDateTimeString(System.DateTime,Hardcodet.Commons.Globalization.TargetLocale)"/> method (relying on the
+            <see cref="F:Hardcodet.Commons.Globalization.DateTimeUtil.DateTimePattern"/>).
+            </summary>
+            <param name="value">A string that represents a given time.</param>
+            <param name="locale">The targeted locale.</param>
+            <returns>A DateTime object that represents the serialized time.</returns>
+            <remarks>In order to ensure exact parsing, it is recommended to use the 
+            <see cref="M:Hardcodet.Commons.Globalization.DateTimeUtil.SerializeDateTime(System.DateTime)"/> and <see cref="M:Hardcodet.Commons.Globalization.DateTimeUtil.ReadDateTime(System.String)"/> methods.
+            Use this method if a user friendly presentation is more important.
+            </remarks>
+        </member>
+        <member name="M:Hardcodet.Commons.Globalization.DateTimeUtil.GetShortDatePattern(Hardcodet.Commons.Globalization.TargetLocale)">
+            <summary>
+            Gets the short date pattern for a given locale which can
+            be combined with other patterns (e.g. for formatting and
+            parsing via the <see cref="M:Hardcodet.Commons.Globalization.DateTimeUtil.FormatTimestamp(System.DateTime,System.String,Hardcodet.Commons.Globalization.TargetLocale)"/> and
+            <see cref="M:Hardcodet.Commons.Globalization.DateTimeUtil.ParseTimestamp(System.String,System.String,Hardcodet.Commons.Globalization.TargetLocale)"/> methods.
+            </summary>
+            <param name="locale">The targeted locale.</param>
+            <returns>The date pattern to applied.</returns>
+        </member>
+        <member name="M:Hardcodet.Commons.Globalization.DateTimeUtil.GetShortTimePattern(Hardcodet.Commons.Globalization.TargetLocale)">
+            <summary>
+            Gets the short date pattern for a given locale which can
+            be combined with other patterns (e.g. for formatting and
+            parsing via the <see cref="M:Hardcodet.Commons.Globalization.DateTimeUtil.FormatTimestamp(System.DateTime,System.String,Hardcodet.Commons.Globalization.TargetLocale)"/> and
+            <see cref="M:Hardcodet.Commons.Globalization.DateTimeUtil.ParseTimestamp(System.String,System.String,Hardcodet.Commons.Globalization.TargetLocale)"/> methods.
+            <para>
+            CT's "short" date should not be confused with the .NET framework's
+            short date. While the latter only contains hours and minutes, this
+            pattern includes seconds as well.
+            </para>
+            </summary>
+            <param name="locale">The targeted locale.</param>
+            <returns>The date pattern to applied.</returns>
+        </member>
+        <member name="M:Hardcodet.Commons.Globalization.DateTimeUtil.FormatTimestamp(System.DateTime,System.String,Hardcodet.Commons.Globalization.TargetLocale)">
+            <summary>
+            Convenience method which formats a given timestamp with
+            a formatting pattern for a given target locale.
+            <para>
+            The returned string can be parsed back into a matching
+            DateTime value by invoking the <see cref="M:Hardcodet.Commons.Globalization.DateTimeUtil.ParseTimestamp(System.String,System.String,Hardcodet.Commons.Globalization.TargetLocale)"/>
+            methods with the same pattern and target locale.
+            </para>
+            </summary>
+            <param name="dt">The date/time value to be formatted.</param>
+            <param name="pattern">The format pattern to be applied.</param>
+            <param name="locale">The targeted locale.</param>
+            <returns>A string that represents the submitted timestamp according
+            to the formatting pattern and the target locale.</returns>
+        </member>
+        <member name="M:Hardcodet.Commons.Globalization.DateTimeUtil.ParseTimestamp(System.String,System.String,Hardcodet.Commons.Globalization.TargetLocale)">
+            <summary>
+            Converts a formatted timestamp string that was created by
+            <see cref="M:Hardcodet.Commons.Globalization.DateTimeUtil.FormatTimestamp(System.DateTime,System.String,Hardcodet.Commons.Globalization.TargetLocale)"/> back into a <c>DateTime</c>
+            struct.
+            </summary>
+            <param name="value">A string that represents a given time.</param>
+            <param name="pattern">The format pattern that was applied to
+            create the formatted string.</param>
+            <param name="locale">The targeted locale.</param>
+            <returns>A <c>DateTime</c> struct that represents the
+            serialized timestamp.</returns>
+            <remarks>
+            The value parameter contains the date and time to parse.
+            If the value parameter contains only a time and no date,
+            the current date is used. If the value parameter contains
+            only a date and no time, midnight (00:00:00) is used.
+            The value parameter cannot contain leading, inner, or
+            trailing white space characters.
+            </remarks>
+        </member>
+        <member name="M:Hardcodet.Commons.Globalization.DateTimeUtil.FormatTimeSpan(System.TimeSpan,Hardcodet.Commons.Globalization.TargetLocale)">
+            <summary>
+            Renders a timestamp depending on its actual range. This
+            means that big ranges do not provide detailed fractions, while
+            smaller ranges do not display days.
+            </summary>
+            <param name="range">The range to be displayed.</param>
+            <param name="locale">Defines the culture to be used.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Hardcodet.Commons.Events.WeakEvent`1">
+            <summary>
+            A class for managing a weak event.
+            </summary>
+        </member>
+        <member name="T:Hardcodet.Commons.SimpleDisposableObject">
+            <summary>
+            A simple base class that provides an implementation of the <see cref="T:System.IDisposable"/>
+            pattern on top of the <see cref="T:System.ComponentModel.INotifyPropertyChanged"/> implementations of the
+            <see cref="T:Hardcodet.Commons.SimpleObject"/> base class.
+            </summary>
+        </member>
+        <member name="T:Hardcodet.Commons.SimpleObject">
+            <summary>
+            Simple base class that provides a solid implementation
+            of the <see cref="T:System.ComponentModel.INotifyPropertyChanged"/> event including
+            reflection-based property name verification in debug builds.
+            </summary>
+        </member>
+        <member name="M:Hardcodet.Commons.SimpleObject.OnPropertyChanged``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Allows triggering the <see cref="E:Hardcodet.Commons.SimpleObject.PropertyChanged"/> event using
+            a lambda expression, thus avoiding strings. Keep in minde that
+            using this method comes with a performance penalty, so don't use
+            it for frequently updated properties that cause a lot of events
+            to be fired.
+            </summary>
+            <typeparam name="T">Type of the property.</typeparam>
+            <param name="propertyExpression">Expression pointing to a given
+            property.</param>
+        </member>
+        <member name="M:Hardcodet.Commons.SimpleObject.OnPropertyChanged(System.String)">
+            <summary>
+            Raises the <see cref="E:Hardcodet.Commons.SimpleObject.PropertyChanged"/> event for
+            a given property.
+            </summary>
+            <param name="propertyName">The name of the changed property.</param>
+        </member>
+        <member name="M:Hardcodet.Commons.SimpleObject.OnPropertyChanged(System.String[])">
+            <summary>
+            Raises the <see cref="E:Hardcodet.Commons.SimpleObject.PropertyChanged"/> event for
+            a set of properties.
+            </summary>
+            <param name="propertyNames">Provides the names of the changed properties.</param>
+        </member>
+        <member name="M:Hardcodet.Commons.SimpleObject.VerifyProperty(System.String)">
+            <summary>
+            Verifies whether the current class provides a property with a given
+            name. This method is only invoked in debug builds, and results in
+            a runtime exception if the <see cref="M:Hardcodet.Commons.SimpleObject.OnPropertyChanged(System.String)"/> method
+            is being invoked with an invalid property name. This may happen if
+            a property's name was changed but not the parameter of the property's
+            invocation of <see cref="M:Hardcodet.Commons.SimpleObject.OnPropertyChanged(System.String)"/>.<br/>
+            Credits for this one to Josh Smith: http://joshsmithonwpf.wordpress.com/
+            </summary>
+            <param name="propertyName">The name of the changed property.</param>
+        </member>
+        <member name="E:Hardcodet.Commons.SimpleObject.PropertyChanged">
+            <summary>
+            Occurs when a property value changes.
+            </summary>
+        </member>
+        <member name="F:Hardcodet.Commons.SimpleDisposableObject.isDisposed">
+            <summary>
+            Tracks whether <see cref="M:Hardcodet.Commons.SimpleDisposableObject.Dispose"/> has been called or not.
+            </summary>
+        </member>
+        <member name="M:Hardcodet.Commons.SimpleDisposableObject.Finalize">
+            <summary>
+            This destructor will run only if the <see cref="M:Hardcodet.Commons.SimpleDisposableObject.Dispose"/>
+            method does not get called. This gives this base class the
+            opportunity to finalize.
+            <para>
+            Important: Do not provide destructors in types derived from
+            this class.
+            </para>
+            </summary>
+        </member>
+        <member name="M:Hardcodet.Commons.SimpleDisposableObject.Dispose">
+            <summary>
+            Disposes the object.
+            </summary>
+            <remarks>This method is not virtual by design. Derived classes
+            should override <see cref="M:Hardcodet.Commons.SimpleDisposableObject.Dispose(System.Boolean)"/>.
+            </remarks>
+        </member>
+        <member name="M:Hardcodet.Commons.SimpleDisposableObject.Dispose(System.Boolean)">
+            <summary>
+            <c>Dispose(bool disposing)</c> executes in two distinct scenarios.
+            If disposing equals <c>true</c>, the method has been called directly
+            or indirectly by a user's code. Managed and unmanaged resources
+            can be disposed.<br/>
+            Invoking this method sets the <see cref="P:Hardcodet.Commons.SimpleDisposableObject.IsDisposed"/> property. However,
+            a property change event is only fired if <c>disposing</c> is true.
+            </summary>
+            <param name="disposing">If disposing equals <c>false</c>, the method
+            has been called by the runtime from inside the finalizer and you
+            should not reference other objects. Only unmanaged resources can
+            be disposed.</param>
+            <remarks>Check the <see cref="P:Hardcodet.Commons.SimpleDisposableObject.IsDisposed"/> property to determine whether
+            the method has already been called.</remarks>
+        </member>
+        <member name="P:Hardcodet.Commons.SimpleDisposableObject.IsDisposed">
+            <summary>
+            Tracks whether <see cref="M:Hardcodet.Commons.SimpleDisposableObject.Dispose"/> has been called or not.
+            </summary>
+        </member>
+        <member name="T:Hardcodet.Commons.IO.FileUtil">
+            <summary>
+            Util methods for file-related operations.
+            </summary>
+        </member>
+        <member name="F:Hardcodet.Commons.IO.FileUtil.entryPath">
+            <summary>
+            The location of the application's entry point, if any.
+            </summary>
+            <remarks>This is the path of the application executable, if there
+            is any. In special environments (e.g. certain unit test runners),
+            this path is not set at all.</remarks>
+        </member>
+        <member name="M:Hardcodet.Commons.IO.FileUtil.#cctor">
+            <summary>
+            Inits the helper class.
+            </summary>
+        </member>
+        <member name="M:Hardcodet.Commons.IO.FileUtil.GetAbsolutePath(System.String)">
+            <summary>
+            Gets an absolute path, based on the executable's location.
+            </summary>
+            <param name="filePath">A file path.</param>
+            <returns>An absolute file path. If a relative path was submitted,
+            an absolute path, based on the application's excecutable will be
+            returned. If an absolute path was submitted, the unchanged path
+            is being returned.</returns>
+        </member>
+        <member name="M:Hardcodet.Commons.IO.FileUtil.GetRelativePath(System.String,System.String)">
+            <summary>
+            Creates a relative path to a file regarding a 
+            </summary>
+            <param name="rootFolder">Root folder.</param>
+            <param name="filePath">Path of the file.</param>
+            <returns>Path to the file, if possible relative to the root folder.</returns>
+        </member>
+        <member name="M:Hardcodet.Commons.IO.FileUtil.CreateTempFilePath(System.String,System.String)">
+            <summary>
+            Generates a path for a temporary file.
+            </summary>
+            <param name="prefix">The base name of the file.</param>
+            <param name="extension">Extension of the file (without dot).</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="prefix"/>
+            is a null reference.</exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="extension"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Hardcodet.Commons.IO.FileUtil.CreateTempFilePath(System.String,System.String,System.String)">
+            <summary>
+            Generates a path for a temporary file.
+            </summary>
+            <param name="rootFolder">The folder that contains the file.</param>
+            <param name="prefix">The base name of the file.</param>
+            <param name="extension">Extension of the file (without dot).</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="prefix"/>
+            is a null reference.</exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="extension"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Hardcodet.Commons.IO.FileUtil.CreateTempFilePath(System.String)">
+            <summary>
+            Generates a path for a temporary file.
+            </summary>
+            <param name="extension">Extension of the file (without dot).</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="extension"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Hardcodet.Commons.IO.FileUtil.CreateTempFolder(System.String)">
+            <summary>
+            Creates a folder withing the system's temporary files folder
+            that matches the submitted <paramref name="folderName"/>.
+            If a folder with the submitted name already exists, a new
+            folder with a numeric suffix (001, 002, ...) is being created.
+            </summary>
+            <param name="folderName">The suggested folder name.</param>
+        </member>
+        <member name="M:Hardcodet.Commons.IO.FileUtil.CreateTempFolder(System.IO.DirectoryInfo,System.String)">
+            <summary>
+            Creates a folder the at a given location that matches the submitted
+            <paramref name="folderName"/>. If a folder with the submitted name
+            already exists, a new folder with a numeric suffix (001, 002, ...)
+            is being created.
+            </summary>
+            <param name="rootFolder">The root folder in which the temporary
+            folder is being created.</param>
+            <param name="folderName">The suggested folder name.</param>
+        </member>
+        <member name="M:Hardcodet.Commons.IO.FileUtil.GetUniqueFileName(System.String)">
+            <summary>
+            Ensures a unique file name by checking if a given file
+            already exists, and returning the file name with a numeric
+            suffix, if necessary.
+            </summary>
+            <param name="suggestedFileName">The suggested file name.</param>
+            <returns>A qualified path to a file that does not exist yet.</returns>
+        </member>
+        <member name="M:Hardcodet.Commons.IO.FileUtil.CopyDirectory(System.String,System.String,System.Boolean)">
+            <summary>
+            Performs a recursive copy of a given directory.
+            </summary>
+            <param name="source"></param>
+            <param name="destination"></param>
+            <param name="overwrite"></param>
+        </member>
+        <member name="M:Hardcodet.Commons.IO.FileUtil.IsReadOnly(System.IO.DirectoryInfo)">
+            <summary>
+            Checks whether a given folder is read-only or not.
+            </summary>
+            <param name="directory">The directory to be looked at.</param>
+            <returns>True if the directory is readonly.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="directory"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Hardcodet.Commons.IO.FileUtil.ComputeFingerPrint(System.String)">
+            <summary>
+            Calculates a CRC code which can be used to ensure
+            integrity of a given file.
+            </summary>
+            <param name="fileName">The file to be hashed.</param>
+            <returns>A string representation of the file's CRC32
+            hash code.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="fileName"/>
+            is a null reference.</exception>
+            <exception cref="T:System.IO.FileNotFoundException">If the submitted
+            file cannot be found.</exception>
+        </member>
+        <member name="M:Hardcodet.Commons.IO.FileUtil.ComputeFingerPrint(System.IO.FileInfo)">
+            <summary>
+            Calculates a CRC code which can be used to ensure
+            integrity of a given file.
+            </summary>
+            <param name="file">The file to be hashed.</param>
+            <returns>A string representation of the file's CRC32
+            hash code.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="file"/>
+            is a null reference.</exception>
+            <exception cref="T:System.IO.FileNotFoundException">If the submitted
+            file cannot be found.</exception>
+        </member>
+        <member name="P:Hardcodet.Commons.IO.FileUtil.WorkingFolder">
+            <summary>
+            Gets the application working folder (usually the entry path
+            of the application).
+            </summary>
+        </member>
+        <member name="T:Hardcodet.Commons.Globalization.LocalizationUtil">
+            <summary>
+            Provides static util method which address common
+            localization issues such as date / numeric formatting.
+            </summary>
+            <remarks>It does not make sense to move the formattign strings
+            into localizable resource files. The application may rely
+            on these patterns for serialization
+            and deserialization cycles.</remarks>
+        </member>
+        <member name="M:Hardcodet.Commons.Globalization.LocalizationUtil.GetDateFormat(Hardcodet.Commons.Globalization.TargetLocale)">
+            <summary>
+            Gets a formatter for culture-aware or culture-independent
+            formatting or parsing of date/time values.
+            </summary>
+            <param name="locale">Defines the source of the date format.</param>
+            <returns>A matching date / time formatter. If the requested culture
+            does not provide a number format (only if <paramref name="locale"/>
+            is <see cref="F:Hardcodet.Commons.Globalization.TargetLocale.UI"/>, and the UI culture is neutral),
+            a format for the OS installed culture is being returned.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">In case of an invalid localization
+            flag.</exception>
+        </member>
+        <member name="M:Hardcodet.Commons.Globalization.LocalizationUtil.GetNumberFormat(Hardcodet.Commons.Globalization.TargetLocale)">
+            <summary>
+            Gets a formatter for culture-aware or culture-independent
+            formatting or parsing of numeric values.
+            </summary>
+            <param name="locale">Defines the source of the number format.</param>
+            <returns>A matching numeric formatter. If the requested culture
+            does not provide a number format (only if <paramref name="locale"/>
+            is <see cref="F:Hardcodet.Commons.Globalization.TargetLocale.UI"/>, and the UI culture is neutral),
+            a format for the OS installed culture is being returned.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">In case of an invalid localization
+            flag.</exception>
+        </member>
+        <member name="M:Hardcodet.Commons.Globalization.LocalizationUtil.ResolveCulture(Hardcodet.Commons.Globalization.TargetLocale)">
+            <summary>
+            Gets a culture for the current thread depending on the
+            requested <paramref name="locale"/>.
+            </summary>
+            <param name="locale">Defines the targeted culture.</param>
+            <returns>The matching <c>CultureInfo</c>, which also depends
+            on the current thread.</returns>
+        </member>
+        <member name="M:Hardcodet.Commons.Globalization.LocalizationUtil.ResolveCulture(Hardcodet.Commons.Globalization.TargetLocale,System.Threading.Thread)">
+            <summary>
+            Gets a culture for a given thread depending on the
+            requested <paramref name="locale"/>.
+            </summary>
+            <param name="locale">Defines the targeted culture.</param>
+            <param name="thread">The thread to be processed.</param>
+            <returns>The matching <c>CultureInfo</c>, depending on the
+            submitted thread.</returns>
+        </member>
+        <member name="T:Hardcodet.Commons.SystemTime">
+            <summary>
+            Simple helper class that provides an façade to
+            <see cref="P:System.DateTime.Now"/> which can be substituted
+            for simple testing of time-related code.
+            </summary>
+        </member>
+        <member name="F:Hardcodet.Commons.SystemTime.Now">
+            <summary>
+            Gets the system's current data and time. Only change for
+            testing scenarios. Use <see cref="M:Hardcodet.Commons.SystemTime.Reset"/> to
+            reset the function to its default implementation.
+            </summary>
+        </member>
+        <member name="M:Hardcodet.Commons.SystemTime.Reset">
+            <summary>
+            Reverts the <see cref="F:Hardcodet.Commons.SystemTime.Now"/> function to its default
+            implementation which just returns <see cref="P:System.DateTime.Now"/>.
+            </summary>
+        </member>
+        <member name="M:Hardcodet.Commons.SystemTime.#cctor">
+            <summary>
+            Inits the <see cref="F:Hardcodet.Commons.SystemTime.Now"/> delegate.
+            </summary>
+        </member>
+        <member name="M:Hardcodet.Commons.SystemTime.CreateResetGuard">
+            <summary>
+            Creates a disposable scope that automatically
+            resets the <see cref="T:Hardcodet.Commons.SystemTime"/> to its default
+            value.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Hardcodet.Commons.SystemTime.CreateResetGuard(System.DateTime)">
+            <summary>
+            Sets the current system time and returns a guard
+            that automatically resets the <see cref="T:Hardcodet.Commons.SystemTime"/>
+            to its default value once it is being disposed.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Hardcodet.Commons.Extensions">
+            <summary>
+            Global helper extensions.
+            </summary>
+        </member>
+        <member name="M:Hardcodet.Commons.Extensions.Is``1(``0,``0[])">
+            <summary>
+            Checks a list of candidates for equality to a given
+            reference value.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value">The evaluated value.</param>
+            <param name="candidates">A liste of possible values that are
+            regarded valid.</param>
+            <returns>True if one of the submitted <paramref name="candidates"/>
+            matches the evaluated value. If the <paramref name="candidates"/>
+            parameter itself is null, too, the method returns false as well,
+            which allows to check with null values, too.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="candidates"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Hardcodet.Commons.Extensions.IsA(System.Object,System.Type)">
+            <summary>
+            Mimics the <c>is</c> keyword in order to check
+            type compatibility based on types rather than
+            static class expressions.
+            </summary>
+            <param name="obj">The object that is being evaluated.</param>
+            <param name="parent">The type to compare to.</param>
+            <returns>True if <paramref name="obj"/> can be declared as
+            an instance of <paramref name="parent"/>, which is the case
+            if its either of the same type, implements, or derives from
+            <paramref name="parent"/>.</returns>
+        </member>
+        <member name="M:Hardcodet.Commons.Extensions.IsA``1(System.Type)">
+            <summary>
+            Mimics the <c>is</c> keyword in order to check
+            type compatibility based on types rather than
+            static class expressions.
+            </summary>
+            <typeparam name="T">The type to compare to.</typeparam>
+            <param name="type">The type that is being evaluated.</param>
+            <returns>True if an instance of <paramref name="type"/> can
+            be declared as an instance of <typeparamref name="T"/>,
+            which is the case if its either of the same type, implements,
+            or derives from <typeparamref name="T"/>.</returns>
+        </member>
+        <member name="M:Hardcodet.Commons.Extensions.IsA(System.Type,System.Type)">
+            <summary>
+            Mimics the <c>is</c> keyword in order to check
+            type compatibility based on types rather than
+            static class expressions.
+            </summary>
+            <param name="type">The object that is being evaluated.</param>
+            <param name="parent">The type to compare to.</param>
+            <returns>True if an instance of <paramref name="type"/> can be declared as
+            an instance of <paramref name="parent"/>, which is the case
+            if its either of the same type, implements, or derives from
+            <paramref name="parent"/>.</returns>
+        </member>
+        <member name="M:Hardcodet.Commons.Extensions.Contains``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Checks whether a given collection contains an item that matches
+            the submitted predicate.
+            </summary>
+            <typeparam name="T">The collection's content.</typeparam>
+            <param name="source">The sequence to be analyzed.</param>
+            <param name="predicate">A function that tests each element for a
+            given condition.</param>
+            <returns>True if an item was found that matches the submitted
+            <paramref name="predicate"/> function.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="predicate"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Hardcodet.Commons.Extensions.ContainsInstance``1(System.Collections.Generic.IEnumerable{``0},``0)">
+            <summary>
+            Checks whether a collection contains an instance of a given type.
+            </summary>
+            <typeparam name="T">The collection's content.</typeparam>
+            <param name="source">The sequence to be analyzed.</param>
+            <param name="item">An instance to check for.</param>
+            <returns>True if the submitted reference was found in the
+            sequence.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="item"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Hardcodet.Commons.Extensions.Do``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            Performs a given action on every item of a given sequence.
+            </summary>
+            <typeparam name="T">The collection's content.</typeparam>
+            <param name="source">The sequence to be processed.</param>
+            <param name="action">An action delegate that is being invoked
+            for every item of the <paramref name="source"/> sequence.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="action"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Hardcodet.Commons.Extensions.DoAsync``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            Triggers asynchronous invocation of a given action on every
+            item of a given sequence using <see cref="T:System.Threading.ThreadPool"/>.
+            </summary>
+            <typeparam name="T">The collection's content.</typeparam>
+            <param name="source">The sequence to be processed.</param>
+            <param name="action">An action delegate that is being invoked
+            for every item of the <paramref name="source"/> sequence.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="action"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Hardcodet.Commons.Extensions.Put(System.String,System.Object[])">
+            <summary>
+            Provides a shortcut to <see cref="M:System.String.Format(System.String,System.Object[])"/>
+            that allows to combine a string mask with a set or arguments.
+            </summary>
+            <param name="mask">The format item in which the arguments are
+            being injected.</param>
+            <param name="args">Arguments to be moved into the mask.</param>
+            <returns>The formatted string.</returns>
+        </member>
+        <member name="M:Hardcodet.Commons.Extensions.ToConsole(System.String)">
+            <summary>
+            Writes an unformatted string to the console output.
+            </summary>
+            <param name="value">The string to write to the console.</param>
+        </member>
+        <member name="M:Hardcodet.Commons.Extensions.ToConsole(System.String,System.Object[])">
+            <summary>
+            Formats a given string mask with a number of arguments and writes
+            the formatted string to the console output.
+            </summary>
+            <param name="mask">The format item that in which the arguments are
+            being injected.</param>
+            <param name="args">Arguments to be moved into the mask.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="mask"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Hardcodet.Commons.Extensions.ToConsole(System.Enum)">
+            <summary>
+            Writes a given enum flag to the console.
+            </summary>
+            <param name="flag">The enum value to be written to the console.</param>
+        </member>
+        <member name="M:Hardcodet.Commons.Extensions.GetDescription(System.Enum)">
+            <summary>
+            Resolves the value of a <see cref="T:System.ComponentModel.DescriptionAttribute"/> that
+            was used to decorate a given enum.
+            </summary>
+            <param name="value">^The enum value to be resolved.</param>
+            <returns>The value of the description attribute that was used to
+            decorate the enum. If no matching description is found, a string
+            representation of the enum value is returned. If the enum value
+            itself is null (nullable enum), null is returned.</returns>
+        </member>
+        <member name="M:Hardcodet.Commons.Extensions.Raise(System.EventHandler,System.Object)">
+            <summary>
+            Raises an simple event that provides no data.
+            </summary>
+        </member>
+        <member name="M:Hardcodet.Commons.Extensions.Raise``1(System.EventHandler{``0},System.Object,``0)">
+            <summary>
+            Raises an event and submits the corresponding event arguments.
+            </summary>
+        </member>
+        <member name="T:Hardcodet.Commons.Events.WeakEventProxy`1">
+            <summary>
+            An event handler wrapper used to create weak-reference event handlers, so that event subscribers 
+            can be garbage collected without the event publisher interfering. 
+            </summary>
+            <typeparam name="TEventArgs">The type of event arguments used in the event handler.</typeparam>
+            <remarks>
+            To understand why this class is needed, see this page: 
+                http://www.paulstovell.net/blog/index.php/wpf-binding-bug-leads-to-possible-memory-issues/
+            For examples on how this is used, it is best to look at the unit test: 
+                WeakEventProxyTests.cs
+            </remarks>
+        </member>
+        <member name="M:Hardcodet.Commons.Events.WeakEventProxy`1.#ctor(System.EventHandler{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Hardcodet.Commons.Events.WeakEventProxy`1"/> class.
+            </summary>
+            <param name="callback">The callback.</param>
+        </member>
+        <member name="M:Hardcodet.Commons.Events.WeakEventProxy`1.Handler(System.Object,`0)">
+            <summary>
+            Used as the event handler which should be subscribed to source collections.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Hardcodet.Commons.Events.WeakEventProxy`1.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="T:Hardcodet.Commons.Globalization.TargetLocale">
+            <summary>
+            Defines the targeted culture for localization-sensitive
+            operations.
+            </summary>
+        </member>
+        <member name="F:Hardcodet.Commons.Globalization.TargetLocale.Invariant">
+            <summary>
+            Locale-independent processing using the invariant
+            culture.
+            </summary>
+        </member>
+        <member name="F:Hardcodet.Commons.Globalization.TargetLocale.Thread">
+            <summary>
+            Target the culture of the current thread.
+            </summary>
+        </member>
+        <member name="F:Hardcodet.Commons.Globalization.TargetLocale.UI">
+            <summary>
+            Target the culture of the UI thread.
+            </summary>
+        </member>
+        <member name="T:Hardcodet.Commons.Diagnostics.TimeGuard">
+            <summary>
+            A guard that can be used to measure the time
+            used for a given process by simply wrapping it
+            in a using statement.<br/>
+            Timestamp determination relies on the <see cref="T:Hardcodet.Commons.SystemTime"/>
+            helper class.<br/>
+            Blog post:
+            http://www.hardcodet.net/2009/02/timeguard-helper-class-to-measure-elapsed-time
+            </summary>
+        </member>
+        <member name="F:Hardcodet.Commons.Diagnostics.TimeGuard.action">
+            <summary>
+            An action delegate that is used to submit the
+            determined timestamp.
+            </summary>
+        </member>
+        <member name="F:Hardcodet.Commons.Diagnostics.TimeGuard.startTime">
+            <summary>
+            The intial timestamp according to <see cref="F:Hardcodet.Commons.SystemTime.Now"/>.
+            </summary>
+        </member>
+        <member name="M:Hardcodet.Commons.Diagnostics.TimeGuard.#ctor(System.Action{System.Double})">
+            <summary>
+            Creates the guard with a given action that receives the
+            elapsed time in milliseconds.
+            </summary>
+            <param name="setDelta">The action that is being invoked
+            with time (in milleconds) that was taken between construction
+            of this instance until disposal.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="setDelta"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Hardcodet.Commons.Diagnostics.TimeGuard.Dispose">
+            <summary>
+            Calculates the elapsed time since construction
+            and submits the delta to the <see cref="F:Hardcodet.Commons.Diagnostics.TimeGuard.action"/>
+            action.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Hardcodet.Commons.Guard" -->
+        <member name="M:Hardcodet.Commons.Guard.#ctor">
+            <summary>
+            Protected parameterless constructor that supports deferred
+            setting of the disposal <see cref="P:Hardcodet.Commons.Guard.DisposalAction"/>.
+            </summary>
+        </member>
+        <member name="M:Hardcodet.Commons.Guard.#ctor(System.Action)">
+            <summary>
+            Inits the guard with the action to be performed once
+            disposal takes place.
+            </summary>
+            <param name="disposeAction">The action that is being executed as soon
+            as <see cref="M:Hardcodet.Commons.Guard.Dispose"/> is being invoked.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="disposeAction"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Hardcodet.Commons.Guard.CancelDisposeAction">
+            <summary>
+            Cancels the disposal action.
+            </summary>
+        </member>
+        <member name="M:Hardcodet.Commons.Guard.Dispose">
+            <summary>
+            Disposes the scope and executes the
+            underlying disposal <see cref="P:Hardcodet.Commons.Guard.DisposalAction"/>.
+            </summary>
+        </member>
+        <member name="P:Hardcodet.Commons.Guard.DisposalAction">
+            <summary>
+            The action that is being executed as soon
+            as <see cref="M:Hardcodet.Commons.Guard.Dispose"/> is being invoked.
+            </summary>
+        </member>
+        <member name="T:Hardcodet.Commons.Ensure">
+            <summary>
+            Provides common runtime validation functionality.
+            </summary>
+        </member>
+        <member name="M:Hardcodet.Commons.Ensure.ArgumentNotNull``1(``0,System.String)">
+            <summary>
+            Makes sure a given argument is not null.
+            </summary>
+            <typeparam name="T">Type of the argument.</typeparam>
+            <param name="argument">The submitted parameter value.</param>
+            <param name="argumentName">The name of the argument.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="argument"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Hardcodet.Commons.Ensure.ArgumentNotNull``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Makes sure a given argument is not null.
+            </summary>
+            <typeparam name="T">Type of the argument.</typeparam>
+            <param name="expression">A <see cref="T:System.Linq.Expressions.MemberExpression"/> that refers
+            to the parameter to be validated.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="expression"/>
+            links to a null reference.</exception>
+            <remarks>Only use this method for validation scenarios where performance is
+            not a critical issue. Otherwise revert to the <see cref="M:Hardcodet.Commons.Ensure.ArgumentNotNull``1(``0,System.String)"/>
+            method that performs better by magnitudes.</remarks>
+        </member>
+    </members>
+</doc>

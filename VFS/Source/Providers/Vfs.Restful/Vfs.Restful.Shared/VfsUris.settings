@@ -1,0 +1,193 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Vfs.Restful" GeneratedClassName="VfsUris">
+  <Profiles />
+  <Settings>
+    <Setting Name="GetFileSystemRootUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">root</Value>
+    </Setting>
+    <Setting Name="GetFileInfoUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">files?path={filepath}</Value>
+    </Setting>
+    <Setting Name="GetFolderInfoUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">folders?path={folderpath}</Value>
+    </Setting>
+    <Setting Name="GetChildFilesUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">folders/files?parentfolder={parentfolderpath}</Value>
+    </Setting>
+    <Setting Name="GetChildFoldersUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">folders/subfolders?parentfolder={parentfolderpath}</Value>
+    </Setting>
+    <Setting Name="GetFolderContentsUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">folders/contents?parentfolder={parentfolderpath}</Value>
+    </Setting>
+    <Setting Name="GetChildFoldersFilteredUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">folders/subfolders?parentfolder={parentfolderpath}&amp;filter={filter}</Value>
+    </Setting>
+    <Setting Name="GetFolderContentsFilteredUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">folders/contents?parentfolder={parentfolderpath}&amp;filter={filter}</Value>
+    </Setting>
+    <Setting Name="GetChildFilesFilteredUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">folders/files?parentfolder={parentfolderpath}&amp;filter={filter}</Value>
+    </Setting>
+    <Setting Name="GetFileParentUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">files/parent?path={filepath}</Value>
+    </Setting>
+    <Setting Name="GetFolderParentUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">folders/parent?path={folderpath}</Value>
+    </Setting>
+    <Setting Name="IsFileAvailableUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">files/availability?path={filepath}</Value>
+    </Setting>
+    <Setting Name="IsFolderAvailableUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">folders/availability?path={folderpath}</Value>
+    </Setting>
+    <Setting Name="DeleteFileUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">files?path={filepath}</Value>
+    </Setting>
+    <Setting Name="DeleteFolderUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">folders?path={folderpath}</Value>
+    </Setting>
+    <Setting Name="CreateFolderUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">folders?path={folderpath}</Value>
+    </Setting>
+    <Setting Name="CopyFileUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">files/copy?source={filepath}&amp;destination={destinationpath}</Value>
+    </Setting>
+    <Setting Name="MoveFileUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">files/move?source={filepath}&amp;destination={destinationpath}</Value>
+    </Setting>
+    <Setting Name="CopyFolderUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">folders/copy?source={folderpath}&amp;destination={destinationpath}</Value>
+    </Setting>
+    <Setting Name="MoveFolderUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">folders/move?source={folderpath}&amp;destination={destinationpath}</Value>
+    </Setting>
+    <Setting Name="CreateFilePathUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">files/combinedpath?parentfolder={parentfolderpath}&amp;filename={filename}</Value>
+    </Setting>
+    <Setting Name="CreateFolderPathUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">folders/combinedpath?parentfolder={parentfolderpath}&amp;foldername={foldername}</Value>
+    </Setting>
+    <Setting Name="GetMaxDownloadBlockSizeUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">downloads/maxblocksize</Value>
+    </Setting>
+    <Setting Name="GetMaxUploadBlockSizeUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">uploads/maxblocksize</Value>
+    </Setting>
+    <Setting Name="GetDownloadTransferStatusUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">downloads/{transferid}/status</Value>
+    </Setting>
+    <Setting Name="GetUploadTransferStatusUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">uploads/{transferid}/status
+</Value>
+    </Setting>
+    <Setting Name="PatternFilter" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{filter}</Value>
+    </Setting>
+    <Setting Name="PatternFilePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{filepath}</Value>
+    </Setting>
+    <Setting Name="PatternFolderPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{folderpath}</Value>
+    </Setting>
+    <Setting Name="PatternDestinationPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{destinationpath}</Value>
+    </Setting>
+    <Setting Name="PatternFileName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{filename}</Value>
+    </Setting>
+    <Setting Name="PatternParentFolderPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{parentfolderpath}</Value>
+    </Setting>
+    <Setting Name="PatternFolderName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{foldername}</Value>
+    </Setting>
+    <Setting Name="PatternTransferId" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{transferid}</Value>
+    </Setting>
+    <Setting Name="PatternBlockNumber" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{blocknumber}</Value>
+    </Setting>
+    <Setting Name="PatternAbortReason" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{reason}</Value>
+    </Setting>
+    <Setting Name="PatternIncludeFileHash" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{includefilehash}</Value>
+    </Setting>
+    <Setting Name="PatternMaxBlockSize" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{maxblocksize}</Value>
+    </Setting>
+    <Setting Name="ReadFileContentsUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">files/read?path={filepath}</Value>
+    </Setting>
+    <Setting Name="GetDownloadTokenUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">files/downloadtoken?file={filepath}&amp;includefilehash={includefilehash}</Value>
+    </Setting>
+    <Setting Name="GetDownloadTokenWithMaxBlockSizeUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">files/downloadtoken?file={filepath}&amp;includefilehash={includefilehash}&amp;maxblocksize={maxblocksize}</Value>
+    </Setting>
+    <Setting Name="ReloadDownloadTokenUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">downloads/{transferid}/token</Value>
+    </Setting>
+    <Setting Name="GetDataBlockStreamedUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">downloads/{transferid}/datablock/{blocknumber}</Value>
+    </Setting>
+    <Setting Name="ReadFileContentsByTokenUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">downloads/{transferid}/data</Value>
+    </Setting>
+    <Setting Name="CompleteDownloadTransferUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">downloads/{transferid}/complete</Value>
+    </Setting>
+    <Setting Name="CompleteUploadTransferUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">uploads/{transferid}/complete</Value>
+    </Setting>
+    <Setting Name="PauseDownloadTransferUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">downloads/{transferid}/pause</Value>
+    </Setting>
+    <Setting Name="PauseUploadTransferUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">uploads/{transferid}/pause</Value>
+    </Setting>
+    <Setting Name="CancelDownloadTransferUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">downloads/{transferid}/cancel?abortreason={reason}</Value>
+    </Setting>
+    <Setting Name="CancelUploadTransferUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">uploads/{transferid}/cancel?abortreason={reason}</Value>
+    </Setting>
+    <Setting Name="GetDownloadTransmissionCapabilitiesUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">downloads/transmissioncapabilities</Value>
+    </Setting>
+    <Setting Name="GetUploadTransmissionCapabilitiesUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">uploads/transmissioncapabilities</Value>
+    </Setting>
+    <Setting Name="ReloadUploadTokenUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">uploads/{transferid}/token</Value>
+    </Setting>
+    <Setting Name="GetMaxFileUploadSizeUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">uploads/maxfilesize</Value>
+    </Setting>
+    <Setting Name="WriteStreamedDataBlockUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">uploads/{transferid}/datablock/{blocknumber}</Value>
+    </Setting>
+    <Setting Name="CompleteUploadTransferWithVerificationUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">uploads/{transferid}/complete?hash={filehash}</Value>
+    </Setting>
+    <Setting Name="PatternFileHash" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{filehash}</Value>
+    </Setting>
+    <Setting Name="WriteFileContentsUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">files/write?path={filepath}</Value>
+    </Setting>
+    <Setting Name="GetUploadTokenUri" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">files/uploadtoken?file={filepath}&amp;overwrite={overwrite}&amp;length={filelength}&amp;contenttype={contenttype}</Value>
+    </Setting>
+    <Setting Name="PatternOverwrite" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{overwrite}</Value>
+    </Setting>
+    <Setting Name="PatternFileLength" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{filelength}</Value>
+    </Setting>
+    <Setting Name="PatternContentType" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{contenttype}</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

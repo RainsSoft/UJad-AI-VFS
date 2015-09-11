@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D4EE71C9-7B09-4653-AA5C-0F56CC029480}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vfs</RootNamespace>
+    <AssemblyName>Vfs</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\AssemblyInfo.Shared.cs">
+      <Link>Properties\AssemblyInfo.Shared.cs</Link>
+    </Compile>
+    <Compile Include="Auditing\AuditEvent.cs" />
+    <Compile Include="Auditing\AuditItem.cs" />
+    <Compile Include="Auditing\AuditHelper.cs" />
+    <Compile Include="Auditing\AuditLevel.cs" />
+    <Compile Include="Auditing\CachingAuditor.cs" />
+    <Compile Include="Auditing\ConsoleAuditor.cs" />
+    <Compile Include="Auditing\FileSystemTask.cs" />
+    <Compile Include="Auditing\IAuditor.cs" />
+    <Compile Include="Auditing\NullAuditor.cs" />
+    <Compile Include="Exceptions\VfsFault.cs" />
+    <Compile Include="Exceptions\VfsFaultException.cs" />
+    <Compile Include="Exceptions\VfsFaultType.cs" />
+    <Compile Include="FileSystemConfiguration.cs" />
+    <Compile Include="IFileSystemConfiguration.cs" />
+    <Compile Include="IVirtualFileItem.cs" />
+    <Compile Include="IVirtualFolderItem.cs" />
+    <Compile Include="Metadata\MetaProperty.cs" />
+    <Compile Include="Security\DelegateSecurity.cs" />
+    <Compile Include="Unity_Runtime_Serialization\System_Runtime_Serialization.cs" />
+    <Compile Include="Util\DeferredStream.cs" />
+    <Compile Include="Util\TemporaryStorage\DelegateTempStreamFactory.cs" />
+    <Compile Include="Util\TemporaryStorage\ITempStreamFactory.cs" />
+    <Compile Include="Util\TemporaryStorage\TempFileStreamFactory.cs" />
+    <Compile Include="Util\TemporaryStorage\TempFileStream.cs" />
+    <Compile Include="Transfer\Upload\TempUploadHandlerBase.cs" />
+    <Compile Include="Util\Ensure.cs" />
+    <Compile Include="Exceptions\InvalidResourcePathException.cs" />
+    <Compile Include="Exceptions\ExceptionBuilder.cs" />
+    <Compile Include="Exceptions\ResourceLockedException.cs" />
+    <Compile Include="FileSystemProviderBase.cs" />
+    <Compile Include="FileSystemProviderBase2.cs" />
+    <Compile Include="IVirtualResourceItem.cs" />
+    <Compile Include="Locking\IResourceLockRepository.cs" />
+    <Compile Include="Locking\LockItem.cs" />
+    <Compile Include="Locking\NullResourceLockRepository.cs" />
+    <Compile Include="Locking\LockTracker.cs" />
+    <Compile Include="Locking\ResourceLockGuard.cs" />
+    <Compile Include="Locking\ResourceLockRepository.cs" />
+    <Compile Include="Locking\ResourceLockState.cs" />
+    <Compile Include="Locking\ResourceLockType.cs" />
+    <Compile Include="Locking\ResourceLockUtil.cs" />
+    <Compile Include="Scheduling\Enums.cs" />
+    <Compile Include="Scheduling\Fluent.cs" />
+    <Compile Include="Scheduling\Job.cs" />
+    <Compile Include="Scheduling\JobContext.cs" />
+    <Compile Include="Scheduling\Scheduler.cs" />
+    <Compile Include="Security\FileClaims.cs" />
+    <Compile Include="Security\FolderClaims.cs" />
+    <Compile Include="Security\IFileSystemSecurity.cs" />
+    <Compile Include="Exceptions\ResourceAccessException.cs" />
+    <Compile Include="Exceptions\ResourceOverwriteException.cs" />
+    <Compile Include="Exceptions\VfsException.cs" />
+    <Compile Include="Exceptions\VirtualResourceNotFoundException.cs" />
+    <Compile Include="Util\Extensions.cs" />
+    <Compile Include="FileOperationResult.cs" />
+    <Compile Include="FolderContents.cs" />
+    <Compile Include="FolderContentsInfo.cs" />
+    <Compile Include="Security\NullSecurity.cs" />
+    <Compile Include="Security\ReadOnlySecurity.cs" />
+    <Compile Include="Security\ResourceClaimProperty.cs" />
+    <Compile Include="Security\ResourceClaims.cs" />
+    <Compile Include="Security\WindowsIdentityClaimsProvider.cs" />
+    <Compile Include="Transfer\AbortReason.cs" />
+    <Compile Include="Transfer\BufferedDataBlock.cs" />
+    <Compile Include="Transfer\DataBlockInfo.cs" />
+    <Compile Include="Transfer\Download\DownloadToken.cs" />
+    <Compile Include="Transfer\Exceptions\DataBlockException.cs" />
+    <Compile Include="Transfer\Exceptions\TransferException.cs" />
+    <Compile Include="Transfer\Exceptions\TransferStatusException.cs" />
+    <Compile Include="Transfer\Exceptions\IntegrityCheckException.cs" />
+    <Compile Include="Transfer\Exceptions\UnknownTransferException.cs" />
+    <Compile Include="Transfer\IDataBlock.cs" />
+    <Compile Include="Transfer\Download\IDownloadTransferHandler.cs" />
+    <Compile Include="Transfer\Download\DownloadHandlerBase.cs" />
+    <Compile Include="Transfer\Download\DownloadTransfer.cs" />
+    <Compile Include="Transfer\InMemoryTransferStore.cs" />
+    <Compile Include="Transfer\ITransfer.cs" />
+    <Compile Include="Transfer\ITransferHandler.cs" />
+    <Compile Include="Transfer\ITransferStore.cs" />
+    <Compile Include="Transfer\Upload\IUploadTransferHandler.cs" />
+    <Compile Include="Transfer\StreamedDataBlock.cs" />
+    <Compile Include="Transfer\TransferBase.cs" />
+    <Compile Include="Transfer\TransferHandlerBase.cs" />
+    <Compile Include="Transfer\TransferStatus.cs" />
+    <Compile Include="Transfer\TransferToken.cs" />
+    <Compile Include="Transfer\TransmissionCapabilities.cs" />
+    <Compile Include="Transfer\Upload\UploadHandlerBase.cs" />
+    <Compile Include="Transfer\Upload\UploadToken.cs" />
+    <Compile Include="Transfer\Upload\UploadTransfer.cs" />
+    <Compile Include="Transfer\Util\BlockInputStreamBase.cs" />
+    <Compile Include="Transfer\Util\BufferedBlockOutputStream.cs" />
+    <Compile Include="Transfer\Util\BufferedBlockInputStream.cs" />
+    <Compile Include="Transfer\Util\ChunkStream.cs" />
+    <Compile Include="Transfer\Util\ClosingActionStream.cs" />
+    <Compile Include="Transfer\Util\StreamedBlockInputStream.cs" />
+    <Compile Include="Transfer\Util\DataBlockWriterExtensions.cs" />
+    <Compile Include="Transfer\Util\StreamedBlockOutputStream.cs" />
+    <Compile Include="Util\TemporaryStorage\TempFileUtil.cs" />
+    <Compile Include="Util\Guard.cs" />
+    <Compile Include="Util\StreamDecorator.cs" />
+    <Compile Include="Util\SystemTime.cs" />
+    <Compile Include="Util\ContentUtil.cs" />
+    <Compile Include="Util\FileSystemDecorator.cs" />
+    <Compile Include="IFileSystemProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\TemporaryStorage\TempStream.cs" />
+    <Compile Include="Util\VfsUtil.cs" />
+    <Compile Include="VirtualFile.cs" />
+    <Compile Include="VirtualFileInfo.cs" />
+    <Compile Include="VirtualFileItem.cs" />
+    <Compile Include="VirtualFolder.cs" />
+    <Compile Include="VirtualFolderInfo.cs" />
+    <Compile Include="VirtualResource.cs" />
+    <Compile Include="VirtualResourceInfo.cs" />
+    <Compile Include="VirtualFolderItem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Transfer\ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Transfer\Client\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

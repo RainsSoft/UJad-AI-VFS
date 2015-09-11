@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ACorns.WCF.DynamicClientProxy</name>
+    </assembly>
+    <members>
+        <member name="T:ACorns.WCF.DynamicClientProxy.Internal.WCFReusableFaultWrapperChannelProxyClassBuilder`1">
+            <summary>
+            Builds a proxy via the ChannelFactory and not via a ClientBase
+            </summary>
+            <typeparam name="TInterface"></typeparam>
+        </member>
+        <member name="T:ACorns.WCF.DynamicClientProxy.Internal.WCFReusableFaultWrapperProxyClassBuilder`1">
+            <summary>
+            Builds a class inheriting from WCFAbstractClientProxy.cs that will wrap a WCF Proxy
+            and automatically rebuild the proxy if the channel is faulted.
+            The class will also unwrap any FaultException and throw the original Exception
+            </summary>
+        </member>
+        <member name="T:ACorns.WCF.DynamicClientProxy.Internal.WCFReusableProxyClassBuilder`1">
+            <summary>
+            Builds a class inheriting from WCFAbstractClientProxy.cs that will wrap a WCF Proxy
+            and automatically rebuild the proxy if the channel is faulted.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:ACorns.WCF.DynamicClientProxy.Internal.AbstractClassBuilder`1" -->
+        <!-- Badly formed XML comment ignored for member "M:ACorns.WCF.DynamicClientProxy.Internal.AbstractClassBuilder`1.GenerateTypeImplementation" -->
+        <member name="M:ACorns.WCF.DynamicClientProxy.Internal.AbstractClassBuilder`1.GenerateMethodImpl(System.Reflection.Emit.TypeBuilder)">
+            <summary>
+            Read the interface declaration and emit a method for each method declaration
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="M:ACorns.WCF.DynamicClientProxy.Internal.AbstractClassBuilder`1.GenerateConstructor(System.Reflection.Emit.TypeBuilder)">
+            <summary>
+            Simply generate a constructor:
+            public MyClass(string configName)
+            	: base ( configName )
+            {
+            }
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="M:ACorns.WCF.DynamicClientProxy.Internal.WCFReusableProxyClassBuilder`1.GenerateMethodImpl(System.Reflection.MethodInfo,System.Type[],System.Reflection.Emit.ILGenerator)">
+            <summary>
+            Generate the contents of the method. This will generate:
+            ...
+            try
+            {
+            	return Proxy.MethodName(arg1, arg2);
+            }
+            catch
+            {
+            	CloseProxyBecauseOfException();
+            	throw;
+            }
+            ...
+            </summary>
+            <param name="method"></param>
+            <param name="parameterTypes"></param>
+            <param name="iLGenerator"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:ACorns.WCF.DynamicClientProxy.Internal.WCFReusableFaultWrapperProxyClassBuilder`1.GenerateMethodImpl(System.Reflection.MethodInfo,System.Type[],System.Reflection.Emit.ILGenerator)" -->
+        <member name="T:ACorns.WCF.DynamicClientProxy.WCFReusableFaultWrapperClientProxy`1">
+            <summary>
+            Class that can be used with PolicyInjection. Dynamically generated classes will inherit from this class.
+            This class will also take care to unwrap any FaultException and extract and throw the original exception.
+            </summary>
+        </member>
+        <member name="T:ACorns.WCF.DynamicClientProxy.WCFReusableClientProxy`1">
+            <summary>
+            Class that can be used with PolicyInjection. Dynamically generated classes will inherit from this class.
+            </summary>
+        </member>
+        <member name="T:ACorns.WCF.DynamicClientProxy.IClientBase">
+            <summary>
+            Interface to expose the inner ClientBase properties hidden by the Proxy
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:ACorns.WCF.DynamicClientProxy.IClientBase.Abort" -->
+        <!-- Badly formed XML comment ignored for member "M:ACorns.WCF.DynamicClientProxy.IClientBase.Close" -->
+        <!-- Badly formed XML comment ignored for member "M:ACorns.WCF.DynamicClientProxy.IClientBase.Open" -->
+        <member name="E:ACorns.WCF.DynamicClientProxy.IClientBase.ProxyCreated">
+            <summary>
+            Fired when a new proxy is created.
+            In here you can initialize the Credentials and EndPoints.
+            </summary>
+        </member>
+        <member name="P:ACorns.WCF.DynamicClientProxy.IClientBase.ClientCredentials">
+            <summary>
+            Gets the client credentials used to call an operation.
+            Returns a System.ServiceModel.Description.ClientCredentials that represents
+            the proof of identity presented by the client.
+            </summary>
+        </member>
+        <member name="P:ACorns.WCF.DynamicClientProxy.IClientBase.Endpoint">
+            <summary>
+            Gets the target endpoint for the service to which the WCF client can connect.
+            </summary>
+        </member>
+        <member name="P:ACorns.WCF.DynamicClientProxy.IClientBase.CurrentEndpoint">
+            <summary>
+            Gets the target endpoint for the service to which the WCF client can connect.
+            This will return the real one. Will not try to create a new one.
+            </summary>
+        </member>
+        <member name="P:ACorns.WCF.DynamicClientProxy.IClientBase.InnerChannel">
+            <summary>
+            Gets the underlying System.ServiceModel.IClientChannel implementation.
+            </summary>
+            <value>The client channel for the WCF client object.</value>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:ACorns.WCF.DynamicClientProxy.IClientBase.State" -->
+        <member name="P:ACorns.WCF.DynamicClientProxy.IClientBase.Tag">
+            <summary>
+            Use this to store a user defined tag on the proxy.
+            </summary>
+        </member>
+        <member name="M:ACorns.WCF.DynamicClientProxy.WCFReusableClientProxy`1.CloseProxyBecauseOfException">
+            <summary>
+            Close the proxy because it was fauled.
+            </summary>
+        </member>
+        <member name="M:ACorns.WCF.DynamicClientProxy.WCFReusableClientProxy`1.AssureProxy">
+            <summary>
+            Create a new proxy if there is none already in use.
+            If the previous proxy was faulted, it will be nulled and a new proxy is created
+            </summary>
+        </member>
+        <member name="P:ACorns.WCF.DynamicClientProxy.WCFReusableClientProxy`1.Proxy">
+            <summary>
+            Called to retrieve a cached instance of the proxy.
+            </summary>
+        </member>
+        <member name="T:ACorns.WCF.DynamicClientProxy.WCFClientProxy`1">
+            <summary>
+            Dynamic generator for a WCF ClientBase proxies
+            </summary>
+            <typeparam name="TInterface">The Type of Service Contract on which you want to build a Dynamic Client Proxy</typeparam>
+        </member>
+        <member name="M:ACorns.WCF.DynamicClientProxy.WCFClientProxy`1.GetInstance(System.String)">
+            <summary>
+            Returns a new instance for a client proxy over the specified interface with the specified config name used for initialization.
+            This is a simple instance of a ClientBase derived class.
+            </summary>
+        </member>
+        <member name="M:ACorns.WCF.DynamicClientProxy.WCFClientProxy`1.GetInstanceType">
+            <summary>
+            Returns the type of class that represents a proxy over the specified interface with the specified config name used for initialization.
+            This is a simple instance of a ClientBase derived class.
+            </summary>
+        </member>
+        <member name="M:ACorns.WCF.DynamicClientProxy.WCFClientProxy`1.GetReusableInstance(System.String)">
+            <summary>
+            Returns a new instance for a client proxy over the specified interface with the specified config name used for initialization.
+            This instance of the proxy can be reused as it will always "clean" itself
+            if the channel is faulted.
+            </summary>
+        </member>
+        <member name="M:ACorns.WCF.DynamicClientProxy.WCFClientProxy`1.GetReusableFaultUnwrappingInstance(System.String)">
+            <summary>
+            Returns a new instance for a client proxy over the specified interface with the specified config name used for initialization.
+            This instance of the proxy can be reused as it will always "clean" itself
+            if the channel is faulted.
+            The class will also unwrap any FaultException and throw the original Exception.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:ACorns.WCF.DynamicClientProxy.Internal.WCFProxyClassBuilder`1" -->
+        <member name="M:ACorns.WCF.DynamicClientProxy.Internal.WCFProxyClassBuilder`1.GenerateMethodImpl(System.Reflection.MethodInfo,System.Type[],System.Reflection.Emit.ILGenerator)">
+            <summary>
+            Generate the contents of the method. This will generate:
+            
+            ....
+            return Channel.MethodName(params);
+            ...
+            
+            </summary>
+            <param name="method"></param>
+            <param name="parameterTypes"></param>
+            <param name="iLGenerator"></param>
+        </member>
+        <member name="T:ACorns.WCF.DynamicClientProxy.Internal.ProxyBuilder">
+            <summary>
+            Builder and cache of proxies
+            </summary>
+        </member>
+        <member name="T:ACorns.WCF.DynamicClientProxy.Pool.ProxyConnectionPool">
+            <summary>
+            A connection pool that will pickup all created dynamic proxies and will release them
+            once the HttpConnection is finished or the WCF operation is finished.
+            </summary>
+        </member>
+        <member name="P:ACorns.WCF.DynamicClientProxy.Pool.ProxyConnectionPool.EnableConnectionPool">
+            <summary>
+            Whenever the connection pool is automatically enabled
+            </summary>
+        </member>
+    </members>
+</doc>
