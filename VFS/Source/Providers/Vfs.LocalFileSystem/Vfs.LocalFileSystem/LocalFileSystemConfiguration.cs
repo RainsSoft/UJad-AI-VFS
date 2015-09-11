@@ -39,6 +39,7 @@ namespace Vfs.LocalFileSystem
 
 
     /// <summary>
+    /// 根据目录创建默认配置
     /// Creates a configuration for file system providers that limit access to the
     /// contents of a given directory.
     /// </summary>

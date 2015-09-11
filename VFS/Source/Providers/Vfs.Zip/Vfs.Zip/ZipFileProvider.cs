@@ -21,6 +21,7 @@ namespace Vfs.Zip
 
         /// <summary>
         /// Creates the provider with the ZIP file to be processed.
+        /// 注意：所有目录 必须以‘/’结尾
         /// </summary>
         public ZipFileProvider(ZipFileSystemConfiguration configuration) {
             Ensure.ArgumentNotNull(configuration, "configuration");
@@ -30,6 +31,30 @@ namespace Vfs.Zip
             NodeRepository = new ZipNodeRepository(configuration);
 
             InitTransferServices();
+        }
+        /// <summary>
+        /// 注意：所有目录 必须以‘/’结尾
+        /// </summary>
+        /// <param name="zipfile">zip文件</param>
+        /// <param name="tempDir">zip 释放或写入的临时目录</param>
+        public ZipFileProvider(string zipfile, string tempDir)
+            : this(ZipFileSystemConfiguration.CreateDefaultConfig(zipfile,tempDir)) {
+                if (!Directory.Exists(tempDir)) {
+                    Directory.CreateDirectory(tempDir);
+                }
+        }
+        public bool CreatEmptyZipFile(string zipfilepath) {
+            try {
+                if (File.Exists(zipfilepath)) File.Delete(zipfilepath);
+                ZipFile zip = new ZipFile(zipfilepath);
+                zip.Save();
+                zip.Dispose();
+                return true;
+            }
+            catch { 
+                
+            }
+            return false;
         }
         //add 
         Vfs.Zip.ZipFileItem ResolveFileResourcePathInternal2(string virtualFilePath, bool mustExist, FileSystemTask context) {
@@ -422,15 +447,15 @@ namespace Vfs.Zip
         /// <param name="relativeRoot">只能true</param>
         /// <returns></returns>
         public bool ExistFolder(string virFolderPath, bool relativeRoot) {
-             virFolderPath = virFolderPath.Replace("\\", "/");
-             if (virFolderPath[0] == '/') virFolderPath = virFolderPath.Remove(0, 1);
-             //if (virFolderPath[virFolderPath.Length - 1] != '/') virFolderPath=virFolderPath+"/";
+            virFolderPath = virFolderPath.Replace("\\", "/");
+            if (virFolderPath[0] == '/') virFolderPath = virFolderPath.Remove(0, 1);
+            //if (virFolderPath[virFolderPath.Length - 1] != '/') virFolderPath=virFolderPath+"/";
             FileInfo zipfilep = this.Configuration.ZipFileInfo;
             ZipFile zf = Ionic.Zip.ZipFile.Read(zipfilep.FullName);
             bool find = false;
-            string name="";
+            string name = "";
             foreach (string v in zf.EntryFileNames) {
-                name = v;              
+                name = v;
                 if (string.Compare(virFolderPath, name, true) == 0) {
                     find = true;
                     break;

@@ -66,6 +66,7 @@ namespace Vfs.LocalFileSystem
         /// local file system, using the <see cref="Environment.MachineName"/>
         /// as the root folder name.
         /// </summary>
+        [Obsolete("not use")]
         public LocalFileSystemProvider()
             : this(Environment.MachineName) {
         }
@@ -75,6 +76,7 @@ namespace Vfs.LocalFileSystem
         /// local file system.
         /// </summary>
         /// <param name="rootName">The name of the root folder.</param>
+        [Obsolete("not use")]
         public LocalFileSystemProvider(string rootName)
             : this(LocalFileSystemConfiguration.CreateForMachine(rootName)) {
         }
