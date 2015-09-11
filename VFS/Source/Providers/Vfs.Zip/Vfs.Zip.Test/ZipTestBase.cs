@@ -6,6 +6,7 @@ using System.Text;
 using NUnit.Framework;
 using Vfs.Locking;
 using Vfs.Test;
+using Vfs.Transfer;
 using Vfs.Util;
 using Vfs.Util.TemporaryStorage;
 using Vfs.Zip.Test.Properties;
@@ -50,8 +51,8 @@ namespace Vfs.Zip.Test
       TestZipFile = new FileInfo(path);
 
       //init transfer stores
-      DownloadTransferStore = new TestTransferStore<ZipDownloadTransfer>();
-      UploadTransferStore = new TestTransferStore<ZipUploadTransfer>();
+      InMemoryTransferStore<ZipDownloadTransfer> DownloadTransferStore = new InMemoryTransferStore<ZipDownloadTransfer>();
+      InMemoryTransferStore<ZipUploadTransfer> UploadTransferStore = new InMemoryTransferStore<ZipUploadTransfer>();
 
       //init configuration
       var tempFactory = new TempFileStreamFactory(TempDirectory.FullName);

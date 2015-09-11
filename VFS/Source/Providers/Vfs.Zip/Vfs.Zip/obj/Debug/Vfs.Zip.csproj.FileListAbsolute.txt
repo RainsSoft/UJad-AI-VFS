@@ -9,5 +9,12 @@ E:\GitHub\VFS\Source\Providers\Vfs.Zip\Vfs.Zip\obj\Debug\Vfs.Zip.csprojResolveAs
 E:\GitHub\VFS\Source\Providers\Vfs.Zip\Vfs.Zip\obj\Debug\Vfs.Zip.dll
 E:\GitHub\VFS\Source\Providers\Vfs.Zip\Vfs.Zip\obj\Debug\Vfs.Zip.pdb
 E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Zip\Vfs.Zip\obj\Debug\Vfs.Zip.csprojResolveAssemblyReference.cache
-E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Zip\Vfs.Zip\obj\Debug\Vfs.Zip.dll
 E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Zip\Vfs.Zip\obj\Debug\Vfs.Zip.pdb
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Zip\Vfs.Zip\bin\Debug\Vfs.Zip.exe
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Zip\Vfs.Zip\bin\Debug\Vfs.Zip.pdb
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Zip\Vfs.Zip\bin\Debug\Ionic.Zip.dll
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Zip\Vfs.Zip\bin\Debug\Vfs.dll
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Zip\Vfs.Zip\bin\Debug\Vfs.pdb
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Zip\Vfs.Zip\bin\Debug\Ionic.Zip.pdb
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Zip\Vfs.Zip\bin\Debug\Ionic.Zip.xml
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Zip\Vfs.Zip\obj\Debug\Vfs.Zip.exe
