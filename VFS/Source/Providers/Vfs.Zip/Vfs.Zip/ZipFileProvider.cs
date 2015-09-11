@@ -12,7 +12,7 @@ using Vfs.Zip.Transfer;
 
 namespace Vfs.Zip
 {
-  public class ZipFileProvider : FileSystemProviderBase2<ZipFileItem, ZipFolderItem>
+  public class ZipFileProvider : FileSystemProviderBase2//<ZipFileItem, ZipFolderItem>
   {
     protected ZipFileSystemConfiguration Configuration { get; private set; }
     public ZipNodeRepository NodeRepository { get; private set; }
@@ -32,7 +32,14 @@ namespace Vfs.Zip
 
       InitTransferServices();
     }
-
+    //add 
+    Vfs.Zip.ZipFileItem ResolveFileResourcePathInternal2(string virtualFilePath, bool mustExist, FileSystemTask context) {
+        return ResolveFileResourcePathInternal(virtualFilePath, mustExist, context) as Vfs.Zip.ZipFileItem;
+    }
+    Vfs.Zip.ZipFolderItem ResolveFolderResourcePathInternal2(string virtualFolderPath, bool mustExist, FileSystemTask context) {
+        return ResolveFolderResourcePathInternal(virtualFolderPath, mustExist, context) as Vfs.Zip.ZipFolderItem;
+    }
+    //
     /// <summary>
     /// Inits the upload and download transfer services.
     /// </summary>
@@ -44,7 +51,7 @@ namespace Vfs.Zip
       {
         Provider = this,
         FileSystemConfiguration = Configuration,
-        FileResolverFunc = ResolveFileResourcePathInternal,
+        FileResolverFunc = ResolveFileResourcePathInternal2,
         ClaimsResolverFunc = fi => Security.GetFileClaims(fi),
         FolderClaimsResolverFunc = fi => Security.GetFolderClaims(fi),
         LockResolverFunc = (fi, lockType) => RequestChainedLockGuard(fi, lockType),
@@ -57,7 +64,7 @@ namespace Vfs.Zip
         string parentFolderPath = fi.ResourceInfo.ParentFolderPath;
 
         //get the parent info
-        return ResolveFolderResourcePathInternal(parentFolderPath, true, context);
+        return ResolveFolderResourcePathInternal2(parentFolderPath, true, context);
       };
 
       //init stores
@@ -75,7 +82,10 @@ namespace Vfs.Zip
     /// <returns>A <see cref="IVirtualFolderItem"/> which encapsulates
     /// a <see cref="VirtualFolderInfo"/> that represents the file
     /// system's root folder.</returns>
-    protected override ZipFolderItem GetFileSystemRootImplementation()
+    protected override IVirtualFolderItem GetFileSystemRootImplementation() {
+        return GetFileSystemRootImplementation2();
+    }
+    protected  ZipFolderItem GetFileSystemRootImplementation2()
     {
       //delegate creation to the repository
       return NodeRepository.CreateRootItem();   
@@ -84,7 +94,7 @@ namespace Vfs.Zip
     /// <summary>
     /// Manages download requests from the file system.
     /// </summary>
-    public override IDownloadTransferHandler DownloadTransfers
+    public override IDownloadTransferHandler DownloadTransfers 
     {
       get { return DownloadHandler; }
     }
@@ -119,7 +129,10 @@ namespace Vfs.Zip
     /// <see cref="VfsException.SuppressAuditing"/> properties.</exception>
     /// <exception cref="Exception">Any exceptions that are not derived from
     /// <see cref="VfsException"/> will be wrapped and audited.</exception>
-    public override ZipFileItem ResolveFileResourcePath(string submittedFilePath, FileSystemTask context)
+    public override IVirtualFileItem ResolveFileResourcePath(string submittedFilePath, FileSystemTask context) {
+        return ResolveFileResourcePath2(submittedFilePath,context);
+    }
+    public  ZipFileItem ResolveFileResourcePath2(string submittedFilePath, FileSystemTask context)
     {
       return NodeRepository.GetFileItem(submittedFilePath);
     }
@@ -145,24 +158,31 @@ namespace Vfs.Zip
     /// <see cref="VfsException.SuppressAuditing"/> properties.</exception>
     /// <exception cref="Exception">Any exceptions that are not derived from
     /// <see cref="VfsException"/> will be wrapped and audited.</exception>
-    public override ZipFolderItem ResolveFolderResourcePath(string submittedFolderPath, FileSystemTask context)
+    public override IVirtualFolderItem ResolveFolderResourcePath(string submittedFolderPath, FileSystemTask context) {
+        return ResolveFolderResourcePath2(submittedFolderPath, context);
+    }
+    public  ZipFolderItem ResolveFolderResourcePath2(string submittedFolderPath, FileSystemTask context)
     {
       if(String.IsNullOrEmpty(submittedFolderPath) || submittedFolderPath == ZipNodeRepository.RootFolderPath)
       {
-        return GetFileSystemRootImplementation();
+        return GetFileSystemRootImplementation() as ZipFolderItem;
       }
 
       return NodeRepository.GetFolderItem(submittedFolderPath);
     }
 
 
-
-    protected override IEnumerable<string> GetChildFolderPathsInternal(ZipFolderItem parentFolder)
+    protected override IEnumerable<string> GetChildFolderPathsInternal(IVirtualFolderItem parentFolder) {
+        return GetChildFolderPathsInternal2(parentFolder as ZipFolderItem);
+    }
+    protected  IEnumerable<string> GetChildFolderPathsInternal2(ZipFolderItem parentFolder)
     {
       return parentFolder.Node.ChildDirectories.Select(cd => cd.FullName);
     }
-
-    protected override IEnumerable<string> GetChildFilePathsInternal(ZipFolderItem parentFolder)
+    protected override IEnumerable<string> GetChildFilePathsInternal(IVirtualFolderItem parentFolder) {
+        return GetChildFilePathsInternal2(parentFolder as ZipFolderItem);
+    }
+    protected  IEnumerable<string> GetChildFilePathsInternal2(ZipFolderItem parentFolder)
     {
       return parentFolder.Node.ChildFiles.Select(cf => cf.FullName);
     }
@@ -179,15 +199,20 @@ namespace Vfs.Zip
       return node != null && node.IsDirectoryNode;
     }
 
-    protected override ZipFolderItem CreateFolderOnFileSystem(ZipFolderItem folder)
+    protected override IVirtualFolderItem CreateFolderOnFileSystem(IVirtualFolderItem folder) {
+        return CreateFolderOnFileSystem2(folder as ZipFolderItem);
+    }
+    protected  ZipFolderItem CreateFolderOnFileSystem2(ZipFolderItem folder)
     {
       Action action = () => NodeRepository.ZipFile.AddDirectoryByName(folder.QualifiedIdentifier);
       NodeRepository.PerformWriteAction(action);
 
       return NodeRepository.GetFolderItem(folder.QualifiedIdentifier);
     }
-
-    protected override void DeleteFolderOnFileSystem(ZipFolderItem folder)
+    protected override void DeleteFolderOnFileSystem(IVirtualFolderItem folder) {
+         DeleteFolderOnFileSystem2(folder as ZipFolderItem);
+    }
+    protected  void DeleteFolderOnFileSystem2(ZipFolderItem folder)
     {
       Action action = () =>
                         {
@@ -197,14 +222,18 @@ namespace Vfs.Zip
 
       NodeRepository.PerformWriteAction(action);
     }
-
-    protected override void DeleteFileOnFileSystem(ZipFileItem file)
+    protected override void DeleteFileOnFileSystem(IVirtualFileItem file) {
+        DeleteFileOnFileSystem2(file as ZipFileItem);
+    }
+    protected  void DeleteFileOnFileSystem2(ZipFileItem file)
     {
       Action action = () => NodeRepository.ZipFile.RemoveEntry(file.Node.FileEntry);
       NodeRepository.PerformWriteAction(action);
     }
-
-    protected override void MoveFolderOnFileSystem(ZipFolderItem sourceFolder, ZipFolderItem targetFolder)
+    protected override void MoveFolderOnFileSystem(IVirtualFolderItem sourceFolder, IVirtualFolderItem targetFolder) {
+        MoveFolderOnFileSystem2(sourceFolder as ZipFolderItem,targetFolder as ZipFolderItem);
+    }
+    protected  void MoveFolderOnFileSystem2(ZipFolderItem sourceFolder, ZipFolderItem targetFolder)
     {
       //rewrite path information on all items (just replace the path part of the folder)
       Action action = () =>
@@ -231,7 +260,10 @@ namespace Vfs.Zip
     /// </summary>
     /// <param name="sourceFolder">The folder to be copied.</param>
     /// <param name="targetFolder">The designated location of the copy.</param>
-    protected override void CopyFolderOnFileSystem(ZipFolderItem sourceFolder, ZipFolderItem targetFolder)
+    protected override void CopyFolderOnFileSystem(IVirtualFolderItem sourceFolder, IVirtualFolderItem targetFolder) {
+        CopyFolderOnFileSystem2(sourceFolder as ZipFolderItem,targetFolder as ZipFolderItem);
+    }
+    protected  void CopyFolderOnFileSystem2(ZipFolderItem sourceFolder, ZipFolderItem targetFolder)
     {
       //recurse
       NodeRepository.PerformWriteAction(() => CopyFolderContents(sourceFolder.Node, targetFolder.QualifiedIdentifier));
@@ -267,13 +299,17 @@ namespace Vfs.Zip
       }
     }
 
-
-    protected override void MoveFileOnFileSystem(ZipFileItem sourceFile, ZipFileItem targetFile)
+    protected override void MoveFileOnFileSystem(IVirtualFileItem sourceFile, IVirtualFileItem targetFile) {
+        MoveFileOnFileSystem2(sourceFile as ZipFileItem,targetFile as ZipFileItem);
+    }
+    protected  void MoveFileOnFileSystem2(ZipFileItem sourceFile, ZipFileItem targetFile)
     {
       NodeRepository.PerformWriteAction(() => sourceFile.Node.FileEntry.FileName = targetFile.QualifiedIdentifier);
     }
-
-    protected override void CopyFileOnFileSystem(ZipFileItem sourceFile, ZipFileItem targetFile)
+    protected override void CopyFileOnFileSystem(IVirtualFileItem sourceFile, IVirtualFileItem targetFile) {
+        CopyFileOnFileSystem2(sourceFile as ZipFileItem,targetFile as ZipFileItem);
+    }
+    protected  void CopyFileOnFileSystem2(ZipFileItem sourceFile, ZipFileItem targetFile)
     {
       using (TempStream tempStream = Configuration.TempStreamFactory.CreateTempStream())
       {
@@ -292,12 +328,17 @@ namespace Vfs.Zip
     /// </summary>
     /// <param name="fileItem">Represents the file to be read.</param>
     /// <returns>A stream that provides the file's binary data.</returns>
-    protected override Stream OpenFileStreamFromFileSystem(ZipFileItem fileItem)
+    protected override Stream OpenFileStreamFromFileSystem(IVirtualFileItem fileItem) {
+        return OpenFileStreamFromFileSystem2(fileItem as ZipFileItem);
+    }
+    protected  Stream OpenFileStreamFromFileSystem2(ZipFileItem fileItem)
     {
       return fileItem.Node.FileEntry.OpenReader();
     }
-
-    protected override void WriteFileStreamToFileSystem(ZipFileItem fileItem, Stream input)
+    protected override void WriteFileStreamToFileSystem(IVirtualFileItem fileItem, Stream input) {
+        WriteFileStreamToFileSystem2(fileItem as ZipFileItem,input);
+    }
+    protected  void WriteFileStreamToFileSystem2(ZipFileItem fileItem, Stream input)
     {
       NodeRepository.PerformWriteAction(() =>
           {
@@ -362,7 +403,10 @@ namespace Vfs.Zip
     /// <param name="file">The currently processed file.</param>
     /// <returns>All resources that need to be write-protected in order to
     /// process the file.</returns>
-    protected override List<string> GetResourceLockChain(ZipFileItem file)
+    protected override List<string> GetResourceLockChain(IVirtualFileItem file) {
+        return GetResourceLockChain2(file as ZipFileItem);
+    }
+    protected  List<string> GetResourceLockChain2(ZipFileItem file)
     {
       return file.Node.GetAncestors(false, false)
         .Select(n => n.FullName)
@@ -380,7 +424,10 @@ namespace Vfs.Zip
     /// <param name="folder">The currently processed folder.</param>
     /// <returns>All resources that need to be write-protected in order to
     /// process the folder.</returns>
-    protected override List<string> GetResourceLockChain(ZipFolderItem folder)
+    protected override List<string> GetResourceLockChain(IVirtualFolderItem folder) {
+        return GetResourceLockChain2(folder as ZipFolderItem);
+    }
+    protected  List<string> GetResourceLockChain2(ZipFolderItem folder)
     {
       return folder.Node.GetAncestors(false, false)
         .Select(n => n.FullName)
