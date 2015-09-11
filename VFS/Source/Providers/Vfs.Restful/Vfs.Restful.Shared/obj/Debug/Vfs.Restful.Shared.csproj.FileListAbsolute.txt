@@ -1,0 +1,11 @@
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Restful\Vfs.Restful.Shared\bin\Debug\Vfs.Restful.Shared.dll.config
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Restful\Vfs.Restful.Shared\bin\Debug\Vfs.Restful.Shared.dll
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Restful\Vfs.Restful.Shared\bin\Debug\Vfs.Restful.Shared.pdb
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Restful\Vfs.Restful.Shared\bin\Debug\OpenRasta.dll
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Restful\Vfs.Restful.Shared\bin\Debug\Vfs.dll
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Restful\Vfs.Restful.Shared\bin\Debug\Vfs.pdb
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Restful\Vfs.Restful.Shared\bin\Debug\OpenRasta.pdb
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Restful\Vfs.Restful.Shared\bin\Debug\OpenRasta.xml
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Restful\Vfs.Restful.Shared\obj\Debug\Vfs.Restful.Shared.csprojResolveAssemblyReference.cache
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Restful\Vfs.Restful.Shared\obj\Debug\Vfs.Restful.Shared.dll
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Restful\Vfs.Restful.Shared\obj\Debug\Vfs.Restful.Shared.pdb

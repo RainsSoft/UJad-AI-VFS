@@ -50,7 +50,7 @@ namespace Vfs.LocalFileSystem.Test
     {
       var provider = (LocalFileSystemProvider)FileSystem;
       if (provider.RootDirectory == null) return;
-
+        
       provider.RootDirectory.Refresh();
       if (provider.RootDirectory.Exists)
       {

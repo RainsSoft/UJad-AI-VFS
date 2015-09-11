@@ -7,3 +7,4 @@ E:\GitHub\UJad-AI-VFS\VFS\Source\Vfs.Core\obj\Debug\Vfs.dll
 E:\GitHub\UJad-AI-VFS\VFS\Source\Vfs.Core\obj\Debug\Vfs.pdb
 E:\GitHub\UJad-AI-VFS\VFS\Source\Vfs.Core\bin\Debug\Vfs.dll
 E:\GitHub\UJad-AI-VFS\VFS\Source\Vfs.Core\bin\Debug\Vfs.pdb
+E:\GitHub\UJad-AI-VFS\VFS\Source\Vfs.Core\obj\Debug\VFS.csprojResolveAssemblyReference.cache

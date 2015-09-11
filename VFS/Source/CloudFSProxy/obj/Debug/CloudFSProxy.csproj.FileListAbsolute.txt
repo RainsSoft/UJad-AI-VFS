@@ -1,0 +1,1 @@
+E:\GitHub\UJad-AI-VFS\VFS\Source\CloudFSProxy\obj\Debug\CloudFSProxy.csprojResolveAssemblyReference.cache

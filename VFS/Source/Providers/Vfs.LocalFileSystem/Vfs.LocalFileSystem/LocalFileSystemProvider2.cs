@@ -750,5 +750,29 @@ namespace Vfs.LocalFileSystem
 
             return folders;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="virFolderPath">相对root路径或者绝对路径</param>
+        /// <param name="relativeRoot">默认true</param>
+        /// <returns></returns>
+        public bool ExistFolder(string virFolderPath, bool relativeRoot) {
+            if (this.RootDirectory != null) {               
+                return Directory.Exists(Path.Combine(this.RootDirectory.FullName,virFolderPath));
+            }
+            return Directory.Exists(virFolderPath);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="virFilePath">相对root路径或者绝对路径</param>
+        /// <param name="relativeRoot">默认true</param>
+        /// <returns></returns>
+        public bool ExistFile(string virFilePath, bool relativeRoot) {
+            if (this.RootDirectory != null) {
+                return File.Exists(Path.Combine(this.RootDirectory.FullName, virFilePath));
+            }
+            return File.Exists(virFilePath);
+        }
     }
 }

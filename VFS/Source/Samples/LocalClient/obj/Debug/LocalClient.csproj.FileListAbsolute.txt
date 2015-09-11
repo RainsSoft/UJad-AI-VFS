@@ -1,0 +1,16 @@
+E:\GitHub\UJad-AI-VFS\VFS\Source\Samples\LocalClient\bin\Debug\Vfs.Samples.LocalClient.exe
+E:\GitHub\UJad-AI-VFS\VFS\Source\Samples\LocalClient\bin\Debug\Vfs.Samples.LocalClient.pdb
+E:\GitHub\UJad-AI-VFS\VFS\Source\Samples\LocalClient\bin\Debug\Vfs.dll
+E:\GitHub\UJad-AI-VFS\VFS\Source\Samples\LocalClient\bin\Debug\Vfs.pdb
+E:\GitHub\UJad-AI-VFS\VFS\Source\Samples\LocalClient\obj\Debug\LocalClient.csprojResolveAssemblyReference.cache
+E:\GitHub\UJad-AI-VFS\VFS\Source\Samples\LocalClient\obj\Debug\Views\Main.baml
+E:\GitHub\UJad-AI-VFS\VFS\Source\Samples\LocalClient\obj\Debug\Window1.baml
+E:\GitHub\UJad-AI-VFS\VFS\Source\Samples\LocalClient\obj\Debug\Views\Main.g.cs
+E:\GitHub\UJad-AI-VFS\VFS\Source\Samples\LocalClient\obj\Debug\Window1.g.cs
+E:\GitHub\UJad-AI-VFS\VFS\Source\Samples\LocalClient\obj\Debug\App.g.cs
+E:\GitHub\UJad-AI-VFS\VFS\Source\Samples\LocalClient\obj\Debug\Vfs.Samples.LocalClient_MarkupCompile.cache
+E:\GitHub\UJad-AI-VFS\VFS\Source\Samples\LocalClient\obj\Debug\Vfs.Samples.LocalClient.g.resources
+E:\GitHub\UJad-AI-VFS\VFS\Source\Samples\LocalClient\obj\Debug\Vfs.Samples.LocalClient.Properties.Resources.resources
+E:\GitHub\UJad-AI-VFS\VFS\Source\Samples\LocalClient\obj\Debug\LocalClient.csproj.GenerateResource.Cache
+E:\GitHub\UJad-AI-VFS\VFS\Source\Samples\LocalClient\obj\Debug\Vfs.Samples.LocalClient.exe
+E:\GitHub\UJad-AI-VFS\VFS\Source\Samples\LocalClient\obj\Debug\Vfs.Samples.LocalClient.pdb

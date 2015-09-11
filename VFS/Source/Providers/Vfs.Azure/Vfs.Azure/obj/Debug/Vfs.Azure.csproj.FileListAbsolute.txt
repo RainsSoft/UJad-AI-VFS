@@ -1,0 +1,1 @@
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Azure\Vfs.Azure\obj\Debug\Vfs.Azure.csprojResolveAssemblyReference.cache

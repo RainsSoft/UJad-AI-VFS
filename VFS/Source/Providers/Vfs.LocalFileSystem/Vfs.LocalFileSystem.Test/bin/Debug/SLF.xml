@@ -1,0 +1,2752 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SLF</name>
+    </assembly>
+    <members>
+        <member name="T:Slf.Resolvers.SimpleLoggerResolver">
+            <summary>
+            A factory resolver that provides a simplified API by
+            allowing to directly set the <see cref="T:Slf.ILogger"/> instance
+            that is being returned by its internal <see cref="T:Slf.ILoggerFactory"/>
+            instance.<br/>
+            Use this class in order to provide a simple resolver that does not
+            need to resolve factories or loggers for different logger names,
+            but always returns the same <see cref="T:Slf.ILogger"/>.
+            </summary>
+        </member>
+        <member name="T:Slf.IFactoryResolver">
+            <summary>
+            Responsible for finding and creating <see cref="T:Slf.ILoggerFactory"/>
+            instances which are being used to create loggers of a given implementation.
+            </summary>
+        </member>
+        <member name="M:Slf.IFactoryResolver.GetFactory(System.String)">
+            <summary>
+            Determines a factory which in turn creates an
+            <see cref="T:Slf.ILogger"/> instance based on a
+            request for a named logger.
+            </summary>
+            <param name="loggerName">The name of the requested logger. This name will also
+            be used to determine the factory that is responsible to create the logger
+            instance.</param>
+            <returns>A factory which in turn is responsible for creating
+            a given <see cref="T:Slf.ILogger"/> implementation.</returns>
+        </member>
+        <member name="F:Slf.Resolvers.SimpleLoggerResolver.factory">
+            <summary>
+            Internal factory - not exposed.
+            </summary>
+        </member>
+        <member name="M:Slf.Resolvers.SimpleLoggerResolver.#ctor">
+            <summary>
+            Initializes a new instance of the resolver, which uses an
+            <see cref="T:Slf.NullLogger"/> instance until the <see cref="P:Slf.Resolvers.SimpleLoggerResolver.Logger"/>
+            property is set explicitly. 
+            </summary>
+        </member>
+        <member name="M:Slf.Resolvers.SimpleLoggerResolver.#ctor(Slf.ILogger)">
+            <summary>
+            Initializes a new instance of the resolver with the logger to be
+            maintained.
+            </summary>
+            <param name="logger">The logger to be returned by this resolver's
+            factory.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="logger"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Slf.Resolvers.SimpleLoggerResolver.GetFactory(System.String)">
+            <summary>
+            Determines a factory which cab create an
+            <see cref="T:Slf.ILogger"/> instance based on a
+            request for a named logger.
+            </summary>
+            <param name="loggerName">The logger name.</param>
+            <returns>A factory which in turn is responsible for creating
+            a given <see cref="T:Slf.ILogger"/> implementation.</returns>
+        </member>
+        <member name="P:Slf.Resolvers.SimpleLoggerResolver.Logger">
+            <summary>
+            Gets or sets the logger that is being returned by the
+            factory. If a null value is being assigned, the factory
+            falls back to a <see cref="T:Slf.NullLogger"/> instance.
+            </summary>
+        </member>
+        <member name="T:Slf.LoggerService">
+            <summary>
+            Provides a global repository that provides access to <see cref="T:Slf.ILogger"/>
+            instances. This class ensures that both the <see cref="M:Slf.LoggerService.GetLogger"/>
+            and <see cref="M:Slf.LoggerService.GetLogger(System.String)"/> methods always return a valid
+            <see cref="T:Slf.ILogger"/> instance - if no matching logger can be resolved,
+            the service automatically falls back to a <see cref="T:Slf.NullLogger"/> instance.
+            </summary>
+        </member>
+        <member name="F:Slf.LoggerService.DefaultLoggerName">
+            <summary>
+            The name of the default logger, which is just an empty
+            string.
+            </summary>
+            <remarks>
+            SLF supports named loggers, meaning that a request for a logger with
+            a particular name may return a specific <see cref="T:Slf.ILogger"/> instance.
+            This also applies to the default logger that is being requested
+            through the parameterless <see cref="M:Slf.LoggerService.GetLogger"/> method, which just
+            makes a query for a logger with a name of <see cref="F:System.String.Empty"/>.
+            </remarks>
+        </member>
+        <member name="F:Slf.LoggerService.factoryResolver">
+            <summary>
+            Non-Silverlight projects: Rely on configuration settings per default
+            in order to make sure declarative configuration in app.config does
+            not require setting the resolver programmatically.<br/>
+            Silverlight: Use the NullLogger per default. 
+            </summary>
+        </member>
+        <member name="M:Slf.LoggerService.#cctor">
+            <summary>
+            Initializes the logger service with a default resolver:<br/>
+            Non-Silverlight projects: Rely on configuration settings per default
+            in order to make sure declarative configuration in app.config does
+            not require setting the resolver programmatically.<br/>
+            Silverlight: Use the NullLogger per default. 
+            </summary>
+        </member>
+        <member name="M:Slf.LoggerService.Reset">
+            <summary>
+            Discards customizations and resets the configured logger
+            facilities to their defaults. For Silverlight, this means
+            that the service returns <see cref="T:Slf.NullLogger"/> instances
+            for all requests. In other environments, the class falls
+            back to loggers that were configured through <c>app.config</c>.
+            </summary>
+        </member>
+        <member name="M:Slf.LoggerService.GetLogger(System.String)">
+            <summary>
+            Gets a named  <see cref="T:Slf.ILogger"/> instance. This is the
+            logger instance set by the <see cref="M:Slf.LoggerService.SetLogger(Slf.ILogger)"/> method, or
+            a logger with the specified name if a factory can be resolved that
+            returns.
+            </summary>
+            <param name="name">The name of the requested logger. If this parameter
+            is a null reference, the <see cref="F:Slf.LoggerService.DefaultLoggerName"/> will be used instead.</param>
+            <returns>Always returns a valid <see cref="T:Slf.ILogger"/> instance. If no logger can
+            be resolved, an instance of <see cref="T:Slf.NullLogger"/> is returned.</returns>
+            <remarks>This method applies several fallback strategies when trying to determine
+            the requested logger.</remarks>
+        </member>
+        <member name="M:Slf.LoggerService.GetLogger">
+            <summary>
+            Gets a default <see cref="T:Slf.ILogger"/> instance. This is the
+            logger instance set by the <see cref="M:Slf.LoggerService.SetLogger(Slf.ILogger)"/> method, or
+            a logger with a default name if a factory can be resolved through
+            the <see cref="P:Slf.LoggerService.FactoryResolver"/>. Invoking this method is syntactically
+            equivalent to invoking the <see cref="M:Slf.LoggerService.GetLogger(System.String)"/> method with
+            a logger name of <see cref="F:Slf.LoggerService.DefaultLoggerName"/>.
+            </summary>
+            <returns>Always returns a valid <see cref="T:Slf.ILogger"/> instance. If no logger can
+            be resolved, an instance of <see cref="T:Slf.NullLogger"/> is returned.</returns>
+        </member>
+        <member name="M:Slf.LoggerService.SetLogger(Slf.ILogger)">
+            <summary>
+            Plugs in a single <see cref="T:Slf.ILogger"/> instance that will be returned
+            for all requests, including requests for named loggers
+            (both <see cref="M:Slf.LoggerService.GetLogger"/> and <see cref="M:Slf.LoggerService.GetLogger(System.String)"/>
+            methods).
+            </summary>
+            <param name="loggerImplementation">The logger to be
+            used globally. A null reference is a valid parameter value which resets
+            the service to return a <see cref="T:Slf.NullLogger"/> instance.</param>
+            <remarks>Assigning a logger through this method creates a custom
+            <see cref="T:Slf.IFactoryResolver"/>. This resolver replaces the current
+            <see cref="P:Slf.LoggerService.FactoryResolver"/> property in order to always return
+            the submitted <paramref name="loggerImplementation"/> if
+            <see cref="M:Slf.LoggerService.GetLogger"/> or <see cref="M:Slf.LoggerService.GetLogger(System.String)"/> is being
+            invoked.</remarks>
+        </member>
+        <member name="P:Slf.LoggerService.FactoryResolver">
+            <summary>
+            Provides access to factories for both the default and
+            named loggers.
+            </summary>
+        </member>
+        <member name="T:Slf.FormattableLoggerBase">
+            <summary>
+            Base class that extends <see cref="T:Slf.LoggerBase"/> with a custom
+            <see cref="T:Slf.ILogItemFormatter"/> by implementing the
+            <see cref="T:Slf.IFormattableLogger"/> interface.<br/>
+            Derive from this base class if you want to use simple
+            string conversion for logged <see cref="T:Slf.LogItem"/> instances.
+            </summary>
+        </member>
+        <member name="T:Slf.LoggerBase">
+            <summary>
+            Abstract base class which provides most logging method
+            overloads for an <see cref="T:Slf.ILogger"/> implementation.
+            </summary>
+        </member>
+        <member name="T:Slf.ILogger">
+            <summary>
+            Common interface of an arbitrary implementation that provides
+            logging capabilities.
+            </summary>
+        </member>
+        <member name="M:Slf.ILogger.Debug(System.Object)">
+            <summary>
+            Logs an arbitrary object with the <see cref="F:Slf.LogLevel.Debug"/> level. 
+            </summary>
+            <param name="obj">The message object to log, which will be converted
+            into a string during logging.</param>
+        </member>
+        <member name="M:Slf.ILogger.Debug(System.String)">
+            <summary>
+            Logs a debug message (<see cref="F:Slf.LogLevel.Debug"/>).
+            </summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:Slf.ILogger.Debug(System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Debug"/> level. 
+            </summary>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.ILogger.Debug(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Debug"/> level. 
+            </summary>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.ILogger.Debug(System.Exception)">
+            <summary>
+            Logs an exception with a logging level of <see cref="F:Slf.LogLevel.Debug"/>.
+            </summary>
+            <param name="exception">The exception to log.</param>
+        </member>
+        <member name="M:Slf.ILogger.Debug(System.Exception,System.String)">
+            <summary>
+            Logs an exception and an additional message with a logging level of
+            <see cref="F:Slf.LogLevel.Debug"/>.
+            </summary>
+            <param name="exception"> The exception to log.</param>
+            <param name="message">Additional information regarding the
+            logged exception.</param>
+        </member>
+        <member name="M:Slf.ILogger.Debug(System.Exception,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Debug"/> level. 
+            </summary>
+            <param name="exception">The exception to log </param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.ILogger.Debug(System.Exception,System.String,System.IFormatProvider,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Debug"/> level. 
+            </summary>
+            <param name="exception">The exception to log.</param>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.ILogger.Info(System.Object)">
+            <summary>
+            Logs an arbitrary object with the <see cref="F:Slf.LogLevel.Info"/> level. 
+            </summary>
+            <param name="obj">The message object to log, which will be converted
+            into a string during logging.</param>
+        </member>
+        <member name="M:Slf.ILogger.Info(System.String)">
+            <summary>
+            Logs an informational message (<see cref="F:Slf.LogLevel.Info"/>).
+            </summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:Slf.ILogger.Info(System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Info"/> level. 
+            </summary>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.ILogger.Info(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Info"/> level. 
+            </summary>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.ILogger.Info(System.Exception)">
+            <summary>
+            Logs an exception with a logging level of <see cref="F:Slf.LogLevel.Info"/>.
+            </summary>
+            <param name="exception">The exception to log.</param>
+        </member>
+        <member name="M:Slf.ILogger.Info(System.Exception,System.String)">
+            <summary>
+            Logs an exception and an additional message with a logging level of
+            <see cref="F:Slf.LogLevel.Info"/>.
+            </summary>
+            <param name="exception"> The exception to log.</param>
+            <param name="message">Additional information regarding the
+            logged exception.</param>
+        </member>
+        <member name="M:Slf.ILogger.Info(System.Exception,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Info"/> level. 
+            </summary>
+            <param name="exception">The exception to log </param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.ILogger.Info(System.Exception,System.String,System.IFormatProvider,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Info"/> level. 
+            </summary>
+            <param name="exception">The exception to log.</param>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.ILogger.Warn(System.Object)">
+            <summary>
+            Logs an arbitrary object with the <see cref="F:Slf.LogLevel.Warn"/> level. 
+            </summary>
+            <param name="obj">The message object to log, which will be converted
+            into a string during logging.</param>
+        </member>
+        <member name="M:Slf.ILogger.Warn(System.String)">
+            <summary>
+            Logs a warning message (<see cref="F:Slf.LogLevel.Warn"/>).
+            </summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:Slf.ILogger.Warn(System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Warn"/> level. 
+            </summary>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.ILogger.Warn(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Warn"/> level. 
+            </summary>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.ILogger.Warn(System.Exception)">
+            <summary>
+            Logs an exception with a logging level of <see cref="F:Slf.LogLevel.Warn"/>.
+            </summary>
+            <param name="exception">The exception to log.</param>
+        </member>
+        <member name="M:Slf.ILogger.Warn(System.Exception,System.String)">
+            <summary>
+            Logs an exception and an additional message with a logging level of
+            <see cref="F:Slf.LogLevel.Warn"/>.
+            </summary>
+            <param name="exception"> The exception to log.</param>
+            <param name="message">Additional information regarding the
+            logged exception.</param>
+        </member>
+        <member name="M:Slf.ILogger.Warn(System.Exception,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Warn"/> level. 
+            </summary>
+            <param name="exception">The exception to log </param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.ILogger.Warn(System.Exception,System.String,System.IFormatProvider,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Warn"/> level. 
+            </summary>
+            <param name="exception">The exception to log.</param>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.ILogger.Error(System.Object)">
+            <summary>
+            Logs an arbitrary object with the <see cref="F:Slf.LogLevel.Error"/> level. 
+            </summary>
+            <param name="obj">The message object to log, which will be converted
+            into a string during logging.</param>
+        </member>
+        <member name="M:Slf.ILogger.Error(System.String)">
+            <summary>
+            Logs an error message (<see cref="F:Slf.LogLevel.Error"/>).
+            </summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:Slf.ILogger.Error(System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Error"/> level. 
+            </summary>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.ILogger.Error(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Error"/> level. 
+            </summary>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.ILogger.Error(System.Exception)">
+            <summary>
+            Logs an exception with a logging level of <see cref="F:Slf.LogLevel.Error"/>.
+            </summary>
+            <param name="exception">The exception to log.</param>
+        </member>
+        <member name="M:Slf.ILogger.Error(System.Exception,System.String)">
+            <summary>
+            Logs an exception and an additional message with a logging level of
+            <see cref="F:Slf.LogLevel.Error"/>.
+            </summary>
+            <param name="exception"> The exception to log.</param>
+            <param name="message">Additional information regarding the
+            logged exception.</param>
+        </member>
+        <member name="M:Slf.ILogger.Error(System.Exception,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Error"/> level. 
+            </summary>
+            <param name="exception">The exception to log </param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.ILogger.Error(System.Exception,System.String,System.IFormatProvider,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Error"/> level. 
+            </summary>
+            <param name="exception">The exception to log.</param>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.ILogger.Fatal(System.Object)">
+            <summary>
+            Logs an arbitrary object with the <see cref="F:Slf.LogLevel.Fatal"/> level. 
+            </summary>
+            <param name="obj">The message object to log, which will be converted
+            into a string during logging.</param>
+        </member>
+        <member name="M:Slf.ILogger.Fatal(System.String)">
+            <summary>
+            Logs a fatal error message (<see cref="F:Slf.LogLevel.Fatal"/>).
+            </summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:Slf.ILogger.Fatal(System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Fatal"/> level. 
+            </summary>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.ILogger.Fatal(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Fatal"/> level. 
+            </summary>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.ILogger.Fatal(System.Exception)">
+            <summary>
+            Logs an exception with a logging level of <see cref="F:Slf.LogLevel.Fatal"/>.
+            </summary>
+            <param name="exception">The exception to log.</param>
+        </member>
+        <member name="M:Slf.ILogger.Fatal(System.Exception,System.String)">
+            <summary>
+            Logs an exception and an additional message with a logging level of
+            <see cref="F:Slf.LogLevel.Fatal"/>.
+            </summary>
+            <param name="exception"> The exception to log.</param>
+            <param name="message">Additional information regarding the
+            logged exception.</param>
+        </member>
+        <member name="M:Slf.ILogger.Fatal(System.Exception,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Fatal"/> level. 
+            </summary>
+            <param name="exception">The exception to log </param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.ILogger.Fatal(System.Exception,System.String,System.IFormatProvider,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Fatal"/> level. 
+            </summary>
+            <param name="exception">The exception to log.</param>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.ILogger.Log(Slf.LogItem)">
+            <summary>
+            Creates a new log entry based on a given log item.
+            </summary>
+            <param name="item">Encaspulates logging information.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="item"/>
+            is a null reference.</exception>
+        </member>
+        <member name="P:Slf.ILogger.Name">
+            <summary>
+            Gets this logger's name. If the instance is the default logger,
+            it returns <see cref="F:Slf.LoggerService.DefaultLoggerName"/>, which
+            is an empty string.
+            </summary>
+        </member>
+        <member name="F:Slf.LoggerBase.NullString">
+            <summary>
+            The message to log if a null object is logged.
+            </summary>
+        </member>
+        <member name="M:Slf.LoggerBase.#ctor(System.String)">
+            <summary>
+            Constructs a logger instance with the given name.
+            </summary>
+            <param name="name">the logger name</param>
+        </member>
+        <member name="M:Slf.LoggerBase.#ctor">
+            <summary>
+            Constructs an un-named logger
+            </summary>
+        </member>
+        <member name="M:Slf.LoggerBase.Debug(System.Object)">
+            <summary>
+            Logs an arbitrary object with the <see cref="F:Slf.LogLevel.Debug"/> level. 
+            </summary>
+            <param name="obj">The message object to log, which will be converted
+            into a string during logging.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Debug(System.String)">
+            <summary>
+            Logs a debug message (<see cref="F:Slf.LogLevel.Debug"/>).
+            </summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Debug(System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Debug"/> level. 
+            </summary>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Debug(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Debug"/> level. 
+            </summary>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Debug(System.Exception)">
+            <summary>
+            Logs an exception with a logging level of <see cref="F:Slf.LogLevel.Debug"/>.
+            </summary>
+            <param name="exception">The exception to log.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Debug(System.Exception,System.String)">
+            <summary>
+            Logs an exception with an additional message with a logging level of
+            <see cref="F:Slf.LogLevel.Debug"/>.
+            </summary>
+            <param name="exception"> The exception to log.</param>
+            <param name="message">Additional information regarding the
+            logged exception.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Debug(System.Exception,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Debug"/> level. 
+            </summary>
+            <param name="exception">The exception to log.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Debug(System.Exception,System.String,System.IFormatProvider,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Debug"/> level. 
+            </summary>
+            <param name="exception">The exception to log.</param>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Info(System.Object)">
+            <summary>
+            Logs an arbitrary object with the <see cref="F:Slf.LogLevel.Info"/> level. 
+            </summary>
+            <param name="obj">The message object to log, which will be converted
+            into a string during logging.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Info(System.String)">
+            <summary>
+            Logs an informational message (<see cref="F:Slf.LogLevel.Info"/>).
+            </summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Info(System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Info"/> level. 
+            </summary>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Info(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Info"/> level. 
+            </summary>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Info(System.Exception)">
+            <summary>
+            Logs an exception with a logging level of <see cref="F:Slf.LogLevel.Info"/>.
+            </summary>
+            <param name="exception">The exception to log.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Info(System.Exception,System.String)">
+            <summary>
+            Logs an exception with an additional message with a logging level of
+            <see cref="F:Slf.LogLevel.Info"/>.
+            </summary>
+            <param name="exception"> The exception to log.</param>
+            <param name="message">Additional information regarding the
+            logged exception.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Info(System.Exception,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Info"/> level. 
+            </summary>
+            <param name="exception">The exception to log.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Info(System.Exception,System.String,System.IFormatProvider,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Info"/> level. 
+            </summary>
+            <param name="exception">The exception to log.</param>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Warn(System.Object)">
+            <summary>
+            Logs an arbitrary object with the <see cref="F:Slf.LogLevel.Warn"/> level. 
+            </summary>
+            <param name="obj">The message object to log, which will be converted
+            into a string during logging.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Warn(System.String)">
+            <summary>
+            Logs a warning message (<see cref="F:Slf.LogLevel.Warn"/>).
+            </summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Warn(System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Warn"/> level. 
+            </summary>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Warn(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Warn"/> level. 
+            </summary>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Warn(System.Exception)">
+            <summary>
+            Logs an exception with a logging level of <see cref="F:Slf.LogLevel.Warn"/>.
+            </summary>
+            <param name="exception">The exception to log.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Warn(System.Exception,System.String)">
+            <summary>
+            Logs an exception with an additional message with a logging level of
+            <see cref="F:Slf.LogLevel.Warn"/>.
+            </summary>
+            <param name="exception"> The exception to log.</param>
+            <param name="message">Additional information regarding the
+            logged exception.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Warn(System.Exception,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Warn"/> level. 
+            </summary>
+            <param name="exception">The exception to log.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Warn(System.Exception,System.String,System.IFormatProvider,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Warn"/> level. 
+            </summary>
+            <param name="exception">The exception to log.</param>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Error(System.Object)">
+            <summary>
+            Logs an arbitrary object with the <see cref="F:Slf.LogLevel.Error"/> level. 
+            </summary>
+            <param name="obj">The message object to log, which will be converted
+            into a string during logging.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Error(System.String)">
+            <summary>
+            Logs an error message (<see cref="F:Slf.LogLevel.Error"/>).
+            </summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Error(System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Error"/> level. 
+            </summary>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Error(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Error"/> level. 
+            </summary>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Error(System.Exception)">
+            <summary>
+            Logs an exception with a logging level of <see cref="F:Slf.LogLevel.Error"/>.
+            </summary>
+            <param name="exception">The exception to log.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Error(System.Exception,System.String)">
+            <summary>
+            Logs an exception with an additional message with a logging level of
+            <see cref="F:Slf.LogLevel.Error"/>.
+            </summary>
+            <param name="exception"> The exception to log.</param>
+            <param name="message">Additional information regarding the
+            logged exception.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Error(System.Exception,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Error"/> level. 
+            </summary>
+            <param name="exception">The exception to log.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Error(System.Exception,System.String,System.IFormatProvider,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Error"/> level. 
+            </summary>
+            <param name="exception">The exception to log.</param>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Fatal(System.Object)">
+            <summary>
+            Logs an arbitrary object with the <see cref="F:Slf.LogLevel.Fatal"/> level. 
+            </summary>
+            <param name="obj">The message object to log, which will be converted
+            into a string during logging.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Fatal(System.String)">
+            <summary>
+            Logs a fatal error message (<see cref="F:Slf.LogLevel.Fatal"/>).
+            </summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Fatal(System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Fatal"/> level. 
+            </summary>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Fatal(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Fatal"/> level. 
+            </summary>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Fatal(System.Exception)">
+            <summary>
+            Logs an exception with a logging level of <see cref="F:Slf.LogLevel.Fatal"/>.
+            </summary>
+            <param name="exception">The exception to log.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Fatal(System.Exception,System.String)">
+            <summary>
+            Logs an exception with an additional message with a logging level of
+            <see cref="F:Slf.LogLevel.Fatal"/>.
+            </summary>
+            <param name="exception"> The exception to log.</param>
+            <param name="message">Additional information regarding the
+            logged exception.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Fatal(System.Exception,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Fatal"/> level. 
+            </summary>
+            <param name="exception">The exception to log.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Fatal(System.Exception,System.String,System.IFormatProvider,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Fatal"/> level. 
+            </summary>
+            <param name="exception">The exception to log.</param>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Log(Slf.LogLevel,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message on a given logging level. 
+            </summary>
+            <param name="level">The logging level which is used to indicate severity,
+            or for filtering the information.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Log(Slf.LogLevel,System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message on a given logging level.
+            </summary>
+            <param name="level">The logging level which is used to indicate severity,
+            or for filtering the information.</param>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Log(Slf.LogLevel,System.String)">
+            <summary>
+            Logs a message on a given logging level.
+            </summary>
+            <param name="level">The logging level which is used to indicate severity,
+            or for filtering the information.</param>
+            <param name="message"> The message to log.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Log(Slf.LogLevel,System.Exception)">
+            <summary>
+            Logs an exception with on a given logging level.
+            </summary>
+            <param name="level">The logging level which is used to indicate severity,
+            or for filtering the information.</param>
+            <param name="exception">The exception to log.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Log(Slf.LogLevel,System.Exception,System.String,System.Object[])">
+            <summary>
+            Logs an exception along with a formatted message string on a given logging level.
+            </summary>
+            <param name="level">The logging level which is used to indicate severity,
+            or for filtering the information.</param>
+            <param name="exception">The exception to log.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Log(Slf.LogLevel,System.Exception,System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            Logs an exception along with a formatted message string on a given logging level.
+            </summary>
+            <param name="level">The logging level which is used to indicate severity,
+            or for filtering the information.</param>
+            <param name="exception">The exception to log.</param>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Log(Slf.LogLevel,System.Exception,System.String)">
+            <summary>
+            Logs an exception along with a message string on a given logging level.
+            </summary>
+            <param name="level">The logging level which is used to indicate severity,
+            or for filtering the information.</param>
+            <param name="exception"> The exception to log.</param>
+            <param name="message">Additional information regarding the
+            logged exception.</param>
+        </member>
+        <member name="M:Slf.LoggerBase.Log(Slf.LogItem)">
+            <summary>
+            Creates a new log entry based on a given log item.
+            </summary>
+            <param name="item">Encapsulates logging information.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="item"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Slf.LoggerBase.IsLogLevelEnabled(Slf.LogLevel)">
+            <summary>
+            Indicates whether the given log level is
+            enabled in the underlying logging framework.
+            </summary>
+            <param name="level">The log level to query</param>
+            <returns>Whether the given level is enabled.</returns>
+        </member>
+        <member name="P:Slf.LoggerBase.Name">
+            <summary>
+            The name of this logger - typically this is written to the 
+            log itself along with the formatted message.
+            </summary>
+        </member>
+        <member name="T:Slf.IFormattableLogger">
+            <summary>
+            Indicates that a logger provides a <see cref="P:Slf.IFormattableLogger.Formatter"/>
+            property, which can be used to plug in a custom
+            <see cref="T:Slf.ILogItemFormatter"/> instance in order to
+            customize logging output. 
+            </summary>
+        </member>
+        <member name="P:Slf.IFormattableLogger.Formatter">
+            <summary>
+            Gets or sets a given formatter which is used to produce
+            the output of the logger.
+            </summary>
+        </member>
+        <member name="M:Slf.FormattableLoggerBase.#ctor(System.String)">
+            <summary>
+            Creates a named logger, and uses the default <see cref="T:Slf.Formatters.SimpleLogItemFormatter"/>
+            to format logged <see cref="T:Slf.LogItem"/> instances.
+            </summary>
+            <param name="name">The logger name.</param>
+        </member>
+        <member name="M:Slf.FormattableLoggerBase.#ctor">
+            <summary>
+            Creates the logger, and uses the default <see cref="T:Slf.Formatters.SimpleLogItemFormatter"/>
+            to format logged <see cref="T:Slf.LogItem"/> instances.
+            </summary>
+            <param name="name">The logger name.</param>
+        </member>
+        <member name="M:Slf.FormattableLoggerBase.#ctor(Slf.ILogItemFormatter)">
+            <summary>
+            Creates the logger with a given formatter.
+            </summary>
+            <param name="formatter">The formatter to be used in order to
+            create string representations of logged <see cref="T:Slf.LogItem"/>
+            instances.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="formatter"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Slf.FormattableLoggerBase.#ctor(System.String,Slf.ILogItemFormatter)">
+            <summary>
+            Creates a named logger with a given formatter.
+            </summary>
+            <param name="name">The logger name.</param>
+            <param name="formatter">The formatter to be used in order to
+            create string representations of logged <see cref="T:Slf.LogItem"/>
+            instances.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="formatter"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Slf.FormattableLoggerBase.FormatItem(Slf.LogItem)">
+            <summary>
+            Simple helper method which returns the formatted string
+            representation of the submitted <see cref="T:Slf.LogItem"/> by
+            invoking the <see cref="M:Slf.ILogItemFormatter.FormatItem(Slf.LogItem)"/>
+            method of the assigned <see cref="P:Slf.FormattableLoggerBase.Formatter"/>.
+            </summary>
+            <param name="item">The item to be processed.</param>
+            <returns>Formatted logging data.</returns>
+        </member>
+        <member name="P:Slf.FormattableLoggerBase.Formatter">
+            <summary>
+            Gets or sets a given formatter which is used to produce
+            the output of the logger.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="value"/>
+            is a null reference.</exception>
+        </member>
+        <member name="T:Slf.Config.FactoryConfigurationCollection">
+            <summary>
+            Extends <see cref="T:System.Configuration.ConfigurationElementCollection"/> in order
+            to support a collection of <see cref="T:Slf.Config.FactoryConfigurationElement"/> elements
+            </summary>
+        </member>
+        <member name="M:Slf.Config.FactoryConfigurationCollection.CreateNewElement">
+            <summary>
+            Creates a new  <see cref="T:Slf.Config.FactoryConfigurationElement"/> instance.
+            </summary>
+        </member>
+        <member name="M:Slf.Config.FactoryConfigurationCollection.BaseAdd(System.Configuration.ConfigurationElement)">
+            <summary>
+            Adds the given element to the collection.
+            </summary>
+            <param name="element"></param>
+        </member>
+        <member name="M:Slf.Config.FactoryConfigurationCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the value of the property of the given <see cref="T:Slf.Config.FactoryConfigurationElement"/>
+            instance that has been designated as the key.
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Slf.Config.FactoryConfigurationCollection.Item(System.Int32)">
+            <summary>
+            Gets a <see cref="T:Slf.Config.FactoryConfigurationElement"/> at a given index.
+            </summary>
+        </member>
+        <member name="T:Slf.TestLogger">
+            <summary>
+            A <see cref="T:Slf.ILogger"/> implementation which is intended
+            for the purposes of unit testing the messages
+            logged by the unit under test. The <see cref="P:Slf.TestLogger.LoggedItems"/>
+            property of this class contains all messages logged
+            to this logger.
+            </summary>
+        </member>
+        <member name="F:Slf.TestLogger.logItems">
+            <summary>
+            All the LogItems which have been sent to this
+            test logger.
+            </summary>
+        </member>
+        <member name="M:Slf.TestLogger.#ctor">
+            <summary>
+            Constructs a TestLogger instance.
+            </summary>
+        </member>
+        <member name="M:Slf.TestLogger.#ctor(System.String)">
+            <summary>
+            Constructs a named TestLogger instance.
+            </summary>
+        </member>
+        <member name="M:Slf.TestLogger.Log(Slf.LogItem)">
+            <summary>
+            Records the given log item.
+            </summary>
+            <param name="item">The item being logged.</param>
+        </member>
+        <member name="M:Slf.TestLogger.Reset">
+            <summary>
+            Clears all the items logged to this test 
+            logger.
+            </summary>
+        </member>
+        <member name="P:Slf.TestLogger.LoggedItems">
+            <summary>
+            Returns an independent list of all messages logged to this
+            logger.
+            </summary>
+        </member>
+        <member name="T:Slf.Formatters.FormatRequestHandler">
+            <summary>
+            A delegate used to forward formatting requests
+            for a given log item.
+            </summary>
+            <param name="item">The item to be formatted.</param>
+            <returns>A string representation of the item.</returns>
+        </member>
+        <member name="T:Slf.Formatters.DelegateLogItemFormatter">
+            <summary>
+            A simple formatter that forwards formatting requests to
+            its <see cref="P:Slf.Formatters.DelegateLogItemFormatter.FormatHandler"/> delegate.
+            </summary>
+        </member>
+        <member name="T:Slf.ILogItemFormatter">
+            <summary>
+            Generates a formatted string-representation
+            of a given <see cref="T:Slf.LogItem"/>.
+            </summary>
+        </member>
+        <member name="M:Slf.ILogItemFormatter.FormatItem(Slf.LogItem)">
+            <summary>
+            Creates a string representation of a given <see cref="T:Slf.LogItem"/>.
+            </summary>
+            <param name="item">The item to be processed.</param>
+            <returns>A string representation of the submitted
+            <paramref name="item"/>.</returns>
+        </member>
+        <member name="M:Slf.Formatters.DelegateLogItemFormatter.#ctor(Slf.Formatters.FormatRequestHandler)">
+            <summary>
+            Creates the formatter with the delegate that is used to forward
+            formatting requests for <see cref="T:Slf.LogItem"/> instances.
+            </summary>
+            <param name="formatHandler">The delegate which is being invoked in
+            order to perform the actual formatting.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="formatHandler"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Slf.Formatters.DelegateLogItemFormatter.FormatItem(Slf.LogItem)">
+            <summary>
+            Creates a string representation of a given <see cref="T:Slf.LogItem"/>.
+            </summary>
+            <param name="item">The item to be processed.</param>
+            <returns>A string representation of the submitted
+            <paramref name="item"/>.</returns>
+        </member>
+        <member name="P:Slf.Formatters.DelegateLogItemFormatter.FormatHandler">
+            <summary>
+            The delegate which is being invoked in
+            order to perform the actual formatting for <see cref="T:Slf.LogItem"/>
+            instances.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="value"/>
+            is a null reference.</exception>
+        </member>
+        <member name="T:Slf.Factories.LoggerRequestHandler">
+            <summary>
+            A delegate that is used by the <see cref="T:Slf.Factories.DelegateFactory"/>
+            in order to get a named logger if its
+            <see cref="M:Slf.Factories.DelegateFactory.GetLogger(System.String)"/> method is being
+            invoked.
+            </summary>
+            <returns>The logger implementation that is being resolved based on the
+            request.</returns>
+        </member>
+        <member name="T:Slf.Factories.DelegateFactory">
+            <summary>
+            A factory implementation that delegates requests to default and/or
+            named loggers to delegates.
+            </summary>
+        </member>
+        <member name="T:Slf.ILoggerFactory">
+            <summary>
+            Defines factory methods for obtaining <see cref="T:Slf.ILogger"/>
+            instances. These factory methods may create new instances
+            or retrieve cached / pooled instances depending on the the
+            name of the requested logger.
+            </summary>
+        </member>
+        <member name="M:Slf.ILoggerFactory.GetLogger(System.String)">
+            <summary>
+            Obtains an <see cref="T:Slf.ILogger"/> instance that is identified by
+            the given name.
+            </summary>
+            <param name="name">The logger name. Submit <see cref="F:Slf.LoggerService.DefaultLoggerName"/>
+            in order to request a default (unnamed) logger.</param>
+            <returns>An <see cref="T:Slf.ILogger"/> instance.</returns>
+        </member>
+        <member name="M:Slf.Factories.DelegateFactory.#ctor">
+            <summary>
+            Empty default constructor, which causes the factory to return <see cref="T:Slf.NullLogger"/>
+            instances if <see cref="M:Slf.Factories.DelegateFactory.GetLogger(System.String)"/> being invoked,
+            until the <see cref="P:Slf.Factories.DelegateFactory.RequestHandler"/> property is being set.
+            </summary>
+        </member>
+        <member name="M:Slf.Factories.DelegateFactory.#ctor(Slf.Factories.LoggerRequestHandler)">
+            <summary>
+            Initializes the factory with a delegate that receives requests for named
+            logger instances.
+            </summary>
+            <param name="requestHandler">A delegate which is called if the
+            factory's <see cref="M:Slf.Factories.DelegateFactory.GetLogger(System.String)"/> method is being invoked.<br/>
+            Submitting a null reference causes the factory to
+            return a <see cref="T:Slf.NullLogger"/> instance if <see cref="M:Slf.Factories.DelegateFactory.GetLogger(System.String)"/>
+            is being invoked.</param>
+        </member>
+        <member name="M:Slf.Factories.DelegateFactory.GetLogger(System.String)">
+            <summary>
+            Obtains an <see cref="T:Slf.ILogger"/> instance that is identified by
+            the given name by invoking the <see cref="P:Slf.Factories.DelegateFactory.RequestHandler"/> delegate.
+            If the delegate is not set, a <see cref="T:Slf.NullLogger"/> instance is being returned instead.
+            </summary>
+            <param name="name">The logger name.</param>
+            <returns>An <see cref="T:Slf.ILogger"/> instance</returns>
+        </member>
+        <member name="P:Slf.Factories.DelegateFactory.RequestHandler">
+            <summary>
+            A delegate which is called if the factory's <see cref="M:Slf.Factories.DelegateFactory.GetLogger(System.String)"/>
+            method is being invoked.<br/>
+            Setting the delegate to null (default value) causes the factory to
+            return a <see cref="T:Slf.NullLogger"/> instance if <see cref="M:Slf.Factories.DelegateFactory.GetLogger(System.String)"/>
+            is being invoked.
+            </summary>
+        </member>
+        <member name="T:Slf.DebugLogger">
+            <summary>
+            A very simple implementation of <see cref="T:Slf.ILogger"/>
+            that outputs all messages through <see cref="M:System.Diagnostics.Debug.WriteLine(System.String)"/>.
+            </summary>
+        </member>
+        <member name="M:Slf.DebugLogger.#ctor(System.String)">
+            <summary>
+            Creates a named logger.
+            </summary>
+            <param name="name">The logger name.</param>
+        </member>
+        <member name="M:Slf.DebugLogger.#ctor">
+            <summary>
+            Creates an un-named logger.
+            </summary>
+        </member>
+        <member name="M:Slf.DebugLogger.Log(Slf.LogItem)">
+            <summary>
+            Logs a given item to the debugger.
+            </summary>
+            <param name="item">The item to be logged.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="item"/>
+            is a null reference.</exception>
+        </member>
+        <member name="T:Slf.TraceLogger">
+            <summary>
+            Logger implementation that writes trace messages.
+            </summary>
+        </member>
+        <member name="M:Slf.TraceLogger.#ctor(System.String)">
+            <summary>
+            Creates a named logger.
+            </summary>
+            <param name="name">The logger name.</param>
+        </member>
+        <member name="M:Slf.TraceLogger.#ctor">
+            <summary>
+            Creates an un-named logger.
+            </summary>
+        </member>
+        <member name="M:Slf.TraceLogger.Log(Slf.LogItem)">
+            <summary>
+            Creates a new log entry based on a given log item.
+            </summary>
+            <param name="item">Encaspulates logging information.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="item"/>
+            is a null reference.</exception>
+        </member>
+        <member name="T:Slf.Resolvers.NullLoggerFactoryResolver">
+            <summary>
+            A resolver that always returns a <see cref="T:Slf.Factories.NullLoggerFactory"/>,
+            which in turn creates a <see cref="T:Slf.NullLogger"/> instance.
+            </summary>
+        </member>
+        <member name="F:Slf.Resolvers.NullLoggerFactoryResolver.factory">
+            <summary>
+            The logger factory instance.
+            </summary>
+        </member>
+        <member name="F:Slf.Resolvers.NullLoggerFactoryResolver.instance">
+            <summary>
+            Singleton instance.
+            </summary>
+        </member>
+        <member name="M:Slf.Resolvers.NullLoggerFactoryResolver.#ctor">
+            <summary>
+            Private constructor. A reference to the Singleton
+            instance of this class is available through the
+            static <see cref="P:Slf.Resolvers.NullLoggerFactoryResolver.Instance"/> property.
+            </summary>
+        </member>
+        <member name="M:Slf.Resolvers.NullLoggerFactoryResolver.GetFactory(System.String)">
+            <summary>
+            Determines a factory which cab create an
+            <see cref="T:Slf.ILogger"/> instance based on a
+            request for a named logger.
+            </summary>
+            <param name="loggerName">The logger name.</param>
+            <returns>A factory which in turn is responsible for creating
+            a given <see cref="T:Slf.ILogger"/> implementation.</returns>
+        </member>
+        <member name="P:Slf.Resolvers.NullLoggerFactoryResolver.Instance">
+            <summary>
+            Provides access to the singleton instance of
+            the class.
+            </summary>
+        </member>
+        <member name="T:Slf.LogItem">
+            <summary>
+            Encapsulates logging data that can be submitted to any
+            given <see cref="T:Slf.ILogger"/> implementation.
+            </summary>
+        </member>
+        <member name="M:Slf.LogItem.#ctor">
+            <summary>
+            Inits an new <see cref="T:Slf.LogItem"/> instance which
+            is initialized with default values.
+            </summary>
+        </member>
+        <member name="M:Slf.LogItem.Clone">
+            <summary>
+            Creates a new <see cref="T:Slf.LogItem"/> that is a copy of the current instance.
+            </summary>
+            <returns>A new <c>LogItem</c> that is a copy of the current instance.</returns>
+        </member>
+        <member name="P:Slf.LogItem.LogLevel">
+            <summary>
+            The logging level, which defaults to <see cref="F:Slf.LogLevel.Info"/>.
+            </summary>
+        </member>
+        <member name="P:Slf.LogItem.Timestamp">
+            <summary>
+            Date and time of the log entry. If no explicitly
+            set, this property provides the timestamp of
+            the object's creation.
+            </summary>
+        </member>
+        <member name="P:Slf.LogItem.Title">
+            <summary>
+            A summarizing title for the logged entry. Defaults to
+            <c>String.Empty</c>.
+            </summary>
+        </member>
+        <member name="P:Slf.LogItem.Message">
+            <summary>
+            The logged message body. Defaults to
+            <c>String.Empty</c>.
+            </summary>
+        </member>
+        <member name="P:Slf.LogItem.LoggerName">
+            <summary>
+            The name of the logger used to log this item.
+            </summary>
+        </member>
+        <member name="P:Slf.LogItem.Exception">
+            <summary>
+            Allows to attach an exception to the message.
+            Defaults to <c>null</c>.
+            </summary>
+        </member>
+        <member name="P:Slf.LogItem.EventId">
+            <summary>
+            Event number or identifier. Defaults to null.
+            </summary>
+        </member>
+        <member name="T:Slf.DelegateLogger">
+            <summary>
+            An <see cref="T:Slf.ILogger"/> implementation that delegates
+            the actual logging to an <see cref="T:System.Action`1"/> delegate.
+            </summary>
+        </member>
+        <member name="M:Slf.DelegateLogger.#ctor(System.String,System.Action{Slf.LogItem})">
+            <summary>
+            Creates a named logger with the action to be invoked for logged items.
+            </summary>
+            <param name="logAction">The action delegate that is being
+            invoked for every <see cref="T:Slf.LogItem"/> to be logged.</param>
+            <param name="name">The logger name.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="logAction"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Slf.DelegateLogger.#ctor(System.Action{Slf.LogItem})">
+            <summary>
+            Creates a logger with the action to be invoked for logged items.
+            </summary>
+            <param name="logAction">The action delegate that is being
+            invoked for every <see cref="T:Slf.LogItem"/> to be logged.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="logAction"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Slf.DelegateLogger.Log(Slf.LogItem)">
+            <summary>
+            Invokes the <see cref="P:Slf.DelegateLogger.LogAction"/> for a given
+            <see cref="T:Slf.LogItem"/>.
+            </summary>
+            <param name="item">Encaspulates logging information.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="item"/>
+            is a null reference.</exception>
+        </member>
+        <member name="P:Slf.DelegateLogger.LogAction">
+            <summary>
+            The action delegate that is being invoked for every <see cref="T:Slf.LogItem"/>
+            to be logged.
+            </summary>
+        </member>
+        <member name="T:Slf.LogFilter">
+            <summary>
+            A function that can be used to filter and/or transform
+            a given log item.
+            </summary>
+            <param name="item">The log entry to process.</param>
+            <returns>True if the item should be forwarded to the underlying
+            <see cref="T:Slf.ILogger"/>.</returns>
+        </member>
+        <member name="T:Slf.DecoratorLogger">
+            <summary>
+            Simple <see cref="T:Slf.ILogger"/> implementation that decorates
+            an existing logger implementation and allows to transform and/or
+            filter logged messages.
+            </summary>
+        </member>
+        <member name="M:Slf.DecoratorLogger.#ctor(System.String,Slf.ILogger,Slf.LogFilter)">
+            <summary>
+            Creates a named logger with a decorated <see cref="T:Slf.ILogger"/>
+            implementation and a filter function that can be used to update or discard
+            the message before delegating the actual logging to the decorated
+            <paramref name="logger"/>.
+            </summary>
+            <param name="name">The logger name.</param>
+            <param name="logger">A decorated logger. If the <paramref name="filter"/>
+            function </param>
+            <param name="filter">A filter message that can be used to transform
+            a submitted <see cref="T:Slf.LogItem"/> before getting it logged by the
+            underlying logger, or to ignore it completely (if the function returns
+            false).</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="logger"/>
+            is a null reference.</exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="filter"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Slf.DecoratorLogger.#ctor(Slf.ILogger,Slf.LogFilter)">
+            <summary>
+            Creates a logger with a decorated <see cref="T:Slf.ILogger"/>
+            implementation and a filter function that can be used to update or discard
+            the message before delegating the actual logging to the decorated
+            <paramref name="logger"/>.
+            </summary>
+            <param name="logger">A decorated logger. If the <paramref name="filter"/>
+            function </param>
+            <param name="filter">A filter message that can be used to transform
+            a submitted <see cref="T:Slf.LogItem"/> before getting it logged by the
+            underlying logger, or to ignore it completely (if the function returns
+            false).</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="logger"/>
+            is a null reference.</exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="filter"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Slf.DecoratorLogger.Log(Slf.LogItem)">
+            <summary>
+            Creates a new log entry based on a given log item.
+            </summary>
+            <param name="item">Encaspulates logging information.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="item"/>
+            is a null reference.</exception>
+        </member>
+        <member name="P:Slf.DecoratorLogger.Filter">
+            <summary>
+            A filtering mechanism that allows to programmatically intercept or
+            transform a given <see cref="T:Slf.LogItem"/> before having it logged through
+            the underyling <see cref="P:Slf.DecoratorLogger.Logger"/>.
+            </summary>
+        </member>
+        <member name="P:Slf.DecoratorLogger.Logger">
+            <summary>
+            The decorated <see cref="T:Slf.ILogger"/> instance. This logger's
+            <see cref="M:Slf.ILogger.Log(Slf.LogItem)"/> method is being invoked if the
+            <see cref="P:Slf.DecoratorLogger.Filter"/> function returns true.
+            </summary>
+        </member>
+        <member name="T:Slf.ConsoleLogger">
+            <summary>
+            A very simple implementation of <see cref="T:Slf.ILogger"/>
+            that outputs all messages to the system console.
+            </summary>
+        </member>
+        <member name="M:Slf.ConsoleLogger.#ctor(System.String)">
+            <summary>
+            Creates a named logger.
+            </summary>
+            <param name="name">The logger name.</param>
+        </member>
+        <member name="M:Slf.ConsoleLogger.#ctor">
+            <summary>
+            Creates an un-named logger.
+            </summary>
+        </member>
+        <member name="M:Slf.ConsoleLogger.Log(Slf.LogItem)">
+            <summary>
+            Logs a given item to the console.
+            </summary>
+            <param name="item">The item to be logged.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="item"/>
+            is a null reference.</exception>
+        </member>
+        <member name="T:Slf.Formatters.SimpleLogItemFormatter">
+            <summary>
+            Generates a simple, user-readable string-representation of a given
+            <see cref="T:Slf.LogItem"/>.
+            </summary>
+        </member>
+        <member name="F:Slf.Formatters.SimpleLogItemFormatter.instance">
+            <summary>
+            Singleton instance.
+            </summary>
+        </member>
+        <member name="M:Slf.Formatters.SimpleLogItemFormatter.#ctor">
+            <summary>
+            Private constructor. A reference to the Singleton
+            instance of this class is available through the
+            static <see cref="P:Slf.Formatters.SimpleLogItemFormatter.Instance"/> property.
+            </summary>
+        </member>
+        <member name="M:Slf.Formatters.SimpleLogItemFormatter.FormatItem(Slf.LogItem)">
+            <summary>
+            Creates a string representation of a given <see cref="T:Slf.LogItem"/>.
+            </summary>
+            <param name="item">The item to be processed.</param>
+            <returns>A string representation of the submitted
+            <paramref name="item"/>.</returns>
+        </member>
+        <member name="P:Slf.Formatters.SimpleLogItemFormatter.Instance">
+            <summary>
+            Provides access to the singleton instance of
+            the class.
+            </summary>
+        </member>
+        <member name="T:Slf.LogLevel">
+            <summary>
+             Defines available log levels (or logging "categories").
+             Log levels can be used to organize and filter your
+             logging output.
+            </summary>
+        </member>
+        <member name="F:Slf.LogLevel.Undefined">
+            <summary>
+            The logging level is undefined. This is regarded
+            an invalid value.
+            </summary>
+        </member>
+        <member name="F:Slf.LogLevel.Debug">
+            <summary>
+            Logs debugging output.
+            </summary>
+        </member>
+        <member name="F:Slf.LogLevel.Info">
+            <summary>
+            Logs basic information.
+            </summary>
+        </member>
+        <member name="F:Slf.LogLevel.Warn">
+            <summary>
+            Logs a warning.
+            </summary>
+        </member>
+        <member name="F:Slf.LogLevel.Error">
+            <summary>
+            Logs an error.
+            </summary>
+        </member>
+        <member name="F:Slf.LogLevel.Fatal">
+            <summary>
+            Logs a fatal incident.
+            </summary>
+        </member>
+        <member name="T:Slf.IConfigurableLoggerFactory">
+            <summary>
+            Common interface for logger factories that can
+            be initialized with custom configuration data.
+            </summary>
+        </member>
+        <member name="M:Slf.IConfigurableLoggerFactory.Init(System.String)">
+            <summary>
+            Inits the plug-in with configured factory data.
+            </summary>
+            <param name="factoryData">Retrieved factory settings.
+            This parameter is null if no configuration at all
+            was found.</param>
+        </member>
+        <member name="T:Slf.Resolvers.FactoryRequestHandler">
+            <summary>
+            A resolver function that returns a given factory that
+            creates a named logger.
+            </summary>
+            <param name="name">The name of the requested logger. Used to determine
+            the correct factory.</param>
+            <returns>A factory which in turn creates an instance of the requested
+            named logger.</returns>
+        </member>
+        <member name="T:Slf.Resolvers.DelegateFactoryResolver">
+            <summary>
+            A resolver that uses a delegate in order to create a requested
+            factory.
+            </summary>
+        </member>
+        <member name="M:Slf.Resolvers.DelegateFactoryResolver.#ctor(Slf.Resolvers.FactoryRequestHandler)">
+            <summary>
+            Creates the resolver based on two resolver functions.
+            </summary>
+            <param name="requestHandler">The resolver function that returns
+            a factory which in turn is responsible for creating a given <see cref="T:Slf.ILogger"/>.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="requestHandler"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Slf.Resolvers.DelegateFactoryResolver.GetFactory(System.String)">
+            <summary>
+            Determines a factory which cab create an
+            <see cref="T:Slf.ILogger"/> instance based on a
+            request for a named logger.
+            </summary>
+            <param name="loggerName">The logger name.</param>
+            <returns>A factory which in turn is responsible for creating
+            a given <see cref="T:Slf.ILogger"/> implementation.</returns>
+        </member>
+        <member name="P:Slf.Resolvers.DelegateFactoryResolver.RequestHandler">
+            <summary>
+            The resolver function that returns a factory which is responsible
+            for creating a named logger.
+            </summary>
+        </member>
+        <member name="T:Slf.Factories.NullLoggerFactory">
+            <summary>
+            A dummy implementation of the <see cref="T:Slf.ILoggerFactory"/>
+            which simply returns a <see cref="T:Slf.NullLogger"/> instance.
+            </summary>
+        </member>
+        <member name="F:Slf.Factories.NullLoggerFactory.logger">
+            <summary>
+            The shared <see cref="T:Slf.NullLogger"/> instance.
+            </summary>
+        </member>
+        <member name="F:Slf.Factories.NullLoggerFactory.instance">
+            <summary>
+            Singleton instance.
+            </summary>
+        </member>
+        <member name="M:Slf.Factories.NullLoggerFactory.#ctor">
+            <summary>
+            Private constructor. A reference to the Singleton
+            instance of this class is available through the
+            static <see cref="P:Slf.Factories.NullLoggerFactory.Instance"/> property.
+            </summary>
+        </member>
+        <member name="M:Slf.Factories.NullLoggerFactory.GetLogger(System.String)">
+            <summary>
+            Obtains an <see cref="T:Slf.ILogger"/> instance that is identified by
+            the given name.
+            </summary>
+            <param name="name">The logger name.</param>
+            <returns>An <see cref="T:Slf.ILogger"/> instance</returns>
+        </member>
+        <member name="P:Slf.Factories.NullLoggerFactory.Instance">
+            <summary>
+            Provides access to the singleton instance of
+            the class.
+            </summary>
+        </member>
+        <member name="T:Slf.NullLogger">
+            <summary>
+            A dummy implementation of the <see cref="T:Slf.ILogger"/>
+            interface, which doesn't log anything. Use this implementation
+            in order not to have to check for null references when
+            using an <see cref="T:Slf.ILogger"/>.<br/>
+            This logger implementation is a Singleton. You can get the singleton
+            instance through the <see cref="P:Slf.NullLogger.Instance"/> property.
+            </summary>
+        </member>
+        <member name="F:Slf.NullLogger.instance">
+            <summary>
+            Singleton instance.
+            </summary>
+        </member>
+        <member name="M:Slf.NullLogger.#ctor">
+            <summary>
+            Private constructor. A reference to the Singleton
+            instance of this class is available through the
+            static <see cref="P:Slf.NullLogger.Instance"/> property.
+            </summary>
+        </member>
+        <member name="M:Slf.NullLogger.Debug(System.Object)">
+            <summary>
+            Logs an arbitrary object with the <see cref="F:Slf.LogLevel.Debug"/> level. 
+            </summary>
+            <param name="obj">The message object to log, which will be converted
+            into a string during logging.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Debug(System.String)">
+            <summary>
+            Logs a debug message (<see cref="F:Slf.LogLevel.Debug"/>).
+            </summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Debug(System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Debug"/> level. 
+            </summary>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Debug(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Debug"/> level. 
+            </summary>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Debug(System.Exception)">
+            <summary>
+            Logs an exception with a logging level of <see cref="F:Slf.LogLevel.Debug"/>.
+            </summary>
+            <param name="exception">The exception to log.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Debug(System.Exception,System.String)">
+            <summary>
+            Logs an exception and an additional message with a logging level of
+            <see cref="F:Slf.LogLevel.Debug"/>.
+            </summary>
+            <param name="exception"> The exception to log.</param>
+            <param name="message">Additional information regarding the
+            logged exception.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Debug(System.Exception,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Debug"/> level. 
+            </summary>
+            <param name="exception">The exception to log </param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Debug(System.Exception,System.String,System.IFormatProvider,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Debug"/> level. 
+            </summary>
+            <param name="exception">The exception to log.</param>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Info(System.Object)">
+            <summary>
+            Logs an arbitrary object with the <see cref="F:Slf.LogLevel.Info"/> level. 
+            </summary>
+            <param name="obj">The message object to log, which will be converted
+            into a string during logging.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Info(System.String)">
+            <summary>
+            Logs an informational message (<see cref="F:Slf.LogLevel.Info"/>).
+            </summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Info(System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Info"/> level. 
+            </summary>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Info(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Info"/> level. 
+            </summary>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Info(System.Exception)">
+            <summary>
+            Logs an exception with a logging level of <see cref="F:Slf.LogLevel.Info"/>.
+            </summary>
+            <param name="exception">The exception to log.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Info(System.Exception,System.String)">
+            <summary>
+            Logs an exception and an additional message with a logging level of
+            <see cref="F:Slf.LogLevel.Info"/>.
+            </summary>
+            <param name="exception"> The exception to log.</param>
+            <param name="message">Additional information regarding the
+            logged exception.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Info(System.Exception,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Info"/> level. 
+            </summary>
+            <param name="exception">The exception to log </param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Info(System.Exception,System.String,System.IFormatProvider,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Info"/> level. 
+            </summary>
+            <param name="exception">The exception to log.</param>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Warn(System.Object)">
+            <summary>
+            Logs an arbitrary object with the <see cref="F:Slf.LogLevel.Warn"/> level. 
+            </summary>
+            <param name="obj">The message object to log, which will be converted
+            into a string during logging.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Warn(System.String)">
+            <summary>
+            Logs a warning message (<see cref="F:Slf.LogLevel.Warn"/>).
+            </summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Warn(System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Warn"/> level. 
+            </summary>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Warn(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Warn"/> level. 
+            </summary>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Warn(System.Exception)">
+            <summary>
+            Logs an exception with a logging level of <see cref="F:Slf.LogLevel.Warn"/>.
+            </summary>
+            <param name="exception">The exception to log.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Warn(System.Exception,System.String)">
+            <summary>
+            Logs an exception and an additional message with a logging level of
+            <see cref="F:Slf.LogLevel.Warn"/>.
+            </summary>
+            <param name="exception"> The exception to log.</param>
+            <param name="message">Additional information regarding the
+            logged exception.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Warn(System.Exception,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Warn"/> level. 
+            </summary>
+            <param name="exception">The exception to log </param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Warn(System.Exception,System.String,System.IFormatProvider,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Warn"/> level. 
+            </summary>
+            <param name="exception">The exception to log.</param>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Error(System.Object)">
+            <summary>
+            Logs an arbitrary object with the <see cref="F:Slf.LogLevel.Error"/> level. 
+            </summary>
+            <param name="obj">The message object to log, which will be converted
+            into a string during logging.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Error(System.String)">
+            <summary>
+            Logs an error message (<see cref="F:Slf.LogLevel.Error"/>).
+            </summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Error(System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Error"/> level. 
+            </summary>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Error(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Error"/> level. 
+            </summary>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Error(System.Exception)">
+            <summary>
+            Logs an exception with a logging level of <see cref="F:Slf.LogLevel.Error"/>.
+            </summary>
+            <param name="exception">The exception to log.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Error(System.Exception,System.String)">
+            <summary>
+            Logs an exception and an additional message with a logging level of
+            <see cref="F:Slf.LogLevel.Error"/>.
+            </summary>
+            <param name="exception"> The exception to log.</param>
+            <param name="message">Additional information regarding the
+            logged exception.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Error(System.Exception,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Error"/> level. 
+            </summary>
+            <param name="exception">The exception to log </param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Error(System.Exception,System.String,System.IFormatProvider,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Error"/> level. 
+            </summary>
+            <param name="exception">The exception to log.</param>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Fatal(System.Object)">
+            <summary>
+            Logs an arbitrary object with the <see cref="F:Slf.LogLevel.Fatal"/> level. 
+            </summary>
+            <param name="obj">The message object to log, which will be converted
+            into a string during logging.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Fatal(System.String)">
+            <summary>
+            Logs a fatal error message (<see cref="F:Slf.LogLevel.Fatal"/>).
+            </summary>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Fatal(System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Fatal"/> level. 
+            </summary>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Fatal(System.IFormatProvider,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Fatal"/> level. 
+            </summary>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Fatal(System.Exception)">
+            <summary>
+            Logs an exception with a logging level of <see cref="F:Slf.LogLevel.Fatal"/>.
+            </summary>
+            <param name="exception">The exception to log.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Fatal(System.Exception,System.String)">
+            <summary>
+            Logs an exception and an additional message with a logging level of
+            <see cref="F:Slf.LogLevel.Fatal"/>.
+            </summary>
+            <param name="exception"> The exception to log.</param>
+            <param name="message">Additional information regarding the
+            logged exception.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Fatal(System.Exception,System.String,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Fatal"/> level. 
+            </summary>
+            <param name="exception">The exception to log </param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Fatal(System.Exception,System.String,System.IFormatProvider,System.Object[])">
+            <summary>
+            Logs a formatted message string with the <see cref="F:Slf.LogLevel.Fatal"/> level. 
+            </summary>
+            <param name="exception">The exception to log.</param>
+            <param name="provider">An <see cref="T:System.IFormatProvider"/> which provides
+            culture-specific formatting capabilities.</param>
+            <param name="format">A composite format string that contains placeholders for the
+            arguments.</param>
+            <param name="args">An <see cref="T:System.Object"/> array containing zero or more objects
+            to format.</param>
+        </member>
+        <member name="M:Slf.NullLogger.Log(Slf.LogItem)">
+            <summary>
+            Creates a new log entry based on a given log item.
+            </summary>
+            <param name="item">Encaspulates logging information.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="item"/>
+            is a null reference.</exception>
+        </member>
+        <member name="P:Slf.NullLogger.Instance">
+            <summary>
+            Provides access to the singleton instance of
+            the class.
+            </summary>
+        </member>
+        <member name="P:Slf.NullLogger.Name">
+            <summary>
+            Always returns <see cref="F:Slf.LoggerService.DefaultLoggerName"/>.
+            </summary>
+        </member>
+        <member name="T:Slf.Formatters.SingleLineFormatter">
+            <summary>
+            Simple formatter class, which represents the contents
+            of a given <see cref="T:Slf.LogItem"/> as single-line string.
+            </summary>
+        </member>
+        <member name="F:Slf.Formatters.SingleLineFormatter.instance">
+            <summary>
+            Singleton instance.
+            </summary>
+        </member>
+        <member name="M:Slf.Formatters.SingleLineFormatter.#ctor">
+            <summary>
+            Private constructor. A reference to the Singleton
+            instance of this class is available through the
+            static <see cref="P:Slf.Formatters.SingleLineFormatter.Instance"/> property.
+            </summary>
+        </member>
+        <member name="M:Slf.Formatters.SingleLineFormatter.FormatItem(Slf.LogItem)">
+            <summary>
+            Creates a string representation of a given <see cref="T:Slf.LogItem"/>.
+            </summary>
+            <param name="item">The item to be processed.</param>
+            <returns>A string representation of the submitted
+            <paramref name="item"/>.</returns>
+        </member>
+        <member name="P:Slf.Formatters.SingleLineFormatter.Instance">
+            <summary>
+            Provides access to the singleton instance of
+            the class.
+            </summary>
+        </member>
+        <member name="T:Slf.Config.LoggerConfigurationElement">
+            <summary>
+            Represents a logger declaration in an application configuration file.
+            </summary>
+        </member>
+        <member name="M:Slf.Config.LoggerConfigurationElement.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Configuration.ConfigurationElement"/> class. 
+            </summary>
+        </member>
+        <member name="M:Slf.Config.LoggerConfigurationElement.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Configuration.ConfigurationElement"/> class. 
+            </summary>
+        </member>
+        <member name="P:Slf.Config.LoggerConfigurationElement.LoggerName">
+            <summary>
+            The name of this logger.
+            </summary>
+        </member>
+        <member name="P:Slf.Config.LoggerConfigurationElement.FactoryName">
+            <summary>
+            Refers to the factory to be used.
+            </summary>
+        </member>
+        <member name="T:Slf.Config.FactoryConfigurationElement">
+            <summary>
+            The factory element within the application
+            configuration.
+            </summary>
+        </member>
+        <member name="M:Slf.Config.FactoryConfigurationElement.OnDeserializeUnrecognizedElement(System.String,System.Xml.XmlReader)">
+            <summary>
+            Parses custom factory data into the <see cref="P:Slf.Config.FactoryConfigurationElement.FactoryData"/> property,
+            if <paramref name="elementName"/> refers to a <c>factory-data</c> element.
+            </summary>
+            <param name="elementName"></param>
+            <param name="reader"></param>
+            <returns>True if the element is a (supported) <c>factory-data</c> element.
+            If it's an other unexpected element, this method returns false.</returns>
+        </member>
+        <member name="P:Slf.Config.FactoryConfigurationElement.FactoryData">
+            <summary>
+            Gets custom factory data, if available. This is data of the factory
+            element, that is wrapped into an element named <c>factory-data</c>.
+            The contents of the <c>factory-data</c> element can be as simple as
+            a literal, or a complex XML element.
+            Defaults to null.
+            </summary>
+            <example>
+            The following example shows two possible configurations - one with
+            a literal as custom configuration data, one with XML based configuration:
+            <code>
+            &lt;slf>
+              &lt;!-- a factory configuration with literal content -->
+              &lt;factory name="simple">
+                &lt;factory-data>
+                  simple data
+                &lt;/factory-data>
+              &lt;/factory>
+            
+              &lt;!-- a factory configuration with XML sub elements -->
+              &lt;factory name="complex">
+                &lt;factory-data>
+                  &lt;child foo="bar">
+                    &lt;subchild>foobar&lt;/subchild>
+                  &lt;/child>
+                &lt;/factory-data>
+              &lt;/factory>
+            &lt;/slf>
+            </code>
+            </example>
+        </member>
+        <member name="P:Slf.Config.FactoryConfigurationElement.Name">
+            <summary>
+            Indicates the logger name which resolves to this factory
+            </summary>
+        </member>
+        <member name="P:Slf.Config.FactoryConfigurationElement.Type">
+            <summary>
+            Indicates the named factory Type
+            </summary>
+        </member>
+        <member name="T:Slf.ActivatorUtils">
+            <summary>
+            Provides helper methods that supplement the 
+            <see cref="T:System.Activator"/>.
+            </summary>
+        </member>
+        <member name="M:Slf.ActivatorUtils.Instantiate``1(System.String,Slf.ILogger)">
+            <summary>
+            Instantiates an object of the given type.
+            </summary>
+            <typeparam name="T">The type being instantiated</typeparam>
+            <param name="typeName">The full type name</param>
+            <param name="logger">A logger which is used to log any
+            problems which occur in the instantiation process.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Slf.Resolvers.SimpleFactoryResolver">
+            <summary>
+            A factory resolver that always returns a given
+            <see cref="T:Slf.ILoggerFactory"/>, which can be set
+            at runtime.
+            </summary>
+        </member>
+        <member name="M:Slf.Resolvers.SimpleFactoryResolver.#ctor">
+            <summary>
+            Initializes a new instance of the resolver, which uses an
+            <see cref="T:Slf.Factories.NullLoggerFactory"/> instance until the <see cref="P:Slf.Resolvers.SimpleFactoryResolver.Factory"/>
+            property is set explicitly. 
+            </summary>
+        </member>
+        <member name="M:Slf.Resolvers.SimpleFactoryResolver.#ctor(Slf.ILoggerFactory)">
+            <summary>
+            Initializes a new instance of the resolver with the logger to be
+            maintained.
+            </summary>
+            <param name="factory">The factory to be returned by this resolver's
+            <see cref="M:Slf.Resolvers.SimpleFactoryResolver.GetFactory(System.String)"/> method.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="factory"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Slf.Resolvers.SimpleFactoryResolver.GetFactory(System.String)">
+            <summary>
+            Determines a factory which cab create an
+            <see cref="T:Slf.ILogger"/> instance based on a
+            request for a named logger.
+            </summary>
+            <param name="loggerName">The logger name.</param>
+            <returns>This implementation always returns the currently
+            assigned <see cref="P:Slf.Resolvers.SimpleFactoryResolver.Factory"/>, regardless of the submitted
+            <paramref name="loggerName"/>.</returns>
+        </member>
+        <member name="P:Slf.Resolvers.SimpleFactoryResolver.Factory">
+            <summary>
+            Gets or sets the logger factory that is used by
+            this resolver. If a null reference is being assigned,
+            this resolver automatically falls back to a
+            <see cref="T:Slf.Factories.NullLoggerFactory"/> instance.
+            </summary>
+        </member>
+        <member name="T:Slf.Resolvers.AppConfigFactoryResolver">
+            <summary>
+            Resolves factories to be used for logger instantiation based
+            on settings taken from the application's default configuration
+            file (<c>App.config</c> or <c>Web.config</c>).
+            </summary>
+        </member>
+        <member name="T:Slf.Resolvers.NamedFactoryResolver">
+            <summary>
+            A resolver that is able to map factories to logger names, and
+            resolve them in a hierarchical manner.
+            </summary>  
+        </member>
+        <member name="F:Slf.Resolvers.NamedFactoryResolver._factoryCache">
+            <summary>
+            A list of named factories sorted in order of decreasing
+            specificity.
+            </summary>
+        </member>
+        <member name="F:Slf.Resolvers.NamedFactoryResolver.lockObj">
+            <summary>
+            An object which is used for locking
+            </summary>
+        </member>
+        <member name="M:Slf.Resolvers.NamedFactoryResolver.#ctor">
+            <summary>
+            Creates a new instance of the resolver.
+            </summary>
+        </member>
+        <member name="M:Slf.Resolvers.NamedFactoryResolver.ContainsFactory(System.String)">
+            <summary>
+            Checks for the occurrence of a given factory
+            in the internal cache.
+            </summary>
+            <param name="name">The logger name that was
+            associated with the factory.</param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Slf.Resolvers.NamedFactoryResolver.RegisterFactory(System.String,Slf.ILoggerFactory)" -->
+        <member name="M:Slf.Resolvers.NamedFactoryResolver.DeregisterFactory(System.String)">
+            <summary>
+            Removes a previously registered factory from the resolver's internal cache.
+            </summary>
+            <param name="name">The name that was used to register the factory. Comparison
+            is case insensitive.</param>
+            <returns>True if a matching factory was found and removed.</returns>
+        </member>
+        <member name="M:Slf.Resolvers.NamedFactoryResolver.GetFactory(System.String)">
+            <summary>
+            Determines a factory which can create an
+            <see cref="T:Slf.ILogger"/> instance based on a
+            request for a named logger.
+            </summary>
+            <param name="loggerName">The logger name.</param>
+            <returns>A factory which in turn is responsible for creating
+            a given <see cref="T:Slf.ILogger"/> implementation.</returns>
+        </member>
+        <member name="T:Slf.Resolvers.NamedFactoryResolver.NamedFactory">
+            <summary>
+            Associates a factory with a name which is used
+            to determine whether a request for a named logger resolves
+            to the associated factory.
+            </summary>
+        </member>
+        <member name="F:Slf.Resolvers.AppConfigFactoryResolver.ConfigSectionName">
+            <summary>
+            The name of the SLF configuration section
+            </summary>
+        </member>
+        <member name="M:Slf.Resolvers.AppConfigFactoryResolver.Load">
+            <summary>
+            Loads the resolver configuration from the applications App.config file.
+            </summary>
+        </member>
+        <member name="M:Slf.Resolvers.AppConfigFactoryResolver.ParseConfiguration">
+            <summary>
+            Parses the application configuration to locate and extract the
+            SLF configuration section
+            </summary>
+        </member>
+        <member name="M:Slf.Resolvers.AppConfigFactoryResolver.LoadConfiguration(Slf.Config.SlfConfigurationSection)">
+            <summary>
+            Prepares the internal dictionaries and caches for factory
+            requests, but without already creating the fatory instances.
+            </summary>
+            <param name="configuration">An SLF configuration section that
+            provides configuration settings about factories and loggers.</param>
+        </member>
+        <member name="M:Slf.Resolvers.AppConfigFactoryResolver.CreateFactoryInstance(Slf.Config.FactoryConfigurationElement)">
+            <summary>
+            Creates a factory based on a given configuration.
+            If the factory provides invalid information, an error is logged through
+            the internal logger, and a <see cref="T:Slf.Factories.NullLoggerFactory"/> returned.
+            </summary>
+            <param name="factoryConfiguration">The configuration that provides type
+            information for the <see cref="T:Slf.ILoggerFactory"/> that is being created.</param>
+            <returns>Factory instance.</returns>
+        </member>
+        <member name="P:Slf.Resolvers.AppConfigFactoryResolver.Logger">
+            <summary>
+            A logger used to log problems with the underlying configuration
+            of loggers and factories. Per default, an <see cref="T:Slf.DebugLogger"/>
+            is used.
+            </summary>
+        </member>
+        <member name="T:Slf.Factories.NamedLoggerFactoryBase`1">
+            <summary>
+            A base class for factories which created named logger
+            instance.
+            </summary>
+            <typeparam name="TLogger">The type of logger which this factory
+            creates</typeparam>
+        </member>
+        <member name="F:Slf.Factories.NamedLoggerFactoryBase`1.loggers">
+            <summary>
+            A cache of named loggers
+            </summary>
+        </member>
+        <member name="F:Slf.Factories.NamedLoggerFactoryBase`1.lockObj">
+            <summary>
+            An object which is used for locking
+            </summary>
+        </member>
+        <member name="M:Slf.Factories.NamedLoggerFactoryBase`1.GetCachedLoggers">
+            <summary>
+            Gets a list of all currently cached loggers.
+            </summary>
+            <remarks>Invoking this method is thread safe.</remarks>
+        </member>
+        <member name="M:Slf.Factories.NamedLoggerFactoryBase`1.GetLockObject">
+            <summary>
+            Gets this class' synchronization token.
+            </summary>
+        </member>
+        <member name="M:Slf.Factories.NamedLoggerFactoryBase`1.GetLogger(System.String)">
+            <summary>
+            Obtains an <see cref="T:Slf.ILogger"/> instance that is identified by
+            the given name.
+            </summary>
+            <param name="name">The logger name. If this parameter is a null
+            reference, <see cref="F:Slf.LoggerService.DefaultLoggerName"/> is
+            used instead.</param>
+            <returns>A factory that can be identified by the 
+            given name in the target output for this logger</returns>
+        </member>
+        <member name="M:Slf.Factories.NamedLoggerFactoryBase`1.CreateLogger(System.String)">
+            <summary>
+            Constructs a logger with the given name
+            </summary>
+            <param name="name">The logger name.</param>
+            <returns>A logger with the given name.</returns>
+        </member>
+        <member name="T:Slf.Factories.DelegateLoggerFactory">
+            <summary>
+            A logger factory that provides delegate loggers with naming
+            support.
+            </summary>
+        </member>
+        <member name="M:Slf.Factories.DelegateLoggerFactory.#ctor(System.Action{Slf.LogItem})">
+            <summary>
+            Creates the factory.
+            </summary>
+            <param name="logAction">A delegate that is invoked by the
+            factory's loggers, which is supposed to perform the
+            actual logging.
+            </param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="logAction"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Slf.Factories.DelegateLoggerFactory.CreateLogger(System.String)">
+            <summary>
+            Constructs a logger with the given name
+            </summary>
+            <param name="name">The logger name.</param>
+            <returns>A logger with the given name.</returns>
+        </member>
+        <member name="P:Slf.Factories.DelegateLoggerFactory.LogAction">
+            <summary>
+            A delegate that is invoked by the
+            factory's loggers, which is supposed to perform the
+            actual logging.
+            </summary>
+        </member>
+        <member name="T:Slf.Resolvers.DelegateResolver">
+            <summary>
+            A resolver that works upon a single <see cref="T:Slf.Factories.DelegateFactory"/>
+            which can be configured with custom delegates in order to resolve
+            a given logger.<br/>
+            This is a convenience class that allows you to quickly configure more
+            complex configuration scenarios through code.
+            </summary>
+        </member>
+        <member name="F:Slf.Resolvers.DelegateResolver.factory">
+            <summary>
+            The underlying logger factory which maintains the assigned
+            delegates.
+            </summary>
+        </member>
+        <member name="M:Slf.Resolvers.DelegateResolver.#ctor">
+            <summary>
+            Empty default constructor, which causes the underlying factory to return <see cref="T:Slf.NullLogger"/>
+            instances for <see cref="M:Slf.ILoggerFactory.GetLogger(System.String)"/>
+            until the <see cref="P:Slf.Resolvers.DelegateResolver.RequestHandler"/> property is being set.
+            </summary>
+        </member>
+        <member name="M:Slf.Resolvers.DelegateResolver.#ctor(Slf.Factories.LoggerRequestHandler)">
+            <summary>
+            Initializes the underlying factory with delegates that receive requests for both the
+            default and named loggers.
+            </summary>
+            <param name="requestHandler">A delegate which is called if the underlying
+            factory's <see cref="M:Slf.ILoggerFactory.GetLogger(System.String)"/> method is being invoked.<br/>
+            Submitting a null reference causes the underlying factory to
+            return a <see cref="T:Slf.NullLogger"/> instance if <see cref="M:Slf.ILoggerFactory.GetLogger(System.String)"/>
+            is being invoked.</param>
+        </member>
+        <member name="M:Slf.Resolvers.DelegateResolver.GetFactory(System.String)">
+            <summary>
+            Determines a factory which cab create an
+            <see cref="T:Slf.ILogger"/> instance based on a
+            request for a named logger. This method returns a factory
+            that uses the assigned <see cref="P:Slf.Resolvers.DelegateResolver.RequestHandler"/> in order
+            to resolve a logger based on a named request.
+            </summary>
+            <param name="loggerName">The logger name.</param>
+            <returns>A factory which in turn is responsible for creating
+            a given <see cref="T:Slf.ILogger"/> implementation.</returns>
+        </member>
+        <member name="P:Slf.Resolvers.DelegateResolver.RequestHandler">
+            <summary>
+            A delegate which is called if the factory's <see cref="M:Slf.ILoggerFactory.GetLogger(System.String)"/>
+            method is being invoked.<br/>
+            Setting the delegate to null (default value) causes the factory to
+            return a <see cref="T:Slf.NullLogger"/> instance if <see cref="M:Slf.ILoggerFactory.GetLogger(System.String)"/>
+            is being invoked.
+            </summary>
+        </member>
+        <member name="P:Slf.Config.SlfConfigurationSection.Factories">
+            <summary>
+            The factories specified within the application configuration.
+            </summary>
+        </member>
+        <member name="T:Slf.Factories.SimpleLoggerFactory">
+            <summary>
+            A factory implementation that always returns the same
+            <see cref="P:Slf.Factories.SimpleLoggerFactory.Logger"/> instance.<br/>
+            Keep in mind that using this factory disables support for
+            named loggers - it will always return the same logger instance,
+            no matter what logger name is submitted.
+            </summary>
+        </member>
+        <member name="M:Slf.Factories.SimpleLoggerFactory.#ctor">
+            <summary>
+            Initializes a new instance of the factory, which uses an
+            <see cref="T:Slf.NullLogger"/> instance until the <see cref="P:Slf.Factories.SimpleLoggerFactory.Logger"/>
+            property is set explicitly. 
+            </summary>
+        </member>
+        <member name="M:Slf.Factories.SimpleLoggerFactory.#ctor(Slf.ILogger)">
+            <summary>
+            Initializes a new instance of the factory with the logger to be
+            maintained by the factory.
+            </summary>
+            <param name="logger">The logger to be returned by the factory's
+            <see cref="M:Slf.Factories.SimpleLoggerFactory.GetLogger(System.String)"/> method.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="logger"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Slf.Factories.SimpleLoggerFactory.GetLogger(System.String)">
+            <summary>
+            Obtains an <see cref="T:Slf.ILogger"/> instance that is identified by
+            the given name.
+            </summary>
+            <param name="name">The logger name.</param>
+            <returns>This factory always returns the currently assigned
+            <see cref="P:Slf.Factories.SimpleLoggerFactory.Logger"/> property, regardless of the submitted
+            <paramref name="name"/>.</returns>
+        </member>
+        <member name="P:Slf.Factories.SimpleLoggerFactory.Logger">
+            <summary>
+            Gets or sets the logger that is being returned by the
+            factory. If a null value is being assigned, the factory
+            falls back to a <see cref="T:Slf.NullLogger"/> instance.
+            </summary>
+        </member>
+        <member name="T:Slf.Factories.SingleLoggerFactory">
+            <summary>
+            This factory sub-classes
+            <see cref="T:Slf.Factories.SimpleLoggerFactory"/> adding configuration support via
+            the <see cref="T:Slf.IConfigurableLoggerFactory"/> interface.<br/>
+            Keep in mind that using this factory disables support for
+            named loggers - it will always return the same logger instance,
+            no matter what logger name is submitted. Furthermore, this factory
+            will *NOT* set the <see cref="P:Slf.ILogger.Name"/> property
+            of the logger it creates, so the name will return the logger's
+            default value.s
+            </summary>
+            
+            <example>
+            This factory expects configuraton of the following form:  
+            <code>
+            &lt;factory type="Slf.Factories.SimpleLoggerFactory, SLF"&gt;
+              &lt;factory-data&gt;
+                &lt;logger type="Slf.ConsoleLogger, SLF" /&gt;
+              &lt;/factory-data&gt;
+            &lt;/factory&gt;
+            </code>
+            Where the type attribute of the logger element indicates the
+            logger type that this factory returns.
+            </example>
+        </member>
+        <member name="F:Slf.Factories.SingleLoggerFactory.initLogger">
+            <summary>
+            A logger used to log problems with the underlying configuration
+            of this factory.
+            </summary>
+        </member>
+        <member name="M:Slf.Factories.SingleLoggerFactory.#ctor">
+            <summary>
+            Initializes a new instance of the factory, which uses an
+            <see cref="T:Slf.NullLogger"/> instance until initialised via
+            <see cref="M:Slf.Factories.SingleLoggerFactory.Init(System.String)"/>.
+            </summary>
+        </member>
+        <member name="M:Slf.Factories.SingleLoggerFactory.Init(System.String)">
+            <summary>
+            Inits the plug-in with configured factory data.
+            </summary>
+            <param name="factoryData">Retrieved factory settings.
+            This parameter is null if no configuration at all
+            was found.</param>
+        </member>
+        <member name="T:Slf.Ensure">
+            <summary>
+            Provides common runtime validation functionality.
+            </summary>
+        </member>
+        <member name="M:Slf.Ensure.ArgumentNotNull``1(``0,System.String)">
+            <summary>
+            Makes sure a given argument is not null.
+            </summary>
+            <typeparam name="T">Type of the argument.</typeparam>
+            <param name="argument">The submitted parameter value.</param>
+            <param name="argumentName">The name of the argument.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="argument"/>
+            is a null reference.</exception>
+        </member>
+        <member name="T:Slf.Config.LoggerConfigurationCollection">
+            <summary>
+            Represents a collection of <see cref="T:Slf.Config.LoggerConfigurationElement"/>
+            instances in an application configuration file.
+            </summary>
+        </member>
+        <member name="M:Slf.Config.LoggerConfigurationCollection.BaseAdd(System.Configuration.ConfigurationElement)">
+            <summary>
+            Adds the given element to the collection.
+            </summary>
+            <param name="element"></param>
+        </member>
+        <member name="M:Slf.Config.LoggerConfigurationCollection.CreateNewElement">
+            <summary>
+            Creates a new  <see cref="T:Slf.Config.LoggerConfigurationElement"/> instance.
+            </summary>
+        </member>
+        <member name="M:Slf.Config.LoggerConfigurationCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the value of the property of the given <see cref="T:Slf.Config.LoggerConfigurationElement"/>
+            instance that has been designated as the key.
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Slf.Config.LoggerConfigurationCollection.Item(System.Int32)">
+            <summary>
+            Gets a <see cref="T:Slf.Config.LoggerConfigurationElement"/> at a given index.
+            </summary>
+        </member>
+        <member name="T:Slf.CompositeLogger">
+            <summary>
+            A logger decorator that forwards logging
+            messages to an arbitrary number of underlying
+            loggers.
+            </summary>
+        </member>
+        <member name="M:Slf.CompositeLogger.#ctor(System.String)">
+            <summary>
+            Creates a named empty logger that does not produce any output
+            as long as the <see cref="P:Slf.CompositeLogger.Loggers"/> list does not
+            contain and <see cref="T:Slf.ILogger"/> instances.
+            </summary>
+            <param name="name">The logger name.</param>
+        </member>
+        <member name="M:Slf.CompositeLogger.#ctor">
+            <summary>
+            Creates an empty logger that does not produce any output
+            as long as the <see cref="P:Slf.CompositeLogger.Loggers"/> list does not
+            contain and <see cref="T:Slf.ILogger"/> instances.
+            </summary>
+        </member>
+        <member name="M:Slf.CompositeLogger.#ctor(System.String,Slf.ILogger[])">
+            <summary>
+            Inits a named logger with a number of underlying loggers
+            that are supposed to receive logging messages.
+            </summary>
+            <param name="name">The logger name.</param>
+            <param name="loggers">The loggers that will all receive
+            the logged messages</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="loggers"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Slf.CompositeLogger.#ctor(Slf.ILogger[])">
+            <summary>
+            Inits a logger with a number of underlying loggers
+            that are supposed to receive logging messages.
+            </summary>
+            <param name="loggers">The loggers that will all receive
+            the logged messages</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="loggers"/>
+            is a null reference.</exception>
+        </member>
+        <member name="M:Slf.CompositeLogger.Log(Slf.LogItem)">
+            <summary>
+            Forwards a given log entry to the underlying
+            <see cref="P:Slf.CompositeLogger.Loggers"/>.
+            </summary>
+            <param name="item">Encaspulates logging information.</param>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="item"/>
+            is a null reference.</exception>
+        </member>
+        <member name="P:Slf.CompositeLogger.Loggers">
+            <summary>
+            The underlying loggers that receive logging messages.
+            </summary>
+        </member>
+        <member name="T:Slf.SlfTraceListener">
+            <summary>
+            A trace listener that redirect logging information
+            from Trace to SLf.
+            </summary>
+        </member>
+        <member name="M:Slf.SlfTraceListener.Write(System.String)">
+            <summary>
+            Forwards a given message as an information to SLF.
+            </summary>
+            <param name="message">A message to write.</param>
+        </member>
+        <member name="M:Slf.SlfTraceListener.WriteLine(System.String)">
+            <summary>
+            Forwards a given message as an information to SLF.
+            </summary>
+            <param name="message">A message to write.</param>
+        </member>
+    </members>
+</doc>

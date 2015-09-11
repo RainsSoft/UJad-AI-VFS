@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpenRasta.Codecs.WebForms</name>
+    </assembly>
+    <members>
+        <member name="M:OpenRasta.Configuration.WebFormsConfigurationExtensions.RenderedByAspx(OpenRasta.Configuration.Fluent.ICodecParentDefinition,System.String)">
+            <summary>
+            Adds an html rendering of a resource using an aspx webforms page.
+            </summary>
+        </member>
+    </members>
+</doc>

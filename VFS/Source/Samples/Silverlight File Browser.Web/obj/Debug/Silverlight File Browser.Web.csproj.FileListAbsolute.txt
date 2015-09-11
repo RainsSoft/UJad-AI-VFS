@@ -1,0 +1,6 @@
+E:\GitHub\UJad-AI-VFS\VFS\Source\Samples\Silverlight File Browser.Web\bin\Silverlight File Browser.Web.dll.config
+E:\GitHub\UJad-AI-VFS\VFS\Source\Samples\Silverlight File Browser.Web\bin\Silverlight File Browser.Web.dll
+E:\GitHub\UJad-AI-VFS\VFS\Source\Samples\Silverlight File Browser.Web\bin\Silverlight File Browser.Web.pdb
+E:\GitHub\UJad-AI-VFS\VFS\Source\Samples\Silverlight File Browser.Web\obj\Debug\Silverlight File Browser.Web.csprojResolveAssemblyReference.cache
+E:\GitHub\UJad-AI-VFS\VFS\Source\Samples\Silverlight File Browser.Web\obj\Debug\Silverlight File Browser.Web.dll
+E:\GitHub\UJad-AI-VFS\VFS\Source\Samples\Silverlight File Browser.Web\obj\Debug\Silverlight File Browser.Web.pdb

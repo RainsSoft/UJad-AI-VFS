@@ -1,0 +1,12 @@
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Restful\Vfs.Restful.Server\bin\Debug\Vfs.Restful.Server.dll
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Restful\Vfs.Restful.Server\bin\Debug\Vfs.Restful.Server.pdb
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Restful\Vfs.Restful.Server\bin\Debug\OpenRasta.dll
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Restful\Vfs.Restful.Server\bin\Debug\Vfs.dll
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Restful\Vfs.Restful.Server\bin\Debug\Vfs.Restful.Shared.dll
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Restful\Vfs.Restful.Server\bin\Debug\Vfs.pdb
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Restful\Vfs.Restful.Server\bin\Debug\Vfs.Restful.Shared.pdb
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Restful\Vfs.Restful.Server\bin\Debug\OpenRasta.pdb
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Restful\Vfs.Restful.Server\bin\Debug\OpenRasta.xml
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Restful\Vfs.Restful.Server\obj\Debug\Vfs.Restful.Server.csprojResolveAssemblyReference.cache
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Restful\Vfs.Restful.Server\obj\Debug\Vfs.Restful.Server.dll
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Restful\Vfs.Restful.Server\obj\Debug\Vfs.Restful.Server.pdb

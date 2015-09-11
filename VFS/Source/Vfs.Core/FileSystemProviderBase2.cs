@@ -814,7 +814,7 @@ namespace Vfs
       SecureAction(context, () => DeleteFileImpl(virtualFilePath), 
                    () => String.Format("Could not delete file [{0}].", virtualFilePath));
     }
-
+  
 
     private void DeleteFileImpl(string virtualFilePath)
     {

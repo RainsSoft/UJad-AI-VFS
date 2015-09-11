@@ -20,7 +20,7 @@ namespace Vfs.LocalFileSystem
     public FileItem(FileInfo localFile, VirtualFileInfo virtualFile)
     {
       LocalFile = localFile;
-      ResourceInfo = virtualFile;
+      ResourceInfo = virtualFile; 
     }
 
     /// <summary>

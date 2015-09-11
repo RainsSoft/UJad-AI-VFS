@@ -21,7 +21,7 @@ namespace Vfs.Test.Auditing
     {
       VfsException e = new ResourceAccessException("hello");
 
-      auditor.AuditException(e, FileSystemTask.RootFolderInfoRequest);
+      AuditHelper.AuditException(auditor, e, FileSystemTask.RootFolderInfoRequest);
       Assert.AreEqual(1, auditor.Items.Count);
       Assert.AreEqual(FileSystemTask.RootFolderInfoRequest, auditor.Items[0].Context);
     }
@@ -31,7 +31,7 @@ namespace Vfs.Test.Auditing
     {
       VfsException e = new ResourceAccessException("hello") {IsAudited = true};
 
-      auditor.AuditException(e, FileSystemTask.RootFolderInfoRequest);
+      AuditHelper.AuditException(auditor, e, FileSystemTask.RootFolderInfoRequest);
       Assert.AreEqual(0, auditor.Items.Count);
     }
 
@@ -41,7 +41,7 @@ namespace Vfs.Test.Auditing
     {
       VfsException e = new ResourceAccessException("hello") { SuppressAuditing = true };
 
-      auditor.AuditException(e, FileSystemTask.RootFolderInfoRequest);
+      AuditHelper.AuditException(auditor, e, FileSystemTask.RootFolderInfoRequest);
       Assert.AreEqual(0, auditor.Items.Count);
     }
 
@@ -52,7 +52,7 @@ namespace Vfs.Test.Auditing
       VfsException e = new ResourceAccessException("hello");
 
       Assert.IsFalse(e.IsAudited);
-      auditor.AuditException(e, FileSystemTask.RootFolderInfoRequest);
+      AuditHelper.AuditException(auditor,e, FileSystemTask.RootFolderInfoRequest);
       Assert.IsTrue(e.IsAudited);
     }
 

@@ -26,3 +26,8 @@ E:\GitHub\VFS\Source\Providers\Vfs.Zip\Vfs.Zip.Test\obj\Debug\Vfs.Zip.Test.Prope
 E:\GitHub\VFS\Source\Providers\Vfs.Zip\Vfs.Zip.Test\obj\Debug\Vfs.Zip.Test.csproj.GenerateResource.Cache
 E:\GitHub\VFS\Source\Providers\Vfs.Zip\Vfs.Zip.Test\obj\Debug\Vfs.Zip.Test.dll
 E:\GitHub\VFS\Source\Providers\Vfs.Zip\Vfs.Zip.Test\obj\Debug\Vfs.Zip.Test.pdb
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Zip\Vfs.Zip.Test\obj\Debug\Vfs.Zip.Test.csprojResolveAssemblyReference.cache
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Zip\Vfs.Zip.Test\obj\Debug\Vfs.Zip.Test.Properties.Resources.resources
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Zip\Vfs.Zip.Test\obj\Debug\Vfs.Zip.Test.csproj.GenerateResource.Cache
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Zip\Vfs.Zip.Test\obj\Debug\Vfs.Zip.Test.dll
+E:\GitHub\UJad-AI-VFS\VFS\Source\Providers\Vfs.Zip\Vfs.Zip.Test\obj\Debug\Vfs.Zip.Test.pdb
