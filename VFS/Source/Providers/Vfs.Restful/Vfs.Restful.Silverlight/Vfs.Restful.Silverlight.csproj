@@ -18,7 +18,7 @@
     <ValidateXaml>true</ValidateXaml>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
     <FileUpgradeFlags>40</FileUpgradeFlags>
-    <UpgradeBackupLocation>E:\GitHub\VFS\Source\Backup\Providers\Vfs.Restful\Vfs.Restful.Silverlight\</UpgradeBackupLocation>
+    <UpgradeBackupLocation>E:\GitHub\UJad-AI-VFS\VFS\Source\Backup1\Providers\Vfs.Restful\Vfs.Restful.Silverlight\</UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
   </PropertyGroup>
   <!-- This property group is only here to support building this project using the 

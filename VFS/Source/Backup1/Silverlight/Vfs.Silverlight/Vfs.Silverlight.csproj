@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{97FBC1EE-2B1B-4D63-9528-CB8F68844A85}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vfs.Silverlight</RootNamespace>
+    <AssemblyName>Vfs.Silverlight</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <FileUpgradeFlags>40</FileUpgradeFlags>
+    <UpgradeBackupLocation>E:\GitHub\VFS\Source\Backup\Silverlight\Vfs.Silverlight\</UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Browser" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Vfs.Core\Auditing\AuditEvent.cs">
+      <Link>Auditing\AuditEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Auditing\AuditHelper.cs">
+      <Link>Auditing\AuditHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Auditing\AuditItem.cs">
+      <Link>Auditing\AuditItem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Auditing\AuditLevel.cs">
+      <Link>Auditing\AuditLevel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Auditing\CachingAuditor.cs">
+      <Link>Auditing\CachingAuditor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Auditing\FileSystemTask.cs">
+      <Link>Auditing\FileSystemTask.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Auditing\IAuditor.cs">
+      <Link>Auditing\IAuditor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Auditing\NullAuditor.cs">
+      <Link>Auditing\NullAuditor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Exceptions\ExceptionBuilder.cs">
+      <Link>Exceptions\ExceptionBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Exceptions\InvalidResourcePathException.cs">
+      <Link>Exceptions\InvalidResourcePathException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Exceptions\ResourceAccessException.cs">
+      <Link>Exceptions\ResourceAccessException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Exceptions\ResourceLockedException.cs">
+      <Link>Exceptions\ResourceLockedException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Exceptions\ResourceOverwriteException.cs">
+      <Link>Exceptions\ResourceOverwriteException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Exceptions\VfsException.cs">
+      <Link>Exceptions\VfsException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Exceptions\VfsFault.cs">
+      <Link>Exceptions\VfsFault.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Exceptions\VfsFaultException.cs">
+      <Link>Exceptions\VfsFaultException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Exceptions\VfsFaultType.cs">
+      <Link>Exceptions\VfsFaultType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Exceptions\VirtualResourceNotFoundException.cs">
+      <Link>Exceptions\VirtualResourceNotFoundException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\FileOperationResult.cs">
+      <Link>FileOperationResult.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\FileSystemConfiguration.cs">
+      <Link>FileSystemConfiguration.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\FileSystemProviderBase.cs">
+      <Link>FileSystemProviderBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\FileSystemProviderBase2.cs">
+      <Link>FileSystemProviderBase2.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\FolderContents.cs">
+      <Link>FolderContents.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\FolderContentsInfo.cs">
+      <Link>FolderContentsInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\IFileSystemConfiguration.cs">
+      <Link>IFileSystemConfiguration.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\IFileSystemProvider.cs">
+      <Link>IFileSystemProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\IVirtualFileItem.cs">
+      <Link>IVirtualFileItem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\IVirtualFolderItem.cs">
+      <Link>IVirtualFolderItem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\IVirtualResourceItem.cs">
+      <Link>IVirtualResourceItem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Locking\IResourceLockRepository.cs">
+      <Link>Locking\IResourceLockRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Locking\LockItem.cs">
+      <Link>Locking\LockItem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Locking\LockTracker.cs">
+      <Link>Locking\LockTracker.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Locking\NullResourceLockRepository.cs">
+      <Link>Locking\NullResourceLockRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Locking\ResourceLockGuard.cs">
+      <Link>Locking\ResourceLockGuard.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Locking\ResourceLockRepository.cs">
+      <Link>Locking\ResourceLockRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Locking\ResourceLockState.cs">
+      <Link>Locking\ResourceLockState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Locking\ResourceLockType.cs">
+      <Link>Locking\ResourceLockType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Locking\ResourceLockUtil.cs">
+      <Link>Locking\ResourceLockUtil.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Scheduling\Enums.cs">
+      <Link>Scheduling\Enums.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Scheduling\Fluent.cs">
+      <Link>Scheduling\Fluent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Scheduling\Job.cs">
+      <Link>Scheduling\Job.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Scheduling\JobContext.cs">
+      <Link>Scheduling\JobContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Scheduling\Scheduler.cs">
+      <Link>Scheduling\Scheduler.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Security\DelegateSecurity.cs">
+      <Link>Security\DelegateSecurity.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Security\FileClaims.cs">
+      <Link>Security\FileClaims.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Security\FolderClaims.cs">
+      <Link>Security\FolderClaims.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Security\IFileSystemSecurity.cs">
+      <Link>Security\IFileSystemSecurity.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Security\NullSecurity.cs">
+      <Link>Security\NullSecurity.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Security\ReadOnlySecurity.cs">
+      <Link>Security\ReadOnlySecurity.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Security\ResourceClaimProperty.cs">
+      <Link>Security\ResourceClaimProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Security\ResourceClaims.cs">
+      <Link>Security\ResourceClaims.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\AbortReason.cs">
+      <Link>Transfer\AbortReason.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\BufferedDataBlock.cs">
+      <Link>Transfer\BufferedDataBlock.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\DataBlockInfo.cs">
+      <Link>Transfer\DataBlockInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\Download\DownloadHandlerBase.cs">
+      <Link>Transfer\Download\DownloadHandlerBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\Download\DownloadToken.cs">
+      <Link>Transfer\Download\DownloadToken.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\Download\DownloadTransfer.cs">
+      <Link>Transfer\Download\DownloadTransfer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\Download\IDownloadTransferHandler.cs">
+      <Link>Transfer\Download\IDownloadTransferHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\Exceptions\DataBlockException.cs">
+      <Link>Transfer\Exceptions\DataBlockException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\Exceptions\IntegrityCheckException.cs">
+      <Link>Transfer\Exceptions\IntegrityCheckException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\Exceptions\TransferException.cs">
+      <Link>Transfer\Exceptions\TransferException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\Exceptions\TransferStatusException.cs">
+      <Link>Transfer\Exceptions\TransferStatusException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\Exceptions\UnknownTransferException.cs">
+      <Link>Transfer\Exceptions\UnknownTransferException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\IDataBlock.cs">
+      <Link>Transfer\IDataBlock.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\InMemoryTransferStore.cs">
+      <Link>Transfer\InMemoryTransferStore.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\ITransfer.cs">
+      <Link>Transfer\ITransfer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\ITransferHandler.cs">
+      <Link>Transfer\ITransferHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\ITransferStore.cs">
+      <Link>Transfer\ITransferStore.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\StreamedDataBlock.cs">
+      <Link>Transfer\StreamedDataBlock.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\TransferBase.cs">
+      <Link>Transfer\TransferBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\TransferHandlerBase.cs">
+      <Link>Transfer\TransferHandlerBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\TransferStatus.cs">
+      <Link>Transfer\TransferStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\TransferToken.cs">
+      <Link>Transfer\TransferToken.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\TransmissionCapabilities.cs">
+      <Link>Transfer\TransmissionCapabilities.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\Upload\IUploadTransferHandler.cs">
+      <Link>Transfer\Upload\IUploadTransferHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\Upload\TempUploadHandlerBase.cs">
+      <Link>Transfer\Upload\TempUploadHandlerBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\Upload\UploadHandlerBase.cs">
+      <Link>Transfer\Upload\UploadHandlerBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\Upload\UploadToken.cs">
+      <Link>Transfer\Upload\UploadToken.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\Upload\UploadTransfer.cs">
+      <Link>Transfer\Upload\UploadTransfer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\Util\BlockInputStreamBase.cs">
+      <Link>Transfer\Util\BlockInputStreamBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\Util\BufferedBlockInputStream.cs">
+      <Link>Transfer\Util\BufferedBlockInputStream.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\Util\BufferedBlockOutputStream.cs">
+      <Link>Transfer\Util\BufferedBlockOutputStream.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\Util\ChunkStream.cs">
+      <Link>Transfer\Util\ChunkStream.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\Util\ClosingActionStream.cs">
+      <Link>Transfer\Util\ClosingActionStream.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\Util\DataBlockWriterExtensions.cs">
+      <Link>Transfer\Util\DataBlockWriterExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\Util\StreamedBlockInputStream.cs">
+      <Link>Transfer\Util\StreamedBlockInputStream.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Transfer\Util\StreamedBlockOutputStream.cs">
+      <Link>Transfer\Util\StreamedBlockOutputStream.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Util\ContentUtil.cs">
+      <Link>Util\ContentUtil.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Util\DeferredStream.cs">
+      <Link>Util\DeferredStream.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Util\Ensure.cs">
+      <Link>Util\Ensure.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Util\Extensions.cs">
+      <Link>Util\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Util\FileSystemDecorator.cs">
+      <Link>Util\FileSystemDecorator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Util\Guard.cs">
+      <Link>Util\Guard.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Util\StreamDecorator.cs">
+      <Link>Util\StreamDecorator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Util\SystemTime.cs">
+      <Link>Util\SystemTime.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Util\TemporaryStorage\DelegateTempStreamFactory.cs">
+      <Link>Util\Temporary Storage\DelegateTempStreamFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Util\TemporaryStorage\ITempStreamFactory.cs">
+      <Link>Util\Temporary Storage\ITempStreamFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Util\TemporaryStorage\TempFileUtil.cs">
+      <Link>Util\Temporary Storage\TempFileUtil.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Util\TemporaryStorage\TempStream.cs">
+      <Link>Util\Temporary Storage\TempStream.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\Util\VfsUtil.cs">
+      <Link>Util\VfsUtil.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\VirtualFile.cs">
+      <Link>VirtualFile.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\VirtualFileInfo.cs">
+      <Link>VirtualFileInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\VirtualFileItem.cs">
+      <Link>VirtualFileItem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\VirtualFolder.cs">
+      <Link>VirtualFolder.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\VirtualFolderInfo.cs">
+      <Link>VirtualFolderInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\VirtualFolderItem.cs">
+      <Link>VirtualFolderItem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\VirtualResource.cs">
+      <Link>VirtualResource.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Vfs.Core\VirtualResourceInfo.cs">
+      <Link>VirtualResourceInfo.cs</Link>
+    </Compile>
+    <Compile Include="Configuration\ApplicationSettingsBase.cs" />
+    <Compile Include="Configuration\Attributes.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SLExtensions.cs" />
+    <Compile Include="Util\MD5CryptoServiceProvider.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Copy of Security\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

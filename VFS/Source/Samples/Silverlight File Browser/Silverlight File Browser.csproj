@@ -32,8 +32,8 @@
     <LinkedServerProject>
     </LinkedServerProject>
     <FileUpgradeFlags>40</FileUpgradeFlags>
-    <UpgradeBackupLocation>E:\GitHub\VFS\Source\Backup\Samples\Silverlight File Browser\</UpgradeBackupLocation>
-    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation>E:\GitHub\UJad-AI-VFS\VFS\Source\Backup1\Samples\Silverlight File Browser\</UpgradeBackupLocation>
+    <OldToolsVersion>12.0</OldToolsVersion>
   </PropertyGroup>
   <!-- This property group is only here to support building this project using the 
        MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
@@ -99,10 +99,14 @@
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
