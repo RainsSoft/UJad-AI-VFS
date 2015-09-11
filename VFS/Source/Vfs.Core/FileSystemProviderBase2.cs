@@ -18,8 +18,9 @@ namespace Vfs
   /// needed about a given file while processing requests.</typeparam>
   /// <typeparam name="TFolder">Internally used class which encapsulates all information
   /// needed about a given folder while processing requests.</typeparam>
-  public abstract class FileSystemProviderBase2<TFile, TFolder> : FileSystemProviderBase where TFile:IVirtualFileItem where TFolder:IVirtualFolderItem
-  {
+  //public abstract class FileSystemProviderBase2<TFile, TFolder> : FileSystemProviderBase where TFile:IVirtualFileItem where TFolder:IVirtualFolderItem
+    public abstract class FileSystemProviderBase2 : FileSystemProviderBase 
+{
     #region resolve file / folder paths
 
     /// <summary>
@@ -43,7 +44,7 @@ namespace Vfs
     /// <see cref="VfsException.SuppressAuditing"/> properties.</exception>
     /// <exception cref="Exception">Any exceptions that are not derived from
     /// <see cref="VfsException"/> will be wrapped and audited.</exception>
-    public abstract TFile ResolveFileResourcePath(string submittedFilePath, FileSystemTask context);
+        public abstract IVirtualFileItem ResolveFileResourcePath(string submittedFilePath, FileSystemTask context);
 
 
 
@@ -65,12 +66,12 @@ namespace Vfs
     /// is a null reference.</exception>
     /// <exception cref="VirtualResourceNotFoundException">If <paramref name="mustExist"/> is true, and
     /// the folder's <see cref="IVirtualFileItem.Exists"/> property is false.</exception>
-    protected TFile ResolveFileResourcePathInternal(string virtualFilePath, bool mustExist, FileSystemTask context)
+        protected IVirtualFileItem ResolveFileResourcePathInternal(string virtualFilePath, bool mustExist, FileSystemTask context)
     {
       //TODO allow null (also for folders), but write test first
       Ensure.ArgumentNotNull(virtualFilePath, "virtualFilePath");
 
-      TFile fileItem;
+      IVirtualFileItem fileItem;
       try
       {
         fileItem = ResolveFileResourcePath(virtualFilePath, context);
@@ -131,7 +132,7 @@ namespace Vfs
     /// <see cref="VfsException.SuppressAuditing"/> properties.</exception>
     /// <exception cref="Exception">Any exceptions that are not derived from
     /// <see cref="VfsException"/> will be wrapped and audited.</exception>
-    public abstract TFolder ResolveFolderResourcePath(string submittedFolderPath, FileSystemTask context);
+        public abstract IVirtualFolderItem ResolveFolderResourcePath(string submittedFolderPath, FileSystemTask context);
 
 
     /// <summary>
@@ -152,9 +153,9 @@ namespace Vfs
     /// is a null reference.</exception>
     /// <exception cref="VirtualResourceNotFoundException">If <paramref name="mustExist"/> is true, and
     /// the folder's <see cref="IVirtualFolderItem.Exists"/> property is false.</exception>
-    protected virtual TFolder ResolveFolderResourcePathInternal(string virtualFolderPath, bool mustExist, FileSystemTask context)
+        protected virtual IVirtualFolderItem ResolveFolderResourcePathInternal(string virtualFolderPath, bool mustExist, FileSystemTask context)
     {
-      TFolder folderItem;
+        IVirtualFolderItem folderItem;
       try
       {
         folderItem = ResolveFolderResourcePath(virtualFolderPath, context);
@@ -271,7 +272,7 @@ namespace Vfs
     /// <returns>A <see cref="IVirtualFolderItem"/> which encapsulates
     /// a <see cref="VirtualFolderInfo"/> that represents the file
     /// system's root folder.</returns>
-    protected abstract TFolder GetFileSystemRootImplementation();
+    protected abstract IVirtualFolderItem GetFileSystemRootImplementation();
 
 
     /// <summary>
@@ -448,7 +449,7 @@ namespace Vfs
     /// <param name="parentFolder">The currently processed folder.</param>
     /// <returns>Folder paths that can be resolved to the folders withing the submitted
     /// <paramref name="parentFolder"/>.</returns>
-    protected abstract IEnumerable<string> GetChildFolderPathsInternal(TFolder parentFolder);
+    protected abstract IEnumerable<string> GetChildFolderPathsInternal(IVirtualFolderItem parentFolder);
 
 
     /// <summary>
@@ -523,7 +524,7 @@ namespace Vfs
     /// <param name="parentFolder">The currently processed folder.</param>
     /// <returns>File paths that can be resolved to the files withing the submitted
     /// <paramref name="parentFolder"/>.</returns>
-    protected abstract IEnumerable<string> GetChildFilePathsInternal(TFolder parentFolder);
+    protected abstract IEnumerable<string> GetChildFilePathsInternal(IVirtualFolderItem parentFolder);
 
 
     /// <summary>
@@ -706,7 +707,7 @@ namespace Vfs
     /// <returns>Either the updated <paramref name="folder"/> reference that
     /// was submitted, or a new <see cref="TFolder"/> that represents the
     /// created folder.</returns>
-    protected abstract TFolder CreateFolderOnFileSystem(TFolder folder);
+    protected abstract IVirtualFolderItem CreateFolderOnFileSystem(IVirtualFolderItem folder);
 
     #endregion
 
@@ -745,7 +746,7 @@ namespace Vfs
       //get the resource
       const FileSystemTask context = FileSystemTask.FolderDeleteRequest;
 
-      TFolder folder = ResolveFolderResourcePathInternal(virtualFolderPath, true, context);
+      IVirtualFolderItem folder = ResolveFolderResourcePathInternal(virtualFolderPath, true, context);
 
       //the root folder cannot be deleted
       if (folder.ResourceInfo.IsRootFolder)
@@ -781,7 +782,7 @@ namespace Vfs
     /// being invoked by the <see cref="DeleteFolder"/> method.
     /// </summary>
     /// <param name="folder">The folder to be deleted.</param>
-    protected abstract void DeleteFolderOnFileSystem(TFolder folder);
+    protected abstract void DeleteFolderOnFileSystem(IVirtualFolderItem folder);
 
     #endregion
 
@@ -852,7 +853,7 @@ namespace Vfs
     /// being invoked by the <see cref="DeleteFile"/> method.
     /// </summary>
     /// <param name="file">The file to be deleted.</param>
-    protected abstract void DeleteFileOnFileSystem(TFile file);
+    protected abstract void DeleteFileOnFileSystem(IVirtualFileItem file);
 
     #endregion
 
@@ -990,7 +991,7 @@ namespace Vfs
     /// </summary>
     /// <param name="sourceFolder">The folder to be copied.</param>
     /// <param name="targetFolder">The designated new location of the folder.</param>
-    protected abstract void MoveFolderOnFileSystem(TFolder sourceFolder, TFolder targetFolder);
+    protected abstract void MoveFolderOnFileSystem(IVirtualFolderItem sourceFolder, IVirtualFolderItem targetFolder);
 
 
     /// <summary>
@@ -1114,7 +1115,7 @@ namespace Vfs
     /// </summary>
     /// <param name="sourceFolder">The folder to be copied.</param>
     /// <param name="targetFolder">The designated location of the copy.</param>
-    protected abstract void CopyFolderOnFileSystem(TFolder sourceFolder, TFolder targetFolder);
+    protected abstract void CopyFolderOnFileSystem(IVirtualFolderItem sourceFolder, IVirtualFolderItem targetFolder);
 
     #endregion
 
@@ -1242,7 +1243,7 @@ namespace Vfs
     /// </summary>
     /// <param name="sourceFile">The file to be moved.</param>
     /// <param name="targetFile">The designated new location of the file.</param>
-    protected abstract void MoveFileOnFileSystem(TFile sourceFile, TFile targetFile);
+    protected abstract void MoveFileOnFileSystem(IVirtualFileItem sourceFile, IVirtualFileItem targetFile);
 
 
     /// <summary>
@@ -1355,7 +1356,7 @@ namespace Vfs
     /// </summary>
     /// <param name="sourceFile">The file to be copied.</param>
     /// <param name="targetFile">The designated location of the file copy.</param>
-    protected abstract void CopyFileOnFileSystem(TFile sourceFile, TFile targetFile);
+    protected abstract void CopyFileOnFileSystem(IVirtualFileItem sourceFile, IVirtualFileItem targetFile);
 
     #endregion
 
@@ -1392,7 +1393,7 @@ namespace Vfs
     /// </summary>
     /// <param name="fileItem">Represents the file to be read.</param>
     /// <returns>A stream that provides the file's binary data.</returns>
-    protected abstract Stream OpenFileStreamFromFileSystem(TFile fileItem);
+    protected abstract Stream OpenFileStreamFromFileSystem(IVirtualFileItem fileItem);
 
 
     /// <summary>
@@ -1433,7 +1434,7 @@ namespace Vfs
     /// </summary>
     /// <param name="fileItem">Represents the file to be created or updated.</param>
     /// <param name="input">A stream that provides the file's contents.</param>
-    protected abstract void WriteFileStreamToFileSystem(TFile fileItem, Stream input);
+    protected abstract void WriteFileStreamToFileSystem(IVirtualFileItem fileItem, Stream input);
 
     #endregion
 
@@ -1515,7 +1516,7 @@ namespace Vfs
     /// If locking did not succeed because an element in the chain could not be locked,
     /// the returned <see cref="ResourceLockGuard.IsLockEnabled"/> property
     /// is false.</returns>
-    protected virtual ResourceLockGuard RequestChainedLockGuard(TFile file, ResourceLockType lockType)
+    protected virtual ResourceLockGuard RequestChainedLockGuard(IVirtualFileItem file, ResourceLockType lockType)
     {
       List<string> parentFolders = GetResourceLockChain(file);
       
@@ -1544,7 +1545,7 @@ namespace Vfs
     /// If locking did not succeed because an element in the chain could not be locked,
     /// the returned <see cref="ResourceLockGuard.IsLockEnabled"/> property
     /// is false.</returns>
-    protected virtual ResourceLockGuard RequestChainedLockGuard(TFolder folder, ResourceLockType lockType)
+    protected virtual ResourceLockGuard RequestChainedLockGuard(IVirtualFolderItem folder, ResourceLockType lockType)
     {
       List<string> parentFolders = GetResourceLockChain(folder);
 
@@ -1573,7 +1574,7 @@ namespace Vfs
     /// succeeded.</param>
     /// <returns>True if locking succeeded and the <paramref name="action"/> was invoked. False
     /// if the lock was not granted.</returns>
-    protected virtual bool LockResourceAndExecute(TFile file, FileSystemTask context, ResourceLockType lockType, Action action)
+    protected virtual bool LockResourceAndExecute(IVirtualFileItem file, FileSystemTask context, ResourceLockType lockType, Action action)
     {
       using(var guard = RequestChainedLockGuard(file, lockType))
       {
@@ -1605,7 +1606,7 @@ namespace Vfs
     /// succeeded.</param>
     /// <returns>True if locking succeeded and the <paramref name="action"/> was invoked. False
     /// if the lock was not granted.</returns>
-    protected virtual bool LockResourceAndExecute(TFolder folder, FileSystemTask context, ResourceLockType lockType, Action action)
+    protected virtual bool LockResourceAndExecute(IVirtualFolderItem folder, FileSystemTask context, ResourceLockType lockType, Action action)
     {
       using (var guard = RequestChainedLockGuard(folder, lockType))
       {
@@ -1634,7 +1635,7 @@ namespace Vfs
     /// <param name="file">The currently processed file.</param>
     /// <returns>All resources that need to be write-protected in order to
     /// process the file.</returns>
-    protected abstract List<string> GetResourceLockChain(TFile file);
+    protected abstract List<string> GetResourceLockChain(IVirtualFileItem file);
 
 
     /// <summary>
@@ -1647,7 +1648,7 @@ namespace Vfs
     /// <param name="folder">The currently processed folder.</param>
     /// <returns>All resources that need to be write-protected in order to
     /// process the folder.</returns>
-    protected abstract List<string> GetResourceLockChain(TFolder folder);
+    protected abstract List<string> GetResourceLockChain(IVirtualFolderItem folder);
 
     #endregion
 
